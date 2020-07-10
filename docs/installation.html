@@ -1,0 +1,651 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>How to nothing-to-digitransit in a few hours &mdash; digitransit-tk 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="digitransit-tk 0.1 documentation" href="index.html"/>
+        <link rel="next" title="Glossary" href="glossary.html"/>
+        <link rel="prev" title="The transportkollektiv digitransit cookbook" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> digitransit-tk
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How to nothing-to-digitransit in a few hours</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ingredients">Ingredients</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#optional">optional</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#step-by-step">Step-by-Step</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#preparing-your-build-host">0. Preparing your build host</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-an-opentripplanner-graph">1. Building an OpenTripPlanner Graph</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#method-1-vsh-style-modifying-of-opentripplanner-data-container">Method 1: vsh-style modifying of opentripplanner-data-container</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#method-2-muenster-style-custom-container">Method 2: muenster-style custom container</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#building-hsl-map-server">2. Building hsl-map-server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-digitransit-proxy">3. Building digitransit-proxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-photon-pelias-adapter">4. Using photon-pelias-adapter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-digitransit-ui">5. Building digitransit-ui</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#crafting-kubernetes-yaml">6. Crafting kubernetes yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deploying">7. Deploying</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">8. ???</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#profit">9. Profit!</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#frequently-asked-questions">Frequently Asked Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#todo">TODO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">digitransit-tk</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>How to nothing-to-digitransit in a few hours</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="how-to-nothing-to-digitransit-in-a-few-hours">
+<h1>How to nothing-to-digitransit in a few hours<a class="headerlink" href="#how-to-nothing-to-digitransit-in-a-few-hours" title="Permalink to this headline">¶</a></h1>
+<p>You’ve seen <a class="reference external" href="https://digitransit.fi">https://digitransit.fi</a> and some instances like
+<a class="reference external" href="https://digitransit.im.verschwoerhaus.de">https://digitransit.im.verschwoerhaus.de</a> <a class="reference external" href="https://mobil-in-herrenberg.de">https://mobil-in-herrenberg.de</a>
+<a class="reference external" href="https://digitransit.codeformuenster.org">https://digitransit.codeformuenster.org</a> <a class="reference external" href="https://cityrouting.e-gpp.hr">https://cityrouting.e-gpp.hr</a>
+<a class="reference external" href="https://next-dev.oulunliikenne.fi">https://next-dev.oulunliikenne.fi</a>. Now you’re interested in how to get a
+digitransit for your own region. This could be a helpful step-by-step
+guidance for you :)</p>
+<div class="section" id="ingredients">
+<h2>Ingredients<a class="headerlink" href="#ingredients" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>One host machine with a-little-bit-more-than-average RAM (eg. 16+ GB) for
+building</li>
+<li>One or more host machines (could be the same as above) for running digitransit with 8+ GB RAM~
+(sorry, but hostname/referencing dependency issues make it easier to
+run it within a container orchestator like kubernetes)</li>
+<li>One Kubernetes Cluster (can be single-node) with 8+ GB RAM</li>
+<li><a class="reference external" href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">kubectl</a>
+installed and configured on your device</li>
+<li>One OpenStreetMap extract for your region (see:
+<a class="reference external" href="https://download.geofabrik.de">https://download.geofabrik.de</a>)</li>
+<li>One (or more) <a class="reference internal" href="glossary.html#term-gtfs"><span class="xref std std-term">GTFS</span></a> Feeds for public transit routes</li>
+<li>A GitHub Account (for forking stuff)</li>
+<li>A Docker Hub Account (for publishing your containers)</li>
+<li>One Domain and access to DNS for creating a subdomain</li>
+</ul>
+<div class="section" id="optional">
+<h3>optional<a class="headerlink" href="#optional" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>One (or more) GBFS Feeds (for bikesharing and/or carsharing)</li>
+</ul>
+</div>
+</div>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>digitransit is a slightly complex system composed of multiple services
+in container that talk to each other. A nice architecture image can be
+found at the <a class="reference external" href="https://digitransit.fi/en/developers/architecture/">digitransit.fi
+documentation</a>.</p>
+<p>The main components of an digitransit deployment consists of:</p>
+<ul class="simple">
+<li>Multimodal routing engine ([OpenTripPlanner])</li>
+<li>Address search ([Pelias]</li>
+<li>Background map service ([hsl-map-server]: [tessera], [tilelive])</li>
+<li>Web browser-based user interface ([digitransit-ui])</li>
+</ul>
+<p>A nicer description of the components and their job exists also at
+<a class="reference external" href="https://digitransit.fi/en/services/">https://digitransit.fi/en/services/</a></p>
+</div>
+<div class="section" id="step-by-step">
+<h2>Step-by-Step<a class="headerlink" href="#step-by-step" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="preparing-your-build-host">
+<h3>0. Preparing your build host<a class="headerlink" href="#preparing-your-build-host" title="Permalink to this headline">¶</a></h3>
+<p>you need:</p>
+<ul class="simple">
+<li>docker-ce runtime</li>
+<li>git</li>
+<li>nodejs, LTS version</li>
+<li>yarn</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This should be enhanced with copy-pasteable commands</p>
+</div>
+</div>
+<div class="section" id="building-an-opentripplanner-graph">
+<h3>1. Building an OpenTripPlanner Graph<a class="headerlink" href="#building-an-opentripplanner-graph" title="Permalink to this headline">¶</a></h3>
+<p>you need:</p>
+<ul class="simple">
+<li>One (or more) <a class="reference internal" href="glossary.html#term-gtfs"><span class="xref std std-term">GTFS</span></a> Feed with a publicly accessible URL
+(if you only have a <a class="reference internal" href="glossary.html#term-gtfs"><span class="xref std std-term">GTFS</span></a> zip file, upload it somewhere
+public)</li>
+<li>One OpenStreetMap extract for your region in .pbf format,
+accessible at a public URL - try <a class="reference external" href="https://download.geofabrik.de">https://download.geofabrik.de</a></li>
+<li>if you need to merge two regions, try
+<a class="reference external" href="https://gis.stackexchange.com/questions/242704/merging-osm-pbf-files">osmium merge</a></li>
+</ul>
+<p>For the configuration, find and memorize a short identifier. You
+need this often. In our example, we use <code class="docutils literal notranslate"><span class="pre">ulm</span></code>.</p>
+<div class="section" id="method-1-vsh-style-modifying-of-opentripplanner-data-container">
+<h4>Method 1: vsh-style modifying of opentripplanner-data-container<a class="headerlink" href="#method-1-vsh-style-modifying-of-opentripplanner-data-container" title="Permalink to this headline">¶</a></h4>
+<p>Check out <a class="reference external" href="https://github.com/HSLdevcom/OpenTripPlanner-data-container">HSLdevcom/OpenTripPlanner-data-container</a></p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/HSLdevcom/OpenTripPlanner-data-container</span></code></p>
+<p>Copy the <code class="docutils literal notranslate"><span class="pre">router-waltti</span></code> folder to <code class="docutils literal notranslate"><span class="pre">router-ulm</span></code> (replace <code class="docutils literal notranslate"><span class="pre">ulm</span></code>
+with your <a class="reference internal" href="glossary.html#term-gtfs"><span class="xref std std-term">GTFS</span></a> identifier). Inside <code class="docutils literal notranslate"><span class="pre">router-ulm</span></code>, edit
+<code class="docutils literal notranslate"><span class="pre">build-config.js</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;areaVisibility&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+  <span class="s2">&quot;parentStopLinking&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+  <span class="s2">&quot;osmWayPropertySet&quot;</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;elevationUnitMultiplier&quot;</span><span class="p">:</span> <span class="mf">0.1</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>(remove stuff like <code class="docutils literal notranslate"><span class="pre">&quot;fares&quot;:</span> <span class="pre">&quot;HSL&quot;,</span></code>, this is not relevant outside of
+finland)</p>
+<p>edit <code class="docutils literal notranslate"><span class="pre">router-config.js</span></code> too, the <code class="docutils literal notranslate"><span class="pre">routingDefaults</span></code> are mostly okay.
+If you are not satisfied with the routing suggestions, try to modify
+these values. <code class="docutils literal notranslate"><span class="pre">updaters</span></code> are for realtime updates to feeds (think:
+GTFS-RT) or GBFS (Bikesharing, Carsharing) status updates. If you don’t
+have these, simply replace it with <code class="docutils literal notranslate"><span class="pre">updaters:</span> <span class="pre">[]</span></code>. Your
+<code class="docutils literal notranslate"><span class="pre">router-config.js</span></code> could look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;routingDefaults&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;walkSpeed&quot;</span><span class="p">:</span> <span class="mf">1.3</span><span class="p">,</span>
+      <span class="s2">&quot;transferSlack&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span>
+      <span class="s2">&quot;maxTransfers&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+      <span class="s2">&quot;waitReluctance&quot;</span><span class="p">:</span> <span class="mf">0.95</span><span class="p">,</span>
+      <span class="s2">&quot;waitAtBeginningFactor&quot;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
+      <span class="s2">&quot;walkReluctance&quot;</span><span class="p">:</span> <span class="mf">1.75</span><span class="p">,</span>
+      <span class="s2">&quot;stairsReluctance&quot;</span><span class="p">:</span> <span class="mf">1.65</span><span class="p">,</span>
+      <span class="s2">&quot;walkBoardCost&quot;</span><span class="p">:</span> <span class="mi">540</span><span class="p">,</span>
+      <span class="s2">&quot;itineraryFiltering&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+      <span class="s2">&quot;maxSlope&quot;</span><span class="p">:</span> <span class="mf">0.125</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;updaters&quot;</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the main directory, edit the <code class="docutils literal notranslate"><span class="pre">config.js</span></code> and add a new
+<code class="docutils literal notranslate"><span class="pre">ULM_CONFIG</span></code> like the <code class="docutils literal notranslate"><span class="pre">HSL_CONFIG</span></code>. Insert your <a class="reference internal" href="glossary.html#term-gtfs"><span class="xref std std-term">GTFS</span></a> URL. For
+example like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">ULM_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;ulm&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;src&#39;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="n">src</span><span class="p">(</span><span class="s1">&#39;DING&#39;</span><span class="p">,</span> <span class="s1">&#39;https://www.nvbw.de/fileadmin/nvbw/open-data/Fahrplandaten_mit_Liniennetz/ding.zip&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">),</span>
+  <span class="p">],</span>
+  <span class="s1">&#39;osm&#39;</span><span class="p">:</span> <span class="s1">&#39;ulm&#39;</span><span class="p">,</span>
+  <span class="o">//</span> <span class="s1">&#39;dem&#39;</span><span class="p">:</span> <span class="s1">&#39;hsl&#39;</span> <span class="o">//</span> <span class="n">we</span> <span class="n">don</span><span class="s1">&#39;t have a Digital Elevation Model</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the <code class="docutils literal notranslate"><span class="pre">setCurrentConfig</span></code> method, you need to add your thusly created
+config to <code class="docutils literal notranslate"><span class="pre">ALL_CONFIGS</span></code>, like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">setCurrentConfig</span> <span class="o">=</span> <span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="n">ALL_CONFIGS</span> <span class="o">=</span> <span class="p">[</span><span class="n">WALTTI_CONFIG</span><span class="p">,</span> <span class="n">HSL_CONFIG</span><span class="p">,</span> <span class="n">FINLAND_CONFIG</span><span class="p">,</span> <span class="n">ULM_CONFIG</span><span class="p">]</span><span class="o">.</span><span class="n">reduce</span><span class="p">((</span><span class="n">acc</span><span class="p">,</span> <span class="n">nxt</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</pre></div>
+</div>
+<p>Add your OSM extract to the osm config near the end of the file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">osm</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span> <span class="nb">id</span><span class="p">:</span> <span class="s1">&#39;finland&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="s1">&#39;https://karttapalvelu.storage.hsldev.com/finland.osm/finland.osm.pbf&#39;</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="nb">id</span><span class="p">:</span> <span class="s1">&#39;hsl&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="s1">&#39;https://karttapalvelu.storage.hsldev.com/hsl.osm/hsl.osm.pbf&#39;</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="nb">id</span><span class="p">:</span> <span class="s1">&#39;ulm&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="s1">&#39;https://download.geofabrik.de/europe/germany/baden-wuerttemberg/tuebingen-regbez-latest.osm.pbf&#39;</span> <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Modify <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> to include your <code class="docutils literal notranslate"><span class="pre">router-ulm</span></code> directory: <code class="docutils literal notranslate"><span class="pre">ADD</span> <span class="pre">router-hsl</span> <span class="pre">/opt/otp-data-builder/router-hsl</span> <span class="pre">ADD</span> <span class="pre">router-waltti</span> <span class="pre">/opt/otp-data-builder/router-waltti</span> <span class="pre">ADD</span> <span class="pre">router-ulm</span> <span class="pre">/opt/otp-data-builder/router-ulm</span></code></p>
+<p>Modify <code class="docutils literal notranslate"><span class="pre">gulpfile.js</span></code> to include your router configuration in the build
+process. Near the end of the file,
+<code class="docutils literal notranslate"><span class="pre">gulp.task('router:buildGraph',</span> <span class="pre">...</span></code> has a list of pipes that we need
+to add to:</p>
+<div class="code diff highlight-default notranslate"><div class="highlight"><pre><span></span>gulp.task(&#39;router:buildGraph&#39;, gulp.series(&#39;router:copy&#39;, function () {
+  gulp.src([&#39;otp-data-container/*&#39;, &#39;otp-data-container/.*&#39;])
+    .pipe(gulp.dest(`${config.dataDir}/build/waltti`))
+    .pipe(gulp.dest(`${config.dataDir}/build/finland`))
+    .pipe(gulp.dest(`${config.dataDir}/build/hsl`))
+    .pipe(gulp.dest(`${config.dataDir}/build/ulm`))
+</pre></div>
+</div>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">provide patch for SKIP_SEED</p>
+</div>
+<p>Until PR #XX &lt;&gt; is merged, we have to apply this patch, to support
+skipping the seed-step hsl is using to keep rebuilding the
+otp-data-container periodically. In our case, a fresh setup starting
+without an old container we could seed from, this sadly breaks every
+time.</p>
+<p>Apply by executing
+<code class="docutils literal notranslate"><span class="pre">curl</span> <span class="pre">https://github.com/HSLdevcom/OpenTripPlanner-data-container/commit/d657285fd2f73f11bedb9478be6880607b5b9733.patch</span> <span class="pre">|</span> <span class="pre">git</span> <span class="pre">apply</span></code></p>
+<p>And now, we can finally build our own <code class="docutils literal notranslate"><span class="pre">opentripplanner-data-container</span></code>!</p>
+<ul class="simple">
+<li>Run <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">install</span></code></li>
+<li>Run <code class="docutils literal notranslate"><span class="pre">ROUTERS=ulm</span> <span class="pre">ORG=verschwoerhaus</span> <span class="pre">SKIP_SEED=true</span> <span class="pre">node</span> <span class="pre">index.js</span> <span class="pre">once</span></code>
+(Set <code class="docutils literal notranslate"><span class="pre">ROUTERS=</span></code> to your config identifier, set <code class="docutils literal notranslate"><span class="pre">ORG</span></code> to your docker
+hub username or organization)</li>
+<li>Note the opentripplanner version the graph gets built with and save
+this information for later use. You can see this in the testing step
+of the build in a line like this:</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">22</span><span class="p">:</span><span class="mi">42</span><span class="p">:</span><span class="mf">55.917</span> <span class="n">INFO</span> <span class="p">(</span><span class="n">Graph</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">752</span><span class="p">)</span> <span class="n">OTP</span> <span class="n">version</span><span class="p">:</span>   <span class="n">MavenVersion</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SNAPSHOT</span><span class="p">,</span> <span class="n">da7ca2a4d5a8cb381cd64efc6df5ba4252d45440</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This OTP version is also the version of otp that has to run to ingest
+the data container again - and is needed for the container image tag of
+otp below when building the kubernetes config.</p>
+<p>After running the command (this could take a few minutes), you should
+see a new image appear in <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">images</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">REPOSITORY</span>                                          <span class="n">TAG</span>                                        <span class="n">IMAGE</span> <span class="n">ID</span>            <span class="n">CREATED</span>             <span class="n">SIZE</span>
+<span class="n">hsldevcom</span><span class="o">/</span><span class="n">opentripplanner</span><span class="o">-</span><span class="n">data</span><span class="o">-</span><span class="n">container</span><span class="o">-</span><span class="n">ulm</span>        <span class="n">test</span>                                       <span class="mi">9742</span><span class="n">c641ad50</span>        <span class="mi">2</span> <span class="n">minutes</span> <span class="n">ago</span>      <span class="mi">209</span><span class="n">MB</span>
+</pre></div>
+</div>
+<p>You can now retag this image with your docker hub organization and
+correct tag and push it to docker hub:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">tag</span> <span class="n">hsldevcom</span><span class="o">/</span><span class="n">opentripplanner</span><span class="o">-</span><span class="n">data</span><span class="o">-</span><span class="n">container</span><span class="o">-</span><span class="n">ulm</span><span class="p">:</span><span class="n">test</span> <span class="n">verschwoerhaus</span><span class="o">/</span><span class="n">opentripplanner</span><span class="o">-</span><span class="n">data</span><span class="o">-</span><span class="n">container</span><span class="o">-</span><span class="n">ulm</span><span class="p">:</span><span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">21</span>
+<span class="n">docker</span> <span class="n">push</span> <span class="n">verschwoerhaus</span><span class="o">/</span><span class="n">opentripplanner</span><span class="o">-</span><span class="n">data</span><span class="o">-</span><span class="n">container</span><span class="o">-</span><span class="n">ulm</span><span class="p">:</span><span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">21</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="method-2-muenster-style-custom-container">
+<h4>Method 2: muenster-style custom container<a class="headerlink" href="#method-2-muenster-style-custom-container" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference external" href="https://codeformuenster.org/">Code for Münster</a> used a simpler building
+process by introducing custom dockerfiles for opentripplanner and the
+datacontainer.</p>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last"><a class="reference external" href="https://github.com/codeformuenster/OpenTripPlanner">https://github.com/codeformuenster/OpenTripPlanner</a>
+<a class="reference external" href="https://github.com/codeformuenster/OpenTripPlanner-graph">https://github.com/codeformuenster/OpenTripPlanner-graph</a></p>
+</div>
+<div class="admonition-todo admonition" id="index-2">
+<p class="first admonition-title">Todo</p>
+<p class="last">edit cfm reference in the dockerfiles, build an own dockerfile
+containing your urls for otp-graph.</p>
+</div>
+</div>
+</div>
+<div class="section" id="building-hsl-map-server">
+<h3>2. Building hsl-map-server<a class="headerlink" href="#building-hsl-map-server" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">We are using <code class="docutils literal notranslate"><span class="pre">hsl-map-server</span></code> only for the stop (and bike)
+overlays. The basemap <em>can</em> be rendered by this project, but we will
+still be replacing that by the <a class="reference external" href="https://foundation.wikimedia.org/wiki/Maps_Terms_of_Use">wikimedia tile server</a>,
+configured in digitransit-ui.</p>
+</div>
+<div class="admonition-todo admonition" id="index-3">
+<p class="first admonition-title">Todo</p>
+<p class="last">disregard the last statement. We need a different map server now :D</p>
+</div>
+<p>Check out <a class="reference external" href="https://github.com/HSLdevcom/hsl-map-server">HSLdevcom/hsl-map-server</a>: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/HSLdevcom/hsl-map-server</span></code></p>
+<p>Edit <code class="docutils literal notranslate"><span class="pre">config.js</span></code>, modify <code class="docutils literal notranslate"><span class="pre">module.exports</span></code> to keep only the
+<code class="docutils literal notranslate"><span class="pre">stop-map</span></code> (and the citybike, if needed) map layer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>module.exports = {
+  &quot;/map/v1/stop-map&quot;: {
+    &quot;source&quot;: `otpstops://${process.env.OTP_URL}`,
+    &quot;headers&quot;: {
+      &quot;Cache-Control&quot;: &quot;public,max-age=43200&quot;
+    }
+  },
+  &quot;/map/v1/citybike-map&quot;: {
+    &quot;source&quot;: `otpcitybikes://${process.env.OTP_URL}`,
+    &quot;headers&quot;: {
+      &quot;Cache-Control&quot;: &quot;public,max-age=43200&quot;
+    }
+  },
+}
+</pre></div>
+</div>
+<p>To build, run <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">build</span> <span class="pre">-t</span> <span class="pre">verschwoerhaus/hsl-map-server:2020-01-21</span> <span class="pre">.</span></code></p>
+<p>Push the resulting image also into docker hub:<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">push</span> <span class="pre">verschwoerhaus/hsl-map-server:2020-01-21</span></code></p>
+</div>
+<div class="section" id="building-digitransit-proxy">
+<h3>3. Building digitransit-proxy<a class="headerlink" href="#building-digitransit-proxy" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-todo admonition" id="index-4">
+<p class="first admonition-title">Todo</p>
+<p class="last">digitransit-proxy can be completely replaced by
+kubernetes-ingress-nginx. see cfm:
+<a class="reference external" href="https://github.com/codeformuenster/kubernetes-deployment/blob/46ea8118ff55fb2d3158d61a96e6d92ac3b951ee/sources/digitransit/ingress.yaml">https://github.com/codeformuenster/kubernetes-deployment/blob/46ea8118ff55fb2d3158d61a96e6d92ac3b951ee/sources/digitransit/ingress.yaml</a></p>
+</div>
+<p>nginx will not start if it cannot resolve the hostnames in its (proxy)
+configuration. This is why we have to fork the digitransit proxy and
+remove all the references to stuff we don’t need.</p>
+<p>See the diff at
+<a class="reference external" href="https://github.com/HSLdevcom/digitransit-proxy/compare/master...transportkollektiv:master">https://github.com/HSLdevcom/digitransit-proxy/compare/master…transportkollektiv:master</a>
+for all the location config you should remove.</p>
+<p>Note that some endpoints need your configuration name in the url, eg
+<code class="docutils literal notranslate"><span class="pre">/routing/v1/routers/hsl</span></code> → <code class="docutils literal notranslate"><span class="pre">/routing/v1/routers/ulm</span></code>.</p>
+</div>
+<div class="section" id="using-photon-pelias-adapter">
+<h3>4. Using photon-pelias-adapter<a class="headerlink" href="#using-photon-pelias-adapter" title="Permalink to this headline">¶</a></h3>
+<p>digitransit originally uses pelias. Sadly, pelias is not maintained
+anymore - and custom adjustments seem to be very hard. We’ve therefore
+decided to use <a class="reference external" href="https://github.com/stadtulm/photon-pelias-adapter">photon with an
+adapter</a> instead.
+(Photon has also problems, especially currently not supporting <a class="reference internal" href="glossary.html#term-gtfs"><span class="xref std std-term">GTFS</span></a> stop
+imports, but this should be solvable in the long run)</p>
+<p>The adapter is completely configurable with one ENV variable
+<code class="docutils literal notranslate"><span class="pre">PHOTON_URL</span></code>. It doesn’t need to be custom built.</p>
+<p>Later, we’re simply using the docker container
+<a class="reference external" href="https://hub.docker.com/r/stadtulm/photon-pelias-adapter">stadtulm/photon-pelias-adapter from docker
+hub</a>.</p>
+</div>
+<div class="section" id="building-digitransit-ui">
+<h3>5. Building digitransit-ui<a class="headerlink" href="#building-digitransit-ui" title="Permalink to this headline">¶</a></h3>
+<p>To build your own digitransit user interface, you need to add a theme
+and provide configuration (which includes your custom urls).</p>
+<p>First run <code class="docutils literal notranslate"><span class="pre">yarn</span> <span class="pre">install</span></code></p>
+<p>To create the theme files, run <code class="docutils literal notranslate"><span class="pre">yarn</span> <span class="pre">run</span> <span class="pre">add-theme</span> <span class="pre">&lt;name&gt;</span></code> (you could
+optionally supply a color and logo, read
+<a class="reference external" href="https://github.com/HSLdevcom/digitransit-ui/blob/master/docs/Themes.md">documentation</a>
+for more details)</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">app/configurations/</span></code>, create your own <code class="docutils literal notranslate"><span class="pre">config.ulm.js</span></code>. For the
+configuration content, look into all the other files, preferential
+<code class="docutils literal notranslate"><span class="pre">config.hsl.js</span></code>, <code class="docutils literal notranslate"><span class="pre">waltti.js</span></code>, <code class="docutils literal notranslate"><span class="pre">config.matka.js</span></code> and
+<code class="docutils literal notranslate"><span class="pre">config.default.js</span></code>.</p>
+<p>You have to provide your own urls and paths with your config name, eg.
+in</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>OTP: process.env.OTP_URL || `${API_URL}/routing/v1/routers/ulm/`,
+// ...
+STOP_MAP: `${API_URL}/map/v1/stop-map/`,
+</pre></div>
+</div>
+<p>Enter your used <a class="reference internal" href="glossary.html#term-gtfs"><span class="xref std std-term">GTFS</span></a> feed ids in</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">feedIds</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;DING&#39;</span><span class="p">],</span>
+</pre></div>
+</div>
+<p>For using the wikimedia tile server, use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">MAP_URL</span> <span class="o">=</span> <span class="s1">&#39;https://maps.wikimedia.org/osm-intl/&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>and inside the config part:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span><span class="p">:</span> <span class="p">{</span>
+    <span class="n">useRetinaTiles</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="n">tileSize</span><span class="p">:</span> <span class="mi">256</span><span class="p">,</span>
+    <span class="n">zoomOffset</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+<p>You also have to supply your own <code class="docutils literal notranslate"><span class="pre">themeMap</span></code>, so your theme gets
+recognized and used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">themeMap</span><span class="p">:</span> <span class="p">{</span>
+    <span class="n">ulm</span><span class="p">:</span> <span class="s1">&#39;ulm&#39;</span><span class="p">,</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+<p>For more config options that we set, have a look into
+<a class="reference external" href="https://github.com/verschwoerhaus/digitransit-ui/blob/ulm/app/configurations/config.vsh.js">https://github.com/verschwoerhaus/digitransit-ui/blob/ulm/app/configurations/config.vsh.js</a></p>
+<p>Finally, also create an docker image out of the ui: <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">build</span> <span class="pre">-t</span> <span class="pre">verschwoerhaus/digitransit-ui:2020-01-21</span> <span class="pre">.</span></code>
+Push the resulting image to docker hub: <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">push</span> <span class="pre">verschwoerhaus/digitransit-ui:2020-01-21</span></code></p>
+</div>
+<div class="section" id="crafting-kubernetes-yaml">
+<h3>6. Crafting kubernetes yaml<a class="headerlink" href="#crafting-kubernetes-yaml" title="Permalink to this headline">¶</a></h3>
+<p>You need:</p>
+<ul class="simple">
+<li>access to a kubernetes cluster</li>
+<li>kubectl on your device,
+with <a class="reference external" href="https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/">kubeconfig</a>
+for this cluster</li>
+<li>Build services for each of the containers and deployments with
+the right container image tags. (Especially important for opentripplanner)</li>
+</ul>
+<p>Connect the different parts to each other:</p>
+<ul class="simple">
+<li>digitransit-ui → digitransit-proxy</li>
+<li>hsl-map-server → digitransit-proxy</li>
+<li>opentripplanner → digitransit-proxy</li>
+<li>opentripplanner-data-container → digitransit-proxy</li>
+<li>opentripplanner-data-container → opentripplanner (otp gets its graph from the data container)</li>
+<li>opentripplanner → hsl-map-server (mapserver gets its stop data from otp)</li>
+</ul>
+<p>Don’t forget the environment variables for digitransit-ui (<code class="docutils literal notranslate"><span class="pre">CONFIG</span></code>)
+and opentripplanner (<code class="docutils literal notranslate"><span class="pre">ROUTER_NAME</span></code>).</p>
+<p>Have a look at this working template:
+<a class="reference external" href="https://github.com/verschwoerhaus/digitransit-kubernetes/blob/master/all.yml">https://github.com/verschwoerhaus/digitransit-kubernetes/blob/master/all.yml</a></p>
+<div class="admonition-todo admonition" id="index-5">
+<p class="first admonition-title">Todo</p>
+<p class="last">rewrite section, what services have to exist, how should they be
+named, how to get step by step to kubernetes config</p>
+</div>
+<div class="admonition-todo admonition" id="index-6">
+<p class="first admonition-title">Todo</p>
+<p class="last">maybe provide existing template and only teach how to
+override/insert config with kustomize</p>
+</div>
+</div>
+<div class="section" id="deploying">
+<h3>7. Deploying<a class="headerlink" href="#deploying" title="Permalink to this headline">¶</a></h3>
+<p>Execute <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">apply</span> <span class="pre">-f</span> <span class="pre">digitransit.yml</span></code></p>
+</div>
+<div class="section" id="id1">
+<h3>8. ???<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Watch <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">pods</span></code></p>
+</div>
+<div class="section" id="profit">
+<h3>9. Profit!<a class="headerlink" href="#profit" title="Permalink to this headline">¶</a></h3>
+<p>Access your digitransit instance. Test one route. Test more routes. Look
+for edge cases. Have a little “test suite” prepared with standard trips
+to check against. Do a little dance :)</p>
+</div>
+</div>
+<div class="section" id="frequently-asked-questions">
+<h2>Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>I see no frequently asked questions?!</li>
+<li>Feel free to ask one :)</li>
+<li>I did everything as you say, but when I test bus relations, the route
+is all zigzagging over the map instead of following the road</li>
+<li>Your <a class="reference internal" href="glossary.html#term-gtfs"><span class="xref std std-term">GTFS</span></a> feed is missing <code class="docutils literal notranslate"><span class="pre">shapes.txt</span></code>. This happens occasionally,
+depending on where you get your feed from. See <a class="reference external" href="https://ulm.dev/2020/01/17/pfaedle/">this blog
+post</a> on how to integrate
+them into your feed yourself</li>
+</ul>
+</div>
+<div class="section" id="todo">
+<h2>TODO<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>try with a “real” kubernetes cluster, not only single node. eg. GKE</li>
+<li>bring upstream:</li>
+<li><a class="reference external" href="https://github.com/verschwoerhaus/tilelive-otp-stops/commit/858e8fc7db5fbd206019236816a029259cf40582">https://github.com/verschwoerhaus/tilelive-otp-stops/commit/858e8fc7db5fbd206019236816a029259cf40582</a></li>
+<li><a class="reference external" href="https://github.com/verschwoerhaus/OpenTripPlanner-data-container/commit/d657285fd2f73f11bedb9478be6880607b5b9733">https://github.com/verschwoerhaus/OpenTripPlanner-data-container/commit/d657285fd2f73f11bedb9478be6880607b5b9733</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="glossary.html" class="btn btn-neutral float-right" title="Glossary" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="The transportkollektiv digitransit cookbook" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Maximilian Richt, Katharina Schweiger, Constantin Müller, Holger Bruch, Leonhard Ehrenfried, Stefan Kaufmann.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> and ❤️  using a custom <a href="https://github.com/LinxiFan/Sphinx-theme">theme</a> based on <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/language_data.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
