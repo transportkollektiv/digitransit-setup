@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>How to nothing-to-digitransit in a few hours &mdash; digitransit-tk 0.1 documentation</title>
+  <title>Installation guide &mdash; digitransit-tk 0.1 documentation</title>
   
 
   
@@ -83,7 +83,7 @@
             
                 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">How to nothing-to-digitransit in a few hours</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#ingredients">Ingredients</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#optional">optional</a></li>
 </ul>
@@ -155,7 +155,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>How to nothing-to-digitransit in a few hours</li>
+      <li>Installation guide</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -174,22 +174,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="how-to-nothing-to-digitransit-in-a-few-hours">
-<h1>How to nothing-to-digitransit in a few hours<a class="headerlink" href="#how-to-nothing-to-digitransit-in-a-few-hours" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="installation-guide">
+<h1>Installation guide<a class="headerlink" href="#installation-guide" title="Permalink to this headline">¶</a></h1>
 <p>You’ve seen <a class="reference external" href="https://digitransit.fi">https://digitransit.fi</a> and some instances like
 <a class="reference external" href="https://digitransit.im.verschwoerhaus.de">https://digitransit.im.verschwoerhaus.de</a> <a class="reference external" href="https://mobil-in-herrenberg.de">https://mobil-in-herrenberg.de</a>
 <a class="reference external" href="https://digitransit.codeformuenster.org">https://digitransit.codeformuenster.org</a> <a class="reference external" href="https://cityrouting.e-gpp.hr">https://cityrouting.e-gpp.hr</a>
 <a class="reference external" href="https://next-dev.oulunliikenne.fi">https://next-dev.oulunliikenne.fi</a>. Now you’re interested in how to get a
 digitransit for your own region. This could be a helpful step-by-step
-guidance for you :)</p>
+guide for you :)</p>
 <div class="section" id="ingredients">
 <h2>Ingredients<a class="headerlink" href="#ingredients" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>One host machine with a-little-bit-more-than-average RAM (eg. 16+ GB) for
+<li>One host machine with a-little-bit-more-than-average RAM (i.e. 16+ GB) for
 building</li>
-<li>One or more host machines (could be the same as above) for running digitransit with 8+ GB RAM~
-(sorry, but hostname/referencing dependency issues make it easier to
-run it within a container orchestator like kubernetes)</li>
 <li>One Kubernetes Cluster (can be single-node) with 8+ GB RAM</li>
 <li><a class="reference external" href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">kubectl</a>
 installed and configured on your device</li>
@@ -216,7 +213,7 @@ documentation</a>.</p>
 <p>The main components of an digitransit deployment consists of:</p>
 <ul class="simple">
 <li>Multimodal routing engine ([OpenTripPlanner])</li>
-<li>Address search ([Pelias]</li>
+<li>Address search ([Pelias])</li>
 <li>Background map service ([hsl-map-server]: [tessera], [tilelive])</li>
 <li>Web browser-based user interface ([digitransit-ui])</li>
 </ul>
