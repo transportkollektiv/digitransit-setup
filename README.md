@@ -1,3 +1,5 @@
+> This is an archived, previous version
+
 # How to nothing-to-digitransit in a few hours
 
 You've seen https://digitransit.fi and some instances like https://digitransit.im.verschwoerhaus.de https://mobil-in-herrenberg.de https://digitransit.codeformuenster.org https://cityrouting.e-gpp.hr https://next-dev.oulunliikenne.fi. Now you're interested in how to get a digitransit for your own region. This could be a helpful step-by-step guidance for you :)
