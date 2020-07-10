@@ -1,21 +1,18 @@
-How to nothing-to-digitransit in a few hours
-============================================
+Installation guide
+==================
 
 You've seen https://digitransit.fi and some instances like
 https://digitransit.im.verschwoerhaus.de https://mobil-in-herrenberg.de
 https://digitransit.codeformuenster.org https://cityrouting.e-gpp.hr
 https://next-dev.oulunliikenne.fi. Now you're interested in how to get a
 digitransit for your own region. This could be a helpful step-by-step
-guidance for you :)
+guide for you :)
 
 Ingredients
 -----------
 
--  One host machine with a-little-bit-more-than-average RAM (eg. 16+ GB) for
+-  One host machine with a-little-bit-more-than-average RAM (i.e. 16+ GB) for
    building
--  One or more host machines (could be the same as above) for running digitransit with 8+ GB RAM~
-   (sorry, but hostname/referencing dependency issues make it easier to
-   run it within a container orchestator like kubernetes)
 -  One Kubernetes Cluster (can be single-node) with 8+ GB RAM
 -  `kubectl <https://kubernetes.io/docs/tasks/tools/install-kubectl/>`__
    installed and configured on your device
@@ -42,7 +39,7 @@ documentation <https://digitransit.fi/en/developers/architecture/>`__.
 The main components of an digitransit deployment consists of:
 
 -  Multimodal routing engine ([OpenTripPlanner])
--  Address search ([Pelias]
+-  Address search ([Pelias])
 -  Background map service ([hsl-map-server]: [tessera], [tilelive])
 -  Web browser-based user interface ([digitransit-ui])
 
