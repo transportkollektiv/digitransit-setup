@@ -29,7 +29,7 @@ Ingredients
 optional
 ~~~~~~~~
 
--  One (or more) GBFS Feeds (for bikesharing and/or carsharing)
+-  One (or more) :term:`GBFS` Feeds (for bikesharing and/or carsharing)
 
 Overview
 --------
@@ -41,7 +41,7 @@ documentation <https://digitransit.fi/en/developers/architecture/>`__.
 
 The main components of an digitransit deployment consists of:
 
--  Multimodal routing engine ([OpenTripPlanner])
+-  Multimodal routing engine (:term:`OpenTripPlanner`)
 -  Address search ([Pelias])
 -  Background map service ([hsl-map-server]: [tessera], [tilelive])
 -  Web browser-based user interface ([digitransit-ui])
