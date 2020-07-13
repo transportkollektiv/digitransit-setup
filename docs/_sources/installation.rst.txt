@@ -257,20 +257,47 @@ correct tag and push it to docker hub:
 Method 2: muenster-style custom container
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-`Code for Münster <https://codeformuenster.org/>`__ led the ground for
-a simpler building process by introducing custom dockerfiles for
-opentripplanner and the datacontainer. See 
-`codeformuenster/OpenTripPlanner <https://github.com/codeformuenster/OpenTripPlanner>`__ 
-and `codeformuenster/OpenTripPlanner-graph <https://github.com/codeformuenster/OpenTripPlanner-graph>`__
-to find out how they did it.
+`Code for Münster <https://codeformuenster.org/>`__ inspired us to use a simpler building
+process by introducing a custom dockerfile for the datacontainer.
 
+For this, we're going to fork the `digitransit-otp-data repository <https://github.com/verschwoerhaus/digitransit-otp-data>`__.
 
-  
+The ``Dockerfile`` is the main file you have to edit.
+Below ``# add build data`` you see a list of ``ADD`` statements. Replace these URLs with those of your GTFS and OSM dump (in the pbf format).
+For the packaging, define your own ``ROUTER_NAME`` in the line ``ENV ROUTER_NAME=...``.
 
-.. todo:: 
-   edit cfm reference in the dockerfiles, build an own dockerfile
-   containing your urls for otp-graph.
-   Expand on how we are doing stuff now.
+You can modify more graph bulding settings in the ``build-config.json``. The OpenTripPlanner Documentation contains a section about
+`Graph build configuration <https://docs.opentripplanner.org/en/latest/Configuration/#graph-build-configuration>`__, listing a lot of settings and their default values.
+For the ``router-config.json`` there also exists `Documentation with description <https://docs.opentripplanner.org/en/latest/Configuration/#runtime-router-configuration>`__ of the options and their default values.
+
+If you have an GBFS feed, you can add an otp updater config to ``router-config.json`` like this:
+
+::
+
+    ...
+    "updaters": [
+      {
+        "id": "openbike-bike-rental",
+        "type": "bike-rental",
+        "sourceType": "gbfs",
+        "url": "https://api.openbike.ulm.dev/gbfs/",
+        "frequencySec": 10,
+        "network": "openbike"
+      }
+    ]
+    ...
+
+The building of the graph happens with the `mfdz OpenTripPlanner fork <https://github.com/mfdz/opentripplanner>`__.
+It is important that the OpenTripPlanner version that builds the graph is the same that later serves the graph. If you want to update, get the latest docker image tag from the
+`docker hub page of mfdz/opentripplanner <https://hub.docker.com/r/mfdz/opentripplanner/tags>`__ and modify ``OTP_VERSION`` in the Dockerfile.
+
+For building and publishing, standard docker commands are used:
+
+::
+
+    docker build -t verschwoerhaus/opentripplanner-data-container-ulm:2020-01-21 .
+    docker push verschwoerhaus/opentripplanner-data-container-ulm:2020-01-21
+
 
 2. Building hsl-map-server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -436,6 +463,10 @@ and opentripplanner (``ROUTER_NAME``).
 
 Have a look at this working template:
 https://github.com/verschwoerhaus/digitransit-kubernetes/blob/master/all.yml
+
+.. note::
+   Reminder: the OpenTripPlanner version has to match the version that was used to build the graph.
+   Ensure you are using the same docker image tag here.
 
 .. todo::  
    rewrite section, what services have to exist, how should they be
