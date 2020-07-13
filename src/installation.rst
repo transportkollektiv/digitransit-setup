@@ -1,3 +1,6 @@
+:github_url:  https://github.com/transportkollektiv/digitransit-setup/tree/main/src/installation.rst
+
+
 Installation guide
 ==================
 
