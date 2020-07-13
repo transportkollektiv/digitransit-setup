@@ -29,7 +29,7 @@ Ingredients
 optional
 ~~~~~~~~
 
--  One (or more) GBFS Feeds (for bikesharing and/or carsharing)
+-  One (or more) :term:`GBFS` Feeds (for bikesharing and/or carsharing)
 
 Overview
 --------
@@ -41,7 +41,7 @@ documentation <https://digitransit.fi/en/developers/architecture/>`__.
 
 The main components of an digitransit deployment consists of:
 
--  Multimodal routing engine ([OpenTripPlanner])
+-  Multimodal routing engine (:term:`OpenTripPlanner`)
 -  Address search ([Pelias])
 -  Background map service ([hsl-map-server]: [tessera], [tilelive])
 -  Web browser-based user interface ([digitransit-ui])
@@ -106,7 +106,7 @@ finland)
 edit ``router-config.js`` too, the ``routingDefaults`` are mostly okay.
 If you are not satisfied with the routing suggestions, try to modify
 these values. ``updaters`` are for realtime updates to feeds (think:
-GTFS-RT) or GBFS (Bikesharing, Carsharing) status updates. If you don't
+GTFS-RT) or :term:`GBFS` (Bikesharing, Carsharing) status updates. If you don't
 have these, simply replace it with ``updaters: []``. Your
 ``router-config.js`` could look like this:
 
