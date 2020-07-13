@@ -106,7 +106,7 @@ finland)
 edit ``router-config.js`` too, the ``routingDefaults`` are mostly okay.
 If you are not satisfied with the routing suggestions, try to modify
 these values. ``updaters`` are for realtime updates to feeds (think:
-GTFS-RT) or GBFS (Bikesharing, Carsharing) status updates. If you don't
+GTFS-RT) or :term:`GBFS` (Bikesharing, Carsharing) status updates. If you don't
 have these, simply replace it with ``updaters: []``. Your
 ``router-config.js`` could look like this:
 
