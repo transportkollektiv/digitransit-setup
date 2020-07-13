@@ -191,10 +191,12 @@ guide for you :)</p>
 <h2>Ingredients<a class="headerlink" href="#ingredients" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>One host machine with a-little-bit-more-than-average RAM (i.e. 16+ GB) for
-building</li>
+building the <span class="xref std std-term">OTP data container</span> and <span class="xref std std-term">digitransit-ui</span></li>
 <li>One Kubernetes Cluster (can be single-node) with 8+ GB RAM</li>
 <li><a class="reference external" href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">kubectl</a>
-installed and configured on your device</li>
+installed and configured on your (personal) device for controlling
+said Kubernetes Cluster. (The following tasks _can_ be performed without
+kubectl, but we highly discourage it.)</li>
 <li>One OpenStreetMap extract for your region (see:
 <a class="reference external" href="https://download.geofabrik.de">https://download.geofabrik.de</a>)</li>
 <li>One (or more) <a class="reference internal" href="glossary.html#term-gtfs"><span class="xref std std-term">GTFS</span></a> Feeds for public transit routes</li>
@@ -220,16 +222,20 @@ documentation</a>.</p>
 <li>Multimodal routing engine (<a class="reference internal" href="glossary.html#term-opentripplanner"><span class="xref std std-term">OpenTripPlanner</span></a>)</li>
 <li>Address search ([Pelias])</li>
 <li>Background map service ([hsl-map-server]: [tessera], [tilelive])</li>
-<li>Web browser-based user interface ([digitransit-ui])</li>
+<li>Web browser-based user interface (<span class="xref std std-term">digitransit-ui</span>)</li>
 </ul>
 <p>A nicer description of the components and their job exists also at
 <a class="reference external" href="https://digitransit.fi/en/services/">https://digitransit.fi/en/services/</a></p>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">Insert our own dependency graph here</p>
+</div>
 </div>
 <div class="section" id="step-by-step">
 <h2>Step-by-Step<a class="headerlink" href="#step-by-step" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="preparing-your-build-host">
 <h3>0. Preparing your build host<a class="headerlink" href="#preparing-your-build-host" title="Permalink to this headline">¶</a></h3>
-<p>you need:</p>
+<p>You need on your build host:</p>
 <ul class="simple">
 <li>docker-ce runtime</li>
 <li>git</li>
@@ -243,7 +249,8 @@ documentation</a>.</p>
 </div>
 <div class="section" id="building-an-opentripplanner-graph">
 <h3>1. Building an OpenTripPlanner Graph<a class="headerlink" href="#building-an-opentripplanner-graph" title="Permalink to this headline">¶</a></h3>
-<p>you need:</p>
+<p>At the end of this part, you will end up with a working <span class="xref std std-term">OTP data container</span>.</p>
+<p>You need:</p>
 <ul class="simple">
 <li>One (or more) <a class="reference internal" href="glossary.html#term-gtfs"><span class="xref std std-term">GTFS</span></a> Feed with a publicly accessible URL
 (if you only have a <a class="reference internal" href="glossary.html#term-gtfs"><span class="xref std std-term">GTFS</span></a> zip file, upload it somewhere
@@ -257,6 +264,11 @@ accessible at a public URL - try <a class="reference external" href="https://dow
 need this often. In our example, we use <code class="docutils literal notranslate"><span class="pre">ulm</span></code>.</p>
 <div class="section" id="method-1-vsh-style-modifying-of-opentripplanner-data-container">
 <h4>Method 1: vsh-style modifying of opentripplanner-data-container<a class="headerlink" href="#method-1-vsh-style-modifying-of-opentripplanner-data-container" title="Permalink to this headline">¶</a></h4>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This method should is deprecated as of 2020-06 and is only
+preserved for archival reasons. Please skip ahead to Method 2.</p>
+</div>
 <p>Check out <a class="reference external" href="https://github.com/HSLdevcom/OpenTripPlanner-data-container">HSLdevcom/OpenTripPlanner-data-container</a></p>
 <p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/HSLdevcom/OpenTripPlanner-data-container</span></code></p>
 <p>Copy the <code class="docutils literal notranslate"><span class="pre">router-waltti</span></code> folder to <code class="docutils literal notranslate"><span class="pre">router-ulm</span></code> (replace <code class="docutils literal notranslate"><span class="pre">ulm</span></code>
@@ -270,9 +282,9 @@ with your <a class="reference internal" href="glossary.html#term-gtfs"><span cla
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>(remove stuff like <code class="docutils literal notranslate"><span class="pre">&quot;fares&quot;:</span> <span class="pre">&quot;HSL&quot;,</span></code>, this is not relevant outside of
-finland)</p>
-<p>edit <code class="docutils literal notranslate"><span class="pre">router-config.js</span></code> too, the <code class="docutils literal notranslate"><span class="pre">routingDefaults</span></code> are mostly okay.
+<p>(Remove stuff like <code class="docutils literal notranslate"><span class="pre">&quot;fares&quot;:</span> <span class="pre">&quot;HSL&quot;,</span></code>, this is not relevant outside of
+finland).</p>
+<p>Also edit <code class="docutils literal notranslate"><span class="pre">router-config.js</span></code>. The <code class="docutils literal notranslate"><span class="pre">routingDefaults</span></code> are mostly okay.
 If you are not satisfied with the routing suggestions, try to modify
 these values. <code class="docutils literal notranslate"><span class="pre">updaters</span></code> are for realtime updates to feeds (think:
 GTFS-RT) or <a class="reference internal" href="glossary.html#term-gbfs"><span class="xref std std-term">GBFS</span></a> (Bikesharing, Carsharing) status updates. If you don’t
@@ -335,7 +347,7 @@ to add to:</p>
     .pipe(gulp.dest(`${config.dataDir}/build/ulm`))
 </pre></div>
 </div>
-<div class="admonition-todo admonition" id="index-0">
+<div class="admonition-todo admonition" id="index-1">
 <p class="first admonition-title">Todo</p>
 <p class="last">provide patch for SKIP_SEED</p>
 </div>
@@ -377,18 +389,17 @@ correct tag and push it to docker hub:</p>
 </div>
 <div class="section" id="method-2-muenster-style-custom-container">
 <h4>Method 2: muenster-style custom container<a class="headerlink" href="#method-2-muenster-style-custom-container" title="Permalink to this headline">¶</a></h4>
-<p><a class="reference external" href="https://codeformuenster.org/">Code for Münster</a> used a simpler building
-process by introducing custom dockerfiles for opentripplanner and the
-datacontainer.</p>
-<div class="admonition-todo admonition" id="index-1">
-<p class="first admonition-title">Todo</p>
-<p class="last"><a class="reference external" href="https://github.com/codeformuenster/OpenTripPlanner">https://github.com/codeformuenster/OpenTripPlanner</a>
-<a class="reference external" href="https://github.com/codeformuenster/OpenTripPlanner-graph">https://github.com/codeformuenster/OpenTripPlanner-graph</a></p>
-</div>
+<p><a class="reference external" href="https://codeformuenster.org/">Code for Münster</a> led the ground for
+a simpler building process by introducing custom dockerfiles for
+opentripplanner and the datacontainer. See
+<a class="reference external" href="https://github.com/codeformuenster/OpenTripPlanner">codeformuenster/OpenTripPlanner</a>
+and <a class="reference external" href="https://github.com/codeformuenster/OpenTripPlanner-graph">codeformuenster/OpenTripPlanner-graph</a>
+to find out how they did it.</p>
 <div class="admonition-todo admonition" id="index-2">
 <p class="first admonition-title">Todo</p>
 <p class="last">edit cfm reference in the dockerfiles, build an own dockerfile
-containing your urls for otp-graph.</p>
+containing your urls for otp-graph.
+Expand on how we are doing stuff now.</p>
 </div>
 </div>
 </div>
