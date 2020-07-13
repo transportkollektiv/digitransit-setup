@@ -3,6 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+:github_url:  https://github.com/transportkollektiv/digitransit-setup/tree/main/src/index.rst
+
 The transportkollektiv digitransit cookbook
 ==========================================
 
