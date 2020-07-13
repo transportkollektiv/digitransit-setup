@@ -1,0 +1,6 @@
+# This is a list of requirements used to build this documentation
+# use with pip:
+# pip install --user -r requirements.txt
+
+sphinx>=1.8.5
+sphinx-theme
