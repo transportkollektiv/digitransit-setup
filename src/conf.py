@@ -41,6 +41,7 @@ release = u'0.1'
 extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.githubpages',
+    'sphinxcontrib.blockdiag',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
