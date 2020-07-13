@@ -51,7 +51,29 @@ The main components of an digitransit deployment consists of:
 A nicer description of the components and their job exists also at
 https://digitransit.fi/en/services/
 
-.. todo:: Insert our own dependency graph here
+
+.. blockdiag::
+
+   diagram {
+
+     tileserver [label="OSM Tile Server"];
+     datacontainer [label="OTP Data Container"];
+     gtfs [label="GTFS", stacked];
+     gbfs [label="GBFS", stacked];
+     osmgraph [label="OSM Street Graph"];
+     otp [label="OpenTripPlanner"];
+     hslmap [label="HSL Map Server"];
+     pelias [label="Pelias"];
+     tessera [label="tessera", style="dashed"];
+     tilelive [label="tilelive", style="dashed"];
+     dui [label="digitransit-ui"];
+
+     tileserver, pelias -> dui;
+     gtfs, gbfs, osmgraph -> datacontainer -> otp -> dui;
+     otp, tessera, tilelive -> hslmap -> dui;
+
+     otp -> hslmap [folded];
+   }
 
 Step-by-Step
 ------------
