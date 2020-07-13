@@ -15,10 +15,12 @@ Ingredients
 -----------
 
 -  One host machine with a-little-bit-more-than-average RAM (i.e. 16+ GB) for
-   building
+   building the :term:`OTP data container` and :term:`digitransit-ui`
 -  One Kubernetes Cluster (can be single-node) with 8+ GB RAM
 -  `kubectl <https://kubernetes.io/docs/tasks/tools/install-kubectl/>`__
-   installed and configured on your device
+   installed and configured on your (personal) device for controlling
+   said Kubernetes Cluster. (The following tasks _can_ be performed without
+   kubectl, but we highly discourage it.)
 -  One OpenStreetMap extract for your region (see:
    https://download.geofabrik.de)
 -  One (or more) :term:`GTFS` Feeds for public transit routes
@@ -44,10 +46,12 @@ The main components of an digitransit deployment consists of:
 -  Multimodal routing engine (:term:`OpenTripPlanner`)
 -  Address search ([Pelias])
 -  Background map service ([hsl-map-server]: [tessera], [tilelive])
--  Web browser-based user interface ([digitransit-ui])
+-  Web browser-based user interface (:term:`digitransit-ui`)
 
 A nicer description of the components and their job exists also at
 https://digitransit.fi/en/services/
+
+.. todo:: Insert our own dependency graph here
 
 Step-by-Step
 ------------
@@ -55,7 +59,7 @@ Step-by-Step
 0. Preparing your build host
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-you need:
+You need on your build host:
 
 - docker-ce runtime
 - git
@@ -67,7 +71,9 @@ you need:
 1. Building an OpenTripPlanner Graph
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-you need: 
+At the end of this part, you will end up with a working :term:`OTP data container`.
+
+You need: 
 
 - One (or more) :term:`GTFS` Feed with a publicly accessible URL
   (if you only have a :term:`GTFS` zip file, upload it somewhere
@@ -82,6 +88,10 @@ need this often. In our example, we use ``ulm``.
 
 Method 1: vsh-style modifying of opentripplanner-data-container
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. warning:: 
+    This method should is deprecated as of 2020-06 and is only
+    preserved for archival reasons. Please skip ahead to Method 2.
 
 Check out `HSLdevcom/OpenTripPlanner-data-container <https://github.com/HSLdevcom/OpenTripPlanner-data-container>`__
 
@@ -100,10 +110,10 @@ with your :term:`GTFS` identifier). Inside ``router-ulm``, edit
       "elevationUnitMultiplier": 0.1
     }
 
-(remove stuff like ``"fares": "HSL",``, this is not relevant outside of
-finland)
+(Remove stuff like ``"fares": "HSL",``, this is not relevant outside of
+finland).
 
-edit ``router-config.js`` too, the ``routingDefaults`` are mostly okay.
+Also edit ``router-config.js``. The ``routingDefaults`` are mostly okay.
 If you are not satisfied with the routing suggestions, try to modify
 these values. ``updaters`` are for realtime updates to feeds (think:
 GTFS-RT) or :term:`GBFS` (Bikesharing, Carsharing) status updates. If you don't
@@ -225,17 +235,20 @@ correct tag and push it to docker hub:
 Method 2: muenster-style custom container
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-`Code for Münster <https://codeformuenster.org/>`__ used a simpler building
-process by introducing custom dockerfiles for opentripplanner and the 
-datacontainer.
+`Code for Münster <https://codeformuenster.org/>`__ led the ground for
+a simpler building process by introducing custom dockerfiles for
+opentripplanner and the datacontainer. See 
+`codeformuenster/OpenTripPlanner <https://github.com/codeformuenster/OpenTripPlanner>`__ 
+and `codeformuenster/OpenTripPlanner-graph <https://github.com/codeformuenster/OpenTripPlanner-graph>`__
+to find out how they did it.
 
-.. todo::
-  https://github.com/codeformuenster/OpenTripPlanner
-  https://github.com/codeformuenster/OpenTripPlanner-graph
+
+  
 
 .. todo:: 
    edit cfm reference in the dockerfiles, build an own dockerfile
    containing your urls for otp-graph.
+   Expand on how we are doing stuff now.
 
 2. Building hsl-map-server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
