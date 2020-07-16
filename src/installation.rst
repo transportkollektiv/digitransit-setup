@@ -44,8 +44,8 @@ documentation <https://digitransit.fi/en/developers/architecture/>`__.
 The main components of an digitransit deployment consists of:
 
 -  Multimodal routing engine (:term:`OpenTripPlanner`)
--  Address search ([Pelias])
--  Background map service ([hsl-map-server]: [tessera], [tilelive])
+-  Address search (originally :term:`pelias`)
+-  Background map service (:term:`hsl-map-server`: [tessera], [tilelive])
 -  Web browser-based user interface (:term:`digitransit-ui`)
 
 A nicer description of the components and their job exists also at
@@ -75,6 +75,9 @@ https://digitransit.fi/en/services/
      otp -> hslmap [folded];
    }
 
+.. note:: 
+     As can be seen in the diagram, some dependencies are circular. This poses a few challenges when first setting up a working instance, which we will address later on.
+
 Step-by-Step
 ------------
 
@@ -93,7 +96,12 @@ You need on your build host:
 1. Building an OpenTripPlanner Graph
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-At the end of this part, you will end up with a working :term:`OTP data container`.
+At the end of this part, you will end up with a working :term:`OTP data container`. The process works by providing :term:`OpenTripPlanner` with the necessary base data and using it to build the graph that will later be used by OTP to perform routing queries against.
+
+.. important::
+    Make sure that the graph is being built with the same version
+    of OpenTripPlanner that will later on be used to perform the
+    actual queries.
 
 You need: 
 
@@ -112,8 +120,9 @@ Method 1: vsh-style modifying of opentripplanner-data-container
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. warning:: 
-    This method should is deprecated as of 2020-06 and is only
-    preserved for archival reasons. Please skip ahead to Method 2.
+    This method is deprecated as of 2020-06 and is only
+    preserved for archival reasons. Please skip ahead to 
+    `Method 2: muenster-style custom container`_
 
 Check out `HSLdevcom/OpenTripPlanner-data-container <https://github.com/HSLdevcom/OpenTripPlanner-data-container>`__
 
@@ -302,14 +311,15 @@ For building and publishing, standard docker commands are used:
 2. Building hsl-map-server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. note:: 
-   We are using ``hsl-map-server`` only for the stop (and bike)
-   overlays. The basemap *can* be rendered by this project, but we will 
-   still be replacing that by the `wikimedia tile server <https://foundation.wikimedia.org/wiki/Maps_Terms_of_Use>`__,
-   configured in digitransit-ui.
-
-.. todo::
-   disregard the last statement. We need a different map server now :D
+.. hint:: 
+   We are using :term:`hsl-map-server` only for the stop (and bike)
+   overlays. The basemap *can* be rendered by this project, but so far
+   we have instead been using other tile servers. 
+   In the beginning, we had used `Wikimedia's tile server <https://foundation.wikimedia.org/wiki/Maps_Terms_of_Use>`__,
+   but a subsequent rush of third-party users during spring of 2020
+   brought that service to it's knees.
+   You may configure your own (either homemade or factory-bought) tile
+   server in digitransit-ui instead.
 
 Check out `HSLdevcom/hsl-map-server <https://github.com/HSLdevcom/hsl-map-server>`__: ``git clone https://github.com/HSLdevcom/hsl-map-server``
 
@@ -359,12 +369,14 @@ Note that some endpoints need your configuration name in the url, eg
 4. Using photon-pelias-adapter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-digitransit originally uses pelias. Sadly, pelias is not maintained
+digitransit originally uses :term:`pelias` as a geocoder: Insert address,
+get geocoordinates as a result. 
+Sadly, pelias is not maintained
 anymore - and custom adjustments seem to be very hard. We've therefore
 decided to use `photon with an
 adapter <https://github.com/stadtulm/photon-pelias-adapter>`__ instead.
 (Photon has also problems, especially currently not supporting :term:`GTFS` stop
-imports, but this should be solvable in the long run)
+imports, but this should be solveable in the long run)
 
 The adapter is completely configurable with one ENV variable
 ``PHOTON_URL``. It doesn't need to be custom built.
@@ -406,7 +418,8 @@ Enter your used :term:`GTFS` feed ids in
 
     feedIds: ['DING'],
 
-For using the wikimedia tile server, use
+Configure the tile server of your choice. For testing, you might be content
+using the wikimedia tile server:
 
 ::
 
@@ -458,13 +471,25 @@ Connect the different parts to each other:
 - opentripplanner-data-container → opentripplanner (otp gets its graph from the data container)
 - opentripplanner → hsl-map-server (mapserver gets its stop data from otp)
 
+.. blockdiag::
+
+   diagram {
+
+     digitransit-ui, hsl-map-server, opentripplanner -> digitransit-proxy;
+     opentripplanner-data-container -> digitransit-proxy;
+     opentripplanner-data-container -> opentripplanner [folded];
+     opentripplanner -> hsl-map-server [folded];
+   }
+
+.. todo:: is this order even right?!
+
 Don't forget the environment variables for digitransit-ui (``CONFIG``)
 and opentripplanner (``ROUTER_NAME``).
 
 Have a look at this working template:
 https://github.com/verschwoerhaus/digitransit-kubernetes/blob/master/all.yml
 
-.. note::
+.. hint::
    Reminder: the OpenTripPlanner version has to match the version that was used to build the graph.
    Ensure you are using the same docker image tag here.
 
@@ -495,12 +520,11 @@ to check against. Do a little dance :)
 Frequently Asked Questions
 --------------------------
 
--  I see no frequently asked questions?!
--  Feel free to ask one :)
--  I did everything as you say, but when I test bus relations, the route
-   is all zigzagging over the map instead of following the road
--  Your :term:`GTFS` feed is missing ``shapes.txt``. This happens occasionally,
-   depending on where you get your feed from. See `this blog
+-  **I see no frequently asked questions?!** – Feel free to ask one :)
+-  **I did everything as you say, but when I test bus relations, the route
+   is all zigzagging over the map instead of following the road**
+   –  Your :term:`GTFS` feed is missing ``shapes.txt``. This happens 
+   occasionally, depending on where you get your feed from. See `this blog
    post <https://ulm.dev/2020/01/17/pfaedle/>`__ on how to integrate
    them into your feed yourself
 
