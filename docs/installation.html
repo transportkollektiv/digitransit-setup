@@ -220,13 +220,17 @@ documentation</a>.</p>
 <p>The main components of an digitransit deployment consists of:</p>
 <ul class="simple">
 <li><p>Multimodal routing engine (<a class="reference internal" href="glossary.html#term-OpenTripPlanner"><span class="xref std std-term">OpenTripPlanner</span></a>)</p></li>
-<li><p>Address search ([Pelias])</p></li>
-<li><p>Background map service ([hsl-map-server]: [tessera], [tilelive])</p></li>
+<li><p>Address search (originally <a class="reference internal" href="glossary.html#term-pelias"><span class="xref std std-term">pelias</span></a>)</p></li>
+<li><p>Background map service (<a class="reference internal" href="glossary.html#term-hsl-map-server"><span class="xref std std-term">hsl-map-server</span></a>: [tessera], [tilelive])</p></li>
 <li><p>Web browser-based user interface (<a class="reference internal" href="glossary.html#term-digitransit-ui"><span class="xref std std-term">digitransit-ui</span></a>)</p></li>
 </ul>
 <p>A nicer description of the components and their job exists also at
 <a class="reference external" href="https://digitransit.fi/en/services/">https://digitransit.fi/en/services/</a></p>
-<div><img height="600" src="_images/blockdiag-14f146bafa76dd491c20644fd2d2a893ec715197.png" width="832" /></div></div>
+<div><img height="600" src="_images/blockdiag-14f146bafa76dd491c20644fd2d2a893ec715197.png" width="832" /></div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As can be seen in the diagram, some dependencies are circular. This poses a few challenges when first setting up a working instance, which we will address later on.</p>
+</div>
+</div>
 <div class="section" id="step-by-step">
 <h2>Step-by-Step<a class="headerlink" href="#step-by-step" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="preparing-your-build-host">
@@ -245,7 +249,13 @@ documentation</a>.</p>
 </div>
 <div class="section" id="building-an-opentripplanner-graph">
 <h3>1. Building an OpenTripPlanner Graph<a class="headerlink" href="#building-an-opentripplanner-graph" title="Permalink to this headline">¶</a></h3>
-<p>At the end of this part, you will end up with a working <a class="reference internal" href="glossary.html#term-OTP-Data-Container"><span class="xref std std-term">OTP data container</span></a>.</p>
+<p>At the end of this part, you will end up with a working <a class="reference internal" href="glossary.html#term-OTP-Data-Container"><span class="xref std std-term">OTP data container</span></a>. The process works by providing <a class="reference internal" href="glossary.html#term-OpenTripPlanner"><span class="xref std std-term">OpenTripPlanner</span></a> with the necessary base data and using it to build the graph that will later be used by OTP to perform routing queries against.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Make sure that the graph is being built with the same version
+of OpenTripPlanner that will later on be used to perform the
+actual queries.</p>
+</div>
 <p>You need:</p>
 <ul class="simple">
 <li><p>One (or more) <a class="reference internal" href="glossary.html#term-GTFS"><span class="xref std std-term">GTFS</span></a> Feed with a publicly accessible URL
@@ -262,8 +272,9 @@ need this often. In our example, we use <code class="docutils literal notranslat
 <h4>Method 1: vsh-style modifying of opentripplanner-data-container<a class="headerlink" href="#method-1-vsh-style-modifying-of-opentripplanner-data-container" title="Permalink to this headline">¶</a></h4>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>This method should is deprecated as of 2020-06 and is only
-preserved for archival reasons. Please skip ahead to Method 2.</p>
+<p>This method is deprecated as of 2020-06 and is only
+preserved for archival reasons. Please skip ahead to
+<a class="reference internal" href="#method-2-muenster-style-custom-container">Method 2: muenster-style custom container</a></p>
 </div>
 <p>Check out <a class="reference external" href="https://github.com/HSLdevcom/OpenTripPlanner-data-container">HSLdevcom/OpenTripPlanner-data-container</a></p>
 <p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/HSLdevcom/OpenTripPlanner-data-container</span></code></p>
@@ -421,16 +432,16 @@ It is important that the OpenTripPlanner version that builds the graph is the sa
 </div>
 <div class="section" id="building-hsl-map-server">
 <h3>2. Building hsl-map-server<a class="headerlink" href="#building-hsl-map-server" title="Permalink to this headline">¶</a></h3>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>We are using <code class="docutils literal notranslate"><span class="pre">hsl-map-server</span></code> only for the stop (and bike)
-overlays. The basemap <em>can</em> be rendered by this project, but we will
-still be replacing that by the <a class="reference external" href="https://foundation.wikimedia.org/wiki/Maps_Terms_of_Use">wikimedia tile server</a>,
-configured in digitransit-ui.</p>
-</div>
-<div class="admonition-todo admonition" id="id2">
-<p class="admonition-title">Todo</p>
-<p>disregard the last statement. We need a different map server now :D</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>We are using <a class="reference internal" href="glossary.html#term-hsl-map-server"><span class="xref std std-term">hsl-map-server</span></a> only for the stop (and bike)
+overlays. The basemap <em>can</em> be rendered by this project, but so far
+we have instead been using other tile servers.
+In the beginning, we had used <a class="reference external" href="https://foundation.wikimedia.org/wiki/Maps_Terms_of_Use">Wikimedia’s tile server</a>,
+but a subsequent rush of third-party users during spring of 2020
+brought that service to it’s knees.
+You may configure your own (either homemade or factory-bought) tile
+server in digitransit-ui instead.</p>
 </div>
 <p>Check out <a class="reference external" href="https://github.com/HSLdevcom/hsl-map-server">HSLdevcom/hsl-map-server</a>: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/HSLdevcom/hsl-map-server</span></code></p>
 <p>Edit <code class="docutils literal notranslate"><span class="pre">config.js</span></code>, modify <code class="docutils literal notranslate"><span class="pre">module.exports</span></code> to keep only the
@@ -456,7 +467,7 @@ configured in digitransit-ui.</p>
 </div>
 <div class="section" id="building-digitransit-proxy">
 <h3>3. Building digitransit-proxy<a class="headerlink" href="#building-digitransit-proxy" title="Permalink to this headline">¶</a></h3>
-<div class="admonition-todo admonition" id="id3">
+<div class="admonition-todo admonition" id="id2">
 <p class="admonition-title">Todo</p>
 <p>digitransit-proxy can be completely replaced by
 kubernetes-ingress-nginx. see cfm:
@@ -473,12 +484,14 @@ for all the location config you should remove.</p>
 </div>
 <div class="section" id="using-photon-pelias-adapter">
 <h3>4. Using photon-pelias-adapter<a class="headerlink" href="#using-photon-pelias-adapter" title="Permalink to this headline">¶</a></h3>
-<p>digitransit originally uses pelias. Sadly, pelias is not maintained
+<p>digitransit originally uses <a class="reference internal" href="glossary.html#term-pelias"><span class="xref std std-term">pelias</span></a> as a geocoder: Insert address,
+get geocoordinates as a result.
+Sadly, pelias is not maintained
 anymore - and custom adjustments seem to be very hard. We’ve therefore
 decided to use <a class="reference external" href="https://github.com/stadtulm/photon-pelias-adapter">photon with an
 adapter</a> instead.
 (Photon has also problems, especially currently not supporting <a class="reference internal" href="glossary.html#term-GTFS"><span class="xref std std-term">GTFS</span></a> stop
-imports, but this should be solvable in the long run)</p>
+imports, but this should be solveable in the long run)</p>
 <p>The adapter is completely configurable with one ENV variable
 <code class="docutils literal notranslate"><span class="pre">PHOTON_URL</span></code>. It doesn’t need to be custom built.</p>
 <p>Later, we’re simply using the docker container
@@ -509,7 +522,8 @@ STOP_MAP: `${API_URL}/map/v1/stop-map/`,
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">feedIds</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;DING&#39;</span><span class="p">],</span>
 </pre></div>
 </div>
-<p>For using the wikimedia tile server, use</p>
+<p>Configure the tile server of your choice. For testing, you might be content
+using the wikimedia tile server:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">MAP_URL</span> <span class="o">=</span> <span class="s1">&#39;https://maps.wikimedia.org/osm-intl/&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -553,12 +567,16 @@ the right container image tags. (Especially important for opentripplanner)</p></
 <li><p>opentripplanner-data-container → opentripplanner (otp gets its graph from the data container)</p></li>
 <li><p>opentripplanner → hsl-map-server (mapserver gets its stop data from otp)</p></li>
 </ul>
+<div><img height="360" src="_images/blockdiag-158420f62cb864a685f69e980a959419a62f7bfc.png" width="448" /></div><div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Todo</p>
+<p>is this order even right?!</p>
+</div>
 <p>Don’t forget the environment variables for digitransit-ui (<code class="docutils literal notranslate"><span class="pre">CONFIG</span></code>)
 and opentripplanner (<code class="docutils literal notranslate"><span class="pre">ROUTER_NAME</span></code>).</p>
 <p>Have a look at this working template:
 <a class="reference external" href="https://github.com/verschwoerhaus/digitransit-kubernetes/blob/master/all.yml">https://github.com/verschwoerhaus/digitransit-kubernetes/blob/master/all.yml</a></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
 <p>Reminder: the OpenTripPlanner version has to match the version that was used to build the graph.
 Ensure you are using the same docker image tag here.</p>
 </div>
@@ -591,12 +609,11 @@ to check against. Do a little dance :)</p>
 <div class="section" id="frequently-asked-questions">
 <h2>Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>I see no frequently asked questions?!</p></li>
-<li><p>Feel free to ask one :)</p></li>
-<li><p>I did everything as you say, but when I test bus relations, the route
-is all zigzagging over the map instead of following the road</p></li>
-<li><p>Your <a class="reference internal" href="glossary.html#term-GTFS"><span class="xref std std-term">GTFS</span></a> feed is missing <code class="docutils literal notranslate"><span class="pre">shapes.txt</span></code>. This happens occasionally,
-depending on where you get your feed from. See <a class="reference external" href="https://ulm.dev/2020/01/17/pfaedle/">this blog
+<li><p><strong>I see no frequently asked questions?!</strong> – Feel free to ask one :)</p></li>
+<li><p><strong>I did everything as you say, but when I test bus relations, the route
+is all zigzagging over the map instead of following the road</strong>
+–  Your <a class="reference internal" href="glossary.html#term-GTFS"><span class="xref std std-term">GTFS</span></a> feed is missing <code class="docutils literal notranslate"><span class="pre">shapes.txt</span></code>. This happens
+occasionally, depending on where you get your feed from. See <a class="reference external" href="https://ulm.dev/2020/01/17/pfaedle/">this blog
 post</a> on how to integrate
 them into your feed yourself</p></li>
 </ul>

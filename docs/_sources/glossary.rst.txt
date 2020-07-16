@@ -12,8 +12,17 @@ Glossary
   GBFS
     General Bikeshare Feed Specification, a common exchange format for bikesharing (or vehicle sharing in general), including the location of sharing docks/hubs and individual vehicles. Conceptually very different from GTFS. `Github specification repo <https://github.com/NABSA/gbfs>`__
 
+  hsl-map-server
+    An additional map tile server (`original repository here <https://github.com/HSLdevcom/hsl-map-server>`__) that ingests features such as stops, bikesharing stations etc. and displays them as items on an otherwise transparent map layer, above the basemap. This allows for clickable stops etc.
+
   OpenTripPlanner
     The Free-/Open-Source multimodal trip planner used for digitransit. `Website <http://www.opentripplanner.org/>`__
 
   OTP Data Container
     The Docker container in which the :term:`OpenTripPlanner` routing graph lives. This container can be swapped out for an updated version whenever the need arises.
+
+  pelias
+    King of Iolcus in Greek mythology. Also, a `geocoder<https://en.wikipedia.org/wiki/Geocoding>`__: 
+    insert address, get geocoordinates as a result. Or vice versa.
+    Not maintained anymore, therefore replaced with photon in
+    our deployments. `Website <https://www.pelias.io/>`__
