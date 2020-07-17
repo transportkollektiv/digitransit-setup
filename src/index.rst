@@ -46,3 +46,14 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+
+Funded through EU-SHAREPLACE
+============================
+
+.. image:: img/SHAREPLACE.png
+   :alt: EU-SHAREPLACE
+   :width: 200px
+   :align: left
+
+This documentation was made possible through `SHAREPLACE <https://www.interreg-central.eu/Content.Node/SHAREPLACE.html>`__, which is part of `Interreg CENTRAL EUROPE <https://www.interreg-central.eu/Content.Node/discover/programme.html#About_us>`__.
