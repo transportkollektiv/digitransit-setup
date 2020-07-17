@@ -6,7 +6,7 @@
 :github_url:  https://github.com/transportkollektiv/digitransit-setup/tree/main/src/index.rst
 
 The transportkollektiv digitransit cookbook
-==========================================
+===========================================
 
 Welcome to the transportkollektiv cookbook for installing, running and
 extending your very own digitransit instance!

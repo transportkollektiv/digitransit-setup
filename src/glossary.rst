@@ -18,7 +18,7 @@ Glossary
   OpenTripPlanner
     The Free-/Open-Source multimodal trip planner used for digitransit. `Website <http://www.opentripplanner.org/>`__
 
-  OTP Data Container
+  OTP data container
     The Docker container in which the :term:`OpenTripPlanner` routing graph lives. This container can be swapped out for an updated version whenever the need arises.
 
   pelias
