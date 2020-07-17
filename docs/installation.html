@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Installation guide &mdash; digitransit-tk 0.1 documentation</title>
+  <title>Installation guide &mdash; digitransit-tk 0.1.1 documentation</title>
   
 
   
@@ -33,7 +33,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="digitransit-tk 0.1 documentation" href="index.html"/>
+    <link rel="top" title="digitransit-tk 0.1.1 documentation" href="index.html"/>
         <link rel="next" title="Glossary" href="glossary.html"/>
         <link rel="prev" title="The transportkollektiv digitransit cookbook" href="index.html"/> 
 
@@ -191,7 +191,7 @@ guide for you :)</p>
 <h2>Ingredients<a class="headerlink" href="#ingredients" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>One host machine with a-little-bit-more-than-average RAM (i.e. 16+ GB) for
-building the <a class="reference internal" href="glossary.html#term-OTP-Data-Container"><span class="xref std std-term">OTP data container</span></a> and <a class="reference internal" href="glossary.html#term-digitransit-ui"><span class="xref std std-term">digitransit-ui</span></a></p></li>
+building the <a class="reference internal" href="glossary.html#term-OTP-data-container"><span class="xref std std-term">OTP data container</span></a> and <a class="reference internal" href="glossary.html#term-digitransit-ui"><span class="xref std std-term">digitransit-ui</span></a></p></li>
 <li><p>One Kubernetes Cluster (can be single-node) with 8+ GB RAM</p></li>
 <li><p><a class="reference external" href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">kubectl</a>
 installed and configured on your (personal) device for controlling
@@ -249,7 +249,7 @@ documentation</a>.</p>
 </div>
 <div class="section" id="building-an-opentripplanner-graph">
 <h3>1. Building an OpenTripPlanner Graph<a class="headerlink" href="#building-an-opentripplanner-graph" title="Permalink to this headline">¶</a></h3>
-<p>At the end of this part, you will end up with a working <a class="reference internal" href="glossary.html#term-OTP-Data-Container"><span class="xref std std-term">OTP data container</span></a>. The process works by providing <a class="reference internal" href="glossary.html#term-OpenTripPlanner"><span class="xref std std-term">OpenTripPlanner</span></a> with the necessary base data and using it to build the graph that will later be used by OTP to perform routing queries against.</p>
+<p>At the end of this part, you will end up with a working <a class="reference internal" href="glossary.html#term-OTP-data-container"><span class="xref std std-term">OTP data container</span></a>. The process works by providing <a class="reference internal" href="glossary.html#term-OpenTripPlanner"><span class="xref std std-term">OpenTripPlanner</span></a> with the necessary base data and using it to build the graph that will later be used by OTP to perform routing queries against.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Make sure that the graph is being built with the same version
@@ -648,11 +648,25 @@ them into your feed yourself</p></li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2020, Maximilian Richt, Katharina Schweiger, Constantin Müller, Holger Bruch, Leonhard Ehrenfried, Stefan Kaufmann.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> and ❤️  using a custom <a href="https://github.com/LinxiFan/Sphinx-theme">theme</a> based on <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> and ❤️  using a custom <a href="https://github.com/LinxiFan/Sphinx-theme">theme</a> based on <a href="https://readthedocs.org">Read the Docs</a>.
+       <div class="cc0">
+       <span class="creativecommons">
+        <a href="https://creativecommons.org/publicdomain/zero/1.0/" >
+          <img src="_static/cc0-80x15.png"
+               border="0" alt="Creative Commons License"/>
+         </a>
+        To the extent possible under law, the creators of this documentation
+        have waived all copyrights and related or neighbouring rights
+        to this work through the
+        <a href="https://creativecommons.org/publicdomain/zero/1.0/">
+        Creative Commons Zero Universal (CC0 1.0) Public Domain Dedication.
+        </a>
+       </span>
+      </div>
+
 
 </footer>
 
@@ -670,7 +684,7 @@ them into your feed yourself</p></li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.1',
+            VERSION:'0.1.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
