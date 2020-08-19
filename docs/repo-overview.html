@@ -1,0 +1,329 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Repository Overview &mdash; digitransit-tk 0.1.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="digitransit-tk 0.1.1 documentation" href="index.html"/>
+        <link rel="prev" title="Glossary" href="glossary.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> digitransit-tk
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Repository Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ulm-verschworhaus">Ulm, Verschwörhaus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ulm-ulm-dev">Ulm, ulm.dev</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#herrenberg-stadtnavi">Herrenberg, stadtnavi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hsl">HSL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#oulu">Oulu</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">digitransit-tk</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Repository Overview</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <!-- User defined GitHub URL -->
+              <a href="https://github.com/transportkollektiv/digitransit-setup/tree/main/src/repo-overview.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="repository-overview">
+<h1>Repository Overview<a class="headerlink" href="#repository-overview" title="Permalink to this headline">¶</a></h1>
+<p>If you want to look into different digitransit instances, which features they support, a look into the repositories is always a good idea.
+Sometimes you can reverse engineer the used parts by looking at the deployment files. For an easier overview, we’ve listed the parts below.
+If something changes or you also want to list a digitransit instance here, feel free to edit these docs.</p>
+<div class="section" id="ulm-verschworhaus">
+<h2>Ulm, Verschwörhaus<a class="headerlink" href="#ulm-verschworhaus" title="Permalink to this headline">¶</a></h2>
+<p>The staging, test and development instance. Public at <a class="reference external" href="https://digitransit.im.verschwoerhaus.de">https://digitransit.im.verschwoerhaus.de</a></p>
+<ul class="simple">
+<li><p>UI: <a class="reference external" href="https://github.com/verschwoerhaus/digitransit-ui/tree/ulm">https://github.com/verschwoerhaus/digitransit-ui/tree/ulm</a> – branch: ulm, config: <code class="docutils literal notranslate"><span class="pre">config.vsh.js</span></code></p></li>
+<li><p>OpenTripPlanner Data: <a class="reference external" href="https://github.com/verschwoerhaus/digitransit-otp-data">https://github.com/verschwoerhaus/digitransit-otp-data</a></p></li>
+<li><p>OpenTripPlanner: using mfdz/opentripplanner</p></li>
+<li><p>Map Server: <a class="reference external" href="https://github.com/verschwoerhaus/hsl-map-server">https://github.com/verschwoerhaus/hsl-map-server</a></p>
+<ul>
+<li><p>stops <a class="reference external" href="https://github.com/verschwoerhaus/tilelive-otp-stops">https://github.com/verschwoerhaus/tilelive-otp-stops</a></p></li>
+<li><p>citybikes <a class="reference external" href="https://github.com/verschwoerhaus/tilelive-otp-citybikes">https://github.com/verschwoerhaus/tilelive-otp-citybikes</a></p></li>
+</ul>
+</li>
+<li><p>Graphiql: <a class="reference external" href="https://github.com/verschwoerhaus/graphiql-deployment/tree/vsh">https://github.com/verschwoerhaus/graphiql-deployment/tree/vsh</a> – branch: vsh</p></li>
+<li><p>Pelias: using photon instead, <a class="reference external" href="https://github.com/stadtulm/photon-pelias-adapter">https://github.com/stadtulm/photon-pelias-adapter</a></p></li>
+<li><p>Deployment: k8s, <a class="reference external" href="https://github.com/verschwoerhaus/digitransit-kubernetes">https://github.com/verschwoerhaus/digitransit-kubernetes</a></p></li>
+</ul>
+</div>
+<div class="section" id="ulm-ulm-dev">
+<h2>Ulm, ulm.dev<a class="headerlink" href="#ulm-ulm-dev" title="Permalink to this headline">¶</a></h2>
+<p>The more productive instance. Public at <a class="reference external" href="https://digitransit.ulm.dev">https://digitransit.ulm.dev</a></p>
+<ul class="simple">
+<li><p>UI: <a class="reference external" href="https://github.com/verschwoerhaus/digitransit-ui/tree/ulm">https://github.com/verschwoerhaus/digitransit-ui/tree/ulm</a> – branch: ulm, config: <code class="docutils literal notranslate"><span class="pre">config.ulm.js</span></code></p></li>
+<li><p>OpenTripPlanner Data: <a class="reference external" href="https://github.com/stadtulm/digitransit-otp-data">https://github.com/stadtulm/digitransit-otp-data</a></p></li>
+<li><p>OpenTripPlanner: using mfdz/opentripplanner</p></li>
+<li><p>Map Server: <a class="reference external" href="https://github.com/verschwoerhaus/hsl-map-server">https://github.com/verschwoerhaus/hsl-map-server</a></p>
+<ul>
+<li><p>stops <a class="reference external" href="https://github.com/verschwoerhaus/tilelive-otp-stops">https://github.com/verschwoerhaus/tilelive-otp-stops</a></p></li>
+<li><p>citybikes <a class="reference external" href="https://github.com/verschwoerhaus/tilelive-otp-citybikes">https://github.com/verschwoerhaus/tilelive-otp-citybikes</a></p></li>
+</ul>
+</li>
+<li><p>Graphiql: <a class="reference external" href="https://github.com/verschwoerhaus/graphiql-deployment/tree/vsh">https://github.com/verschwoerhaus/graphiql-deployment/tree/vsh</a> – branch: vsh</p></li>
+<li><p>Pelias: using photon instead, <a class="reference external" href="https://github.com/stadtulm/photon-pelias-adapter">https://github.com/stadtulm/photon-pelias-adapter</a></p></li>
+<li><p>Deployment: k8s, <a class="reference external" href="https://github.com/stadtulm/digitransit-k8s">https://github.com/stadtulm/digitransit-k8s</a></p></li>
+</ul>
+</div>
+<div class="section" id="herrenberg-stadtnavi">
+<h2>Herrenberg, stadtnavi<a class="headerlink" href="#herrenberg-stadtnavi" title="Permalink to this headline">¶</a></h2>
+<p>Improved digitransit with lots of layers and features for Herrenberg: <a class="reference external" href="https://herrenberg.stadtnavi.de">https://herrenberg.stadtnavi.de</a></p>
+<ul class="simple">
+<li><p>UI: <a class="reference external" href="https://github.com/stadtnavi/digitransit-ui">https://github.com/stadtnavi/digitransit-ui</a></p></li>
+<li><p>OpenTripPlanner Data: <a class="reference external" href="https://github.com/mfdz/OpenTripPlanner-data-container">https://github.com/mfdz/OpenTripPlanner-data-container</a></p></li>
+<li><p>OpenTripPlanner: <a class="reference external" href="https://github.com/mfdz/OpenTripPlanner">https://github.com/mfdz/OpenTripPlanner</a></p></li>
+<li><p>Map Server: <a class="reference external" href="https://github.com/stadtnavi/hsl-map-server">https://github.com/stadtnavi/hsl-map-server</a></p>
+<ul>
+<li><p>roadworks <a class="reference external" href="https://github.com/stadtnavi/tilelive-roadworks-bw">https://github.com/stadtnavi/tilelive-roadworks-bw</a></p></li>
+<li><p>parkapi <a class="reference external" href="https://github.com/stadtnavi/tilelive-park-api">https://github.com/stadtnavi/tilelive-park-api</a></p></li>
+<li><p>stops <a class="reference external" href="https://github.com/stadtnavi/tilelive-otp-stops">https://github.com/stadtnavi/tilelive-otp-stops</a></p></li>
+<li><p>citybikes <a class="reference external" href="https://github.com/stadtnavi/tilelive-otp-citybikes">https://github.com/stadtnavi/tilelive-otp-citybikes</a></p></li>
+</ul>
+</li>
+<li><p>Pelias: using photon instead, <a class="reference external" href="https://github.com/stadtulm/photon-pelias-adapter">https://github.com/stadtulm/photon-pelias-adapter</a></p></li>
+<li><p>Deployment: ansible, <a class="reference external" href="https://github.com/stadtnavi/digitransit-ansible">https://github.com/stadtnavi/digitransit-ansible</a></p></li>
+</ul>
+</div>
+<div class="section" id="hsl">
+<h2>HSL<a class="headerlink" href="#hsl" title="Permalink to this headline">¶</a></h2>
+<p><em>The original one</em>. Available at <a class="reference external" href="https://reittiopas.hsl.fi">https://reittiopas.hsl.fi</a></p>
+<ul class="simple">
+<li><p>UI: <a class="reference external" href="https://github.com/HSLdevcom/digitransit-ui">https://github.com/HSLdevcom/digitransit-ui</a></p></li>
+<li><p>OpenTripPlanner Data: <a class="reference external" href="https://github.com/HSLdevcom/OpenTripPlanner-data-container">https://github.com/HSLdevcom/OpenTripPlanner-data-container</a></p></li>
+<li><p>OpenTripPlanner: <a class="reference external" href="https://github.com/HSLdevcom/OpenTripPlanner">https://github.com/HSLdevcom/OpenTripPlanner</a></p></li>
+<li><p>Map Server: <a class="reference external" href="https://github.com/HSLdevcom/hsl-map-server">https://github.com/HSLdevcom/hsl-map-server</a></p></li>
+<li><p>Graphiql: <a class="reference external" href="https://github.com/HSLdevcom/graphiql-deployment">https://github.com/HSLdevcom/graphiql-deployment</a></p></li>
+<li><p>Pelias: <a class="reference external" href="https://github.com/HSLdevcom/pelias-data-container">https://github.com/HSLdevcom/pelias-data-container</a></p></li>
+<li><p>Proxy: <a class="reference external" href="https://github.com/HSLdevcom/digitransit-proxy">https://github.com/HSLdevcom/digitransit-proxy</a></p></li>
+<li><p>Deployment: azure aks/k8s, <a class="reference external" href="https://github.com/HSLdevcom/digitransit-kubernetes-deploy">https://github.com/HSLdevcom/digitransit-kubernetes-deploy</a></p></li>
+</ul>
+</div>
+<div class="section" id="oulu">
+<h2>Oulu<a class="headerlink" href="#oulu" title="Permalink to this headline">¶</a></h2>
+<p>Interesting UI changes, lots of additional information like traffic cams and snow plowers. <a class="reference external" href="https://www.oulunliikenne.fi">https://www.oulunliikenne.fi</a></p>
+<ul class="simple">
+<li><p>UI: <a class="reference external" href="https://github.com/digiaonline/oulunliikenne-digitransit-ui">https://github.com/digiaonline/oulunliikenne-digitransit-ui</a></p></li>
+</ul>
+<p>For the other services, the UI uses the ones provided by HSL.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="glossary.html" class="btn btn-neutral" title="Glossary" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> and ❤️  using a custom <a href="https://github.com/LinxiFan/Sphinx-theme">theme</a> based on <a href="https://readthedocs.org">Read the Docs</a>.
+       <div class="cc0">
+       <span class="creativecommons">
+        <a href="https://creativecommons.org/publicdomain/zero/1.0/" >
+          <img src="_static/cc0-80x15.png"
+               border="0" alt="Creative Commons License"/>
+         </a>
+        To the extent possible under law, the creators of this documentation
+        have waived all copyrights and related or neighbouring rights
+        to this work through the
+        <a href="https://creativecommons.org/publicdomain/zero/1.0/">
+        Creative Commons Zero Universal (CC0 1.0) Public Domain Dedication.
+        </a>
+       </span>
+      </div>
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/language_data.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
