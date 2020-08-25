@@ -37,6 +37,7 @@ outdated information.
 
    installation
    glossary
+   repo-overview
    stadtnavi-extensions
 
 
