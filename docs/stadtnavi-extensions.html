@@ -1,0 +1,372 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Stadtnavi extensions &mdash; digitransit-tk 0.1.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="digitransit-tk 0.1.1 documentation" href="index.html"/>
+        <link rel="prev" title="Repository Overview" href="repo-overview.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> digitransit-tk
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repo-overview.html">Repository Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Stadtnavi extensions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dynamic-parking-lots-routing-and-map-layer">Dynamic parking lots routing and map layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#opentripplanner">OpenTripPlanner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#frontend">Frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#related-pull-requests-commits">Related pull requests &amp; commits</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#free-floating-bicycle-and-scooter-sharing">Free-floating bicycle and scooter sharing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">OpenTripPlanner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map-layer">Map layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Related pull requests &amp; commits</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">digitransit-tk</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Stadtnavi extensions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <!-- User defined GitHub URL -->
+              <a href="https://github.com/transportkollektiv/digitransit-setup/tree/main/src/stadtnavi-extensions.rst.txt" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="stadtnavi-extensions">
+<h1>Stadtnavi extensions<a class="headerlink" href="#stadtnavi-extensions" title="Permalink to this headline">¶</a></h1>
+<p>Stadtnavi has added the following features:</p>
+<div class="section" id="dynamic-parking-lots-routing-and-map-layer">
+<h2>Dynamic parking lots routing and map layer<a class="headerlink" href="#dynamic-parking-lots-routing-and-map-layer" title="Permalink to this headline">¶</a></h2>
+<p><img alt="Screenshot1" src="_images/dynamic-parking-lots.png" /></p>
+<p>This map layer adds information about car parking lots with realtime
+information about capacity, free spaces, opening hours and a link to
+more information.</p>
+<p>All the information is drawn from a
+<a class="reference external" href="https://github.com/offenesdresden/ParkAPI">ParkAPI</a> feed.
+Herrenberg’s feed is available at: <a class="reference external" href="https://api.stadtnavi.de/parkapi.json">https://api.stadtnavi.de/parkapi.json</a></p>
+<div class="section" id="opentripplanner">
+<h3>OpenTripPlanner<a class="headerlink" href="#opentripplanner" title="Permalink to this headline">¶</a></h3>
+<p>To add realtime parking lot information you need to <a class="reference external" href="https://github.com/mfdz/OpenTripPlanner-data-container/commit/e2572ea5b526bedf0359b681f7e7391017f69db5">configure a ParkAPI
+updater</a>.</p>
+<p>More information about the possible configuration options can be found
+in the <a class="reference external" href="https://github.com/mfdz/OpenTripPlanner/blob/master/docs/Configuration.md#configuring-real-time-updaters">OTP
+documentation</a>.</p>
+</div>
+<div class="section" id="frontend">
+<h3>Frontend<a class="headerlink" href="#frontend" title="Permalink to this headline">¶</a></h3>
+<p>First, to visualise the parking lots, an instance of
+<a class="reference external" href="https://github.com/stadtnavi/tilelive-park-api">tilelive-park-api</a>
+needs to be added to <code class="docutils literal notranslate"><span class="pre">hsl-map-server</span></code>.</p>
+<p>The main frontend code resides in <code class="docutils literal notranslate"><span class="pre">DynamicParkingLots.js</span></code> and
+<code class="docutils literal notranslate"><span class="pre">DynamicParkingLotsPopup.js</span></code>.</p>
+<p>If a parking lot is close to being full, then a warning is shown. The
+user may decide to re-run the routing query
+excluding full car-parks.</p>
+<p><img alt="Screenshot2" src="_images/dynamic-parking-lot-full.png" /></p>
+<p>This code lives in <code class="docutils literal notranslate"><span class="pre">CarLeg.js</span></code>.</p>
+</div>
+<div class="section" id="related-pull-requests-commits">
+<h3>Related pull requests &amp; commits<a class="headerlink" href="#related-pull-requests-commits" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/stadtnavi/digitransit-ui/pull/70">https://github.com/stadtnavi/digitransit-ui/pull/70</a></p></li>
+<li><p><a class="reference external" href="https://github.com/stadtnavi/digitransit-ui/pull/74">https://github.com/stadtnavi/digitransit-ui/pull/74</a></p></li>
+<li><p><a class="reference external" href="https://github.com/stadtnavi/digitransit-ui/pull/142">https://github.com/stadtnavi/digitransit-ui/pull/142</a></p></li>
+<li><p><a class="reference external" href="https://github.com/stadtnavi/digitransit-ui/pull/277">https://github.com/stadtnavi/digitransit-ui/pull/277</a></p></li>
+<li><p><a class="reference external" href="https://github.com/mfdz/OpenTripPlanner-data-container/commit/e2572ea5b526bedf0359b681f7e7391017f69db5">https://github.com/mfdz/OpenTripPlanner-data-container/commit/e2572ea5b526bedf0359b681f7e7391017f69db5</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="free-floating-bicycle-and-scooter-sharing">
+<h2>Free-floating bicycle and scooter sharing<a class="headerlink" href="#free-floating-bicycle-and-scooter-sharing" title="Permalink to this headline">¶</a></h2>
+<p><img alt="Screenshot3" src="_images/free-floating-bicycle-sharing.png" /></p>
+<p>This allows digitransit to drop off bicycles and scooters anywhere and
+has two modes:</p>
+<ul class="simple">
+<li><p>The sharing system is not really a free-floating one, but bikes are
+allowed to be dropped off anywhere at the end of a journey.
+In such a case the UI displays a warning.
+(<cite>rentalMode=free-floating-with-temporary-dropoff</cite>)</p></li>
+<li><p>The system is a proper free-floating one: you can drop off the bike
+anywhere. (<cite>rentalMode=free-floating</cite>)</p></li>
+</ul>
+<p><strong>Notes</strong></p>
+<ul>
+<li><p>If you switch from bike sharing to public transport, you cannot drop
+off the bike anywhere but only in a bike parking facility.
+This has two benefits:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The bikes are not dropped off in places that are absolutely closest
+to the station, ie. the tunnel underneath the
+railway tracks or the steps leading to the subway entrance.</p></li>
+<li><p>The search space is drastically reduced, leading to a speed up for
+routing requests.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Business zones, restricting the drop off to a certain geographic
+area, are not supported.</p></li>
+</ul>
+<div class="section" id="id1">
+<h3>OpenTripPlanner<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>As with any other bike or car sharing, you need to <a class="reference external" href="https://github.com/mfdz/OpenTripPlanner-data-container/blob/e2572ea/router-hb/router-config.json#L30-L38">configure a graph
+updater</a>.</p>
+<p>More information about the various rentalTypes are available in the
+<a class="reference external" href="https://github.com/mfdz/OpenTripPlanner/blob/master/docs/Configuration.md#gbfs-configuration">Configuration
+reference</a>.</p>
+</div>
+<div class="section" id="map-layer">
+<h3>Map layer<a class="headerlink" href="#map-layer" title="Permalink to this headline">¶</a></h3>
+<p>The frontend is already part of digitransit and simply needs to be
+activated.</p>
+<p><code class="docutils literal notranslate"><span class="pre">hsl-map-server</span></code> however needs to be <a class="reference external" href="https://github.com/HSLdevcom/tilelive-otp-citybikes/blob/master/index.js#L47">configured to
+include</a>
+the <code class="docutils literal notranslate"><span class="pre">`tilelive-citybike</span></code> &lt;<a class="reference external" href="https://github.com/HSLdevcom/tilelive-otp-citybikes/">https://github.com/HSLdevcom/tilelive-otp-citybikes/</a>&gt;`__.
+This layer queries OTP for the bike positions. Please note that there
+is a bug (?) in this layer preventing frequent updates
+of positions: on top of the normal tile-based cache logic this layer
+also has its own cache, which never expires.
+(<a class="reference external" href="https://github.com/HSLdevcom/tilelive-otp-citybikes/blob/master/index.js#L47">https://github.com/HSLdevcom/tilelive-otp-citybikes/blob/master/index.js#L47</a>)</p>
+</div>
+<div class="section" id="id2">
+<h3>Frontend<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>If you are using the mode <code class="docutils literal notranslate"><span class="pre">free-floating-with-temporary-dropoff</span></code>,
+the backend emits warnings about having to return the
+bicycle. To also put this feature into the frontend, please view the
+<a class="reference external" href="https://github.com/stadtnavi/digitransit-ui/pull/277">relevant PR</a>.
+The main code resides in <code class="docutils literal notranslate"><span class="pre">BicycleLeg.js</span></code> but to you also need to
+change the client-side GraphQL schema file (<code class="docutils literal notranslate"><span class="pre">schema.json</span></code>)
+and the queries in <code class="docutils literal notranslate"><span class="pre">ItineraryTab.js</span></code> and
+<code class="docutils literal notranslate"><span class="pre">SummaryListContainer.js</span></code>.</p>
+</div>
+<div class="section" id="id3">
+<h3>Related pull requests &amp; commits<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/mfdz/OpenTripPlanner-data-container/blob/e2572ea/router-hb/router-config.json#L30-L38">https://github.com/mfdz/OpenTripPlanner-data-container/blob/e2572ea/router-hb/router-config.json#L30-L38</a></p></li>
+<li><p><a class="reference external" href="https://github.com/stadtnavi/hsl-map-server/commit/d3a70b975c1c875d293e7400436b3fa283621854">https://github.com/stadtnavi/hsl-map-server/commit/d3a70b975c1c875d293e7400436b3fa283621854</a></p></li>
+<li><p><a class="reference external" href="https://github.com/stadtnavi/digitransit-ui/pull/277">https://github.com/stadtnavi/digitransit-ui/pull/277</a></p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="repo-overview.html" class="btn btn-neutral" title="Repository Overview" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> and ❤️  using a custom <a href="https://github.com/LinxiFan/Sphinx-theme">theme</a> based on <a href="https://readthedocs.org">Read the Docs</a>.
+       <div class="cc0">
+       <span class="creativecommons">
+        <a href="https://creativecommons.org/publicdomain/zero/1.0/" >
+          <img src="_static/cc0-80x15.png"
+               border="0" alt="Creative Commons License"/>
+         </a>
+        To the extent possible under law, the creators of this documentation
+        have waived all copyrights and related or neighbouring rights
+        to this work through the
+        <a href="https://creativecommons.org/publicdomain/zero/1.0/">
+        Creative Commons Zero Universal (CC0 1.0) Public Domain Dedication.
+        </a>
+       </span>
+      </div>
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/language_data.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
