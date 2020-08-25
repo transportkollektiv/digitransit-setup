@@ -55,6 +55,8 @@ Related pull requests & commits
 -  https://github.com/stadtnavi/digitransit-ui/pull/277
 -  https://github.com/mfdz/OpenTripPlanner-data-container/commit/e2572ea5b526bedf0359b681f7e7391017f69db5
 
+- WIP branch to integrate dynamic parking lots in digitransit-ui without any stadtnavi dependencies: https://github.com/verschwoerhaus/digitransit-ui/tree/ulm-dynamicparkinglots
+
 Free-floating bicycle and scooter sharing
 -----------------------------------------
 
