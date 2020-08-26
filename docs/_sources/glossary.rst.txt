@@ -14,13 +14,16 @@ Glossary
   GBFS
     General Bikeshare Feed Specification, a common exchange format for bikesharing (or vehicle sharing in general), including the location of sharing docks/hubs and individual free floating vehicles. Conceptually very different from GTFS. `Github specification repo <https://github.com/NABSA/gbfs>`__
 
+    See also: :ref:`Datasources GBFS <datasources/gbfs>`
+
+
   hsl-map-server
     An additional map tile server (`original repository here <https://github.com/HSLdevcom/hsl-map-server>`__) that ingests features such as stops, bikesharing stations etc. and displays them as items on an otherwise transparent map layer, above the basemap. This allows for clickable stops etc.
 
   OpenStreetMap
     A crowd sourced geo-database. Data from OpenStreetMap is used for foot, bike and car routing in :term:`OpenTripPlanner`. Country and regional data extracts are provided by the `Geofabrik download servers <http://download.geofabrik.de/>`_. For custom regions or smaller extracts the `BBBike extract service <https://extract.bbbike.org/>`_ can be used. (use PBF as extract format.)
     OpenStreetMap data also can be used for search. (:term:`pelias`, :term:`photon`)
-    `Website <https://openstreetmap.org/>`_ 
+    `Website <https://openstreetmap.org/>`__ 
 
     See also: :ref:`Datasources OpenStreetMap <datasources/openstreetmap>`
 
@@ -33,7 +36,7 @@ Glossary
   ParkenDD / ParkAPI
     
     OpenSource project to collect and scape parking lot occupancy data and bring them into an `unified json format <https://github.com/offenesdresden/ParkAPI/>`_. Data can be integrated using :ref:`stadtnavi extension dynamic parking lots<stadtnavi-extensions/dynamic-parking-lots>`.
-    `Website <https://parkendd.de>`_, `Github <https://github.com/offenesdresden/ParkAPI/>`_, `Map <https://parkendd.de/map.html>`_
+    `Website <https://parkendd.de>`__, `Github <https://github.com/offenesdresden/ParkAPI/>`__, `Map <https://parkendd.de/map.html>`_
 
     See also: :ref:`Datasources ParkenDD ParkAPI <datasources/parkapi>`
 
