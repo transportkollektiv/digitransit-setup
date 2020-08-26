@@ -16,7 +16,7 @@ For live updates like vehicle positions, delays and temporary service disruption
 
 If public transport agencies provide their data to other external services like Google Maps or Apple Maps, they are definitely able to provide GTFS-data.
 
-If OTP/digitransit only shows straight lines between trips, the shape.txt file is missing in the GTFS. Not all agencies are able to export them or can't export them for copyright reasons. The tool `pfaedle <https://github.com/ad-freiburg/pfaedle>`_ is able to add these shapes to an existing GTFS file.
+If OTP/digitransit only shows straight lines between trips, the shapes.txt file is missing in the GTFS. Not all agencies are able to export them or can't export them for copyright reasons. The tool `pfaedle <https://github.com/ad-freiburg/pfaedle>`_ is able to add these shapes to an existing GTFS file. It also looks like `ArcGIS is able <http://www.arcgis.com/home/item.html?id=ce51601e18ae4367814a8a53a1659b33>`_ to generate the shapes.txt file from GTFS.
 
 .. _`datasources/gbfs`:
 
