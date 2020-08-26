@@ -1,0 +1,306 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Overview &mdash; digitransit-tk 0.1.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Step-by-step guide" href="step-by-step.html" />
+    <link rel="prev" title="Requirements" href="requirements.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/digitransit.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="requirements.html">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="requirements.html#optional">optional</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="step-by-step.html">Step-by-step guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="step-by-step.html#preparing-your-build-host">0. Preparing your build host</a></li>
+<li class="toctree-l3"><a class="reference internal" href="step-by-step.html#building-an-opentripplanner-graph">1. Building an OpenTripPlanner Graph</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="step-by-step.html#method-1-vsh-style-modifying-of-opentripplanner-data-container">Method 1: vsh-style modifying of opentripplanner-data-container</a></li>
+<li class="toctree-l4"><a class="reference internal" href="step-by-step.html#method-2-muenster-style-custom-container">Method 2: muenster-style custom container</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="step-by-step.html#building-hsl-map-server">2. Building hsl-map-server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="step-by-step.html#building-digitransit-proxy">3. Building digitransit-proxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="step-by-step.html#using-photon-pelias-adapter">4. Using photon-pelias-adapter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="step-by-step.html#building-digitransit-ui">5. Building digitransit-ui</a></li>
+<li class="toctree-l3"><a class="reference internal" href="step-by-step.html#crafting-kubernetes-yaml">6. Crafting kubernetes yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="step-by-step.html#deploying">7. Deploying</a></li>
+<li class="toctree-l3"><a class="reference internal" href="step-by-step.html#id6">8. ???</a></li>
+<li class="toctree-l3"><a class="reference internal" href="step-by-step.html#profit">9. Profit!</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../repo-overview.html">Repository Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../repo-overview.html#ulm-verschworhaus">Ulm, Verschwörhaus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../repo-overview.html#ulm-ulm-dev">Ulm, ulm.dev</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../repo-overview.html#herrenberg-stadtnavi">Herrenberg, stadtnavi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../repo-overview.html#hsl">HSL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../repo-overview.html#oulu">Oulu</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../stadtnavi-extensions.html">Stadtnavi extensions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../stadtnavi-extensions.html#dynamic-parking-lots-routing-and-map-layer">Dynamic parking lots routing and map layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../stadtnavi-extensions.html#opentripplanner">OpenTripPlanner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stadtnavi-extensions.html#frontend">Frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stadtnavi-extensions.html#config">Config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stadtnavi-extensions.html#related-pull-requests-commits">Related pull requests &amp; commits</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../stadtnavi-extensions.html#free-floating-bicycle-and-scooter-sharing">Free-floating bicycle and scooter sharing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../stadtnavi-extensions.html#id1">OpenTripPlanner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stadtnavi-extensions.html#map-layer">Map layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stadtnavi-extensions.html#id2">Frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stadtnavi-extensions.html#id3">Related pull requests &amp; commits</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../datasources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../datasources.html#gtfs">GTFS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasources.html#gbfs">GBFS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasources.html#openstreetmap">OpenStreetMap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasources.html#parkendd-parkapi">ParkenDD ParkAPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">digitransit-tk</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Installation guide</a> &raquo;</li>
+        
+      <li>Overview</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <!-- User defined GitHub URL -->
+              <a href="https://github.com/transportkollektiv/digitransit-setup/tree/main/src/installation/overview.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<p>digitransit is a slightly complex system composed of multiple services
+in container that talk to each other. A nice architecture image can be
+found at the <a class="reference external" href="https://digitransit.fi/en/developers/architecture/">digitransit.fi
+documentation</a>.</p>
+<p>The main components of an digitransit deployment consists of:</p>
+<ul class="simple">
+<li><p>Multimodal routing engine (<a class="reference internal" href="../glossary.html#term-OpenTripPlanner"><span class="xref std std-term">OpenTripPlanner</span></a>)</p></li>
+<li><p>Address search (originally <a class="reference internal" href="../glossary.html#term-pelias"><span class="xref std std-term">pelias</span></a>)</p></li>
+<li><p>Background map service (<a class="reference internal" href="../glossary.html#term-hsl-map-server"><span class="xref std std-term">hsl-map-server</span></a>: [tessera], [tilelive])</p></li>
+<li><p>Web browser-based user interface (<a class="reference internal" href="../glossary.html#term-digitransit-ui"><span class="xref std std-term">digitransit-ui</span></a>)</p></li>
+</ul>
+<p>A nicer description of the components and their job exists also at
+<a class="reference external" href="https://digitransit.fi/en/services/">https://digitransit.fi/en/services/</a></p>
+<div><img height="600" src="../_images/blockdiag-14f146bafa76dd491c20644fd2d2a893ec715197.png" width="832" /></div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As can be seen in the diagram, some dependencies are circular. This poses a few challenges when first setting up a working instance, which we will address later on.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="step-by-step.html" class="btn btn-neutral float-right" title="Step-by-step guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="requirements.html" class="btn btn-neutral float-left" title="Requirements" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+<div class="cc0">
+  <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="license">
+    <svg aria-hidden="true" focusable="false" role="img" style="vertical-align: text-bottom;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" width="16" height="16"><path fill="#000" d="M245.83 214.87l-33.22 17.28c-9.43-19.58-25.24-19.93-27.46-19.93-22.13 0-33.22 14.61-33.22 43.84 0 23.57 9.21 43.84 33.22 43.84 14.47 0 24.65-7.09 30.57-21.26l30.55 15.5c-6.17 11.51-25.69 38.98-65.1 38.98-22.6 0-73.96-10.32-73.96-77.05 0-58.69 43-77.06 72.63-77.06 30.72-.01 52.7 11.95 65.99 35.86zm143.05 0l-32.78 17.28c-9.5-19.77-25.72-19.93-27.9-19.93-22.14 0-33.22 14.61-33.22 43.84 0 23.55 9.23 43.84 33.22 43.84 14.45 0 24.65-7.09 30.54-21.26l31 15.5c-2.1 3.75-21.39 38.98-65.09 38.98-22.69 0-73.96-9.87-73.96-77.05 0-58.67 42.97-77.06 72.63-77.06 30.71-.01 52.58 11.95 65.56 35.86zM247.56 8.05C104.74 8.05 0 123.11 0 256.05c0 138.49 113.6 248 247.56 248 129.93 0 248.44-100.87 248.44-248 0-137.87-106.62-248-248.44-248zm.87 450.81c-112.54 0-203.7-93.04-203.7-202.81 0-105.42 85.43-203.27 203.72-203.27 112.53 0 202.82 89.46 202.82 203.26-.01 121.69-99.68 202.82-202.84 202.82z"></path></svg>
+    <svg aria-hidden="true" focusable="false" role="img" style="vertical-align: text-bottom;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" width="16" height="16"><path fill="#000" d="M247.6 8C389.4 8 496 118.1 496 256c0 147.1-118.5 248-248.4 248C113.6 504 0 394.5 0 256 0 123.1 104.7 8 247.6 8zm.8 44.7C130.2 52.7 44.7 150.6 44.7 256c0 109.8 91.2 202.8 203.7 202.8 103.2 0 202.8-81.1 202.8-202.8.1-113.8-90.2-203.3-202.8-203.3zm-.4 60.5c-81.9 0-102.5 77.3-102.5 142.8 0 65.5 20.6 142.8 102.5 142.8S350.5 321.5 350.5 256c0-65.5-20.6-142.8-102.5-142.8zm0 53.9c3.3 0 6.4.5 9.2 1.2 5.9 5.1 8.8 12.1 3.1 21.9l-54.5 100.2c-1.7-12.7-1.9-25.1-1.9-34.4 0-28.8 2-88.9 44.1-88.9zm40.8 46.2c2.9 15.4 3.3 31.4 3.3 42.7 0 28.9-2 88.9-44.1 88.9-13.5 0-32.6-7.7-20.1-26.4l60.9-105.2z"></path></svg>
+  </a>
+  To the extent possible under law, the creators of this documentation
+  have waived all copyrights and related or neighbouring rights
+  to this work through the
+  <a href="https://creativecommons.org/publicdomain/zero/1.0/">
+    Creative Commons Zero Universal (CC0 1.0) Public Domain Dedication.
+  </a>
+</div>
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
