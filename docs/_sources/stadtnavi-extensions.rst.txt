@@ -1,4 +1,4 @@
-:github_url:  https://github.com/transportkollektiv/digitransit-setup/tree/main/src/stadtnavi-extensions.rst.txt
+:github_url:  https://github.com/transportkollektiv/digitransit-setup/tree/main/src/stadtnavi-extensions.rst
 
 Stadtnavi extensions
 ====================
@@ -19,6 +19,8 @@ more information.
 All the information is drawn from a
 `ParkAPI <https://github.com/offenesdresden/ParkAPI>`__ feed.
 Herrenberg's feed is available at: https://api.stadtnavi.de/parkapi.json
+
+See also: :ref:`Datasources ParkenDD ParkAPI <datasources/parkapi>`
 
 OpenTripPlanner
 ^^^^^^^^^^^^^^^

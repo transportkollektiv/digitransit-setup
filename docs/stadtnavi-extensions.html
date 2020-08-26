@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,57 +11,56 @@
   
 
   
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+
+  
+  
+  
   
 
   
-
-  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="digitransit-tk 0.1.1 documentation" href="index.html"/>
-        <link rel="next" title="Data Sources" href="datasources.html"/>
-        <link rel="prev" title="Repository Overview" href="repo-overview.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Data Sources" href="datasources.html" />
+    <link rel="prev" title="Repository Overview" href="repo-overview.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
-            <a href="index.html" class="icon icon-home"> digitransit-tk
+            <a href="index.html">
           
 
+          
+            
+            <img src="_static/digitransit.png" class="logo" alt="Logo"/>
           
           </a>
 
-          
-            
-            
           
 
           
@@ -77,15 +75,52 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
             
-                <p class="caption"><span class="caption-text">Contents:</span></p>
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#ingredients">Ingredients</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#optional">optional</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#step-by-step">Step-by-Step</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#preparing-your-build-host">0. Preparing your build host</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#building-an-opentripplanner-graph">1. Building an OpenTripPlanner Graph</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="installation.html#method-1-vsh-style-modifying-of-opentripplanner-data-container">Method 1: vsh-style modifying of opentripplanner-data-container</a></li>
+<li class="toctree-l4"><a class="reference internal" href="installation.html#method-2-muenster-style-custom-container">Method 2: muenster-style custom container</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#building-hsl-map-server">2. Building hsl-map-server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#building-digitransit-proxy">3. Building digitransit-proxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#using-photon-pelias-adapter">4. Using photon-pelias-adapter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#building-digitransit-ui">5. Building digitransit-ui</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#crafting-kubernetes-yaml">6. Crafting kubernetes yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#deploying">7. Deploying</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#id6">8. ???</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#profit">9. Profit!</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#frequently-asked-questions">Frequently Asked Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#todo">TODO</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="repo-overview.html">Repository Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repo-overview.html">Repository Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="repo-overview.html#ulm-verschworhaus">Ulm, Verschwörhaus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repo-overview.html#ulm-ulm-dev">Ulm, ulm.dev</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repo-overview.html#herrenberg-stadtnavi">Herrenberg, stadtnavi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repo-overview.html#hsl">HSL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repo-overview.html#oulu">Oulu</a></li>
+</ul>
+</li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Stadtnavi extensions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#dynamic-parking-lots-routing-and-map-layer">Dynamic parking lots routing and map layer</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#opentripplanner">OpenTripPlanner</a></li>
@@ -102,19 +137,26 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="datasources.html">Data Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasources.html">Data Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="datasources.html#gtfs">GTFS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datasources.html#gbfs">GBFS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datasources.html#openstreetmap">OpenStreetMap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datasources.html#parkendd-parkapi">ParkenDD ParkAPI</a></li>
+</ul>
+</li>
 </ul>
 
             
           
         </div>
+        
       </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">digitransit-tk</a>
@@ -122,9 +164,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -147,7 +190,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Stadtnavi extensions</li>
     
@@ -157,7 +200,7 @@
             
             
               <!-- User defined GitHub URL -->
-              <a href="https://github.com/transportkollektiv/digitransit-setup/tree/main/src/stadtnavi-extensions.rst.txt" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/transportkollektiv/digitransit-setup/tree/main/src/stadtnavi-extensions.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -183,6 +226,7 @@ more information.</p>
 <p>All the information is drawn from a
 <a class="reference external" href="https://github.com/offenesdresden/ParkAPI">ParkAPI</a> feed.
 Herrenberg’s feed is available at: <a class="reference external" href="https://api.stadtnavi.de/parkapi.json">https://api.stadtnavi.de/parkapi.json</a></p>
+<p>See also: <a class="reference internal" href="datasources.html#datasources-parkapi"><span class="std std-ref">Datasources ParkenDD ParkAPI</span></a></p>
 <div class="section" id="opentripplanner">
 <h3>OpenTripPlanner<a class="headerlink" href="#opentripplanner" title="Permalink to this headline">¶</a></h3>
 <p>To add realtime parking lot information you need to <a class="reference external" href="https://github.com/mfdz/OpenTripPlanner-data-container/commit/e2572ea5b526bedf0359b681f7e7391017f69db5">configure a ParkAPI
@@ -292,15 +336,16 @@ and the queries in <code class="docutils literal notranslate"><span class="pre">
 
 
            </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="datasources.html" class="btn btn-neutral float-right" title="Data Sources" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="datasources.html" class="btn btn-neutral float-right" title="Data Sources" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="repo-overview.html" class="btn btn-neutral" title="Repository Overview" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="repo-overview.html" class="btn btn-neutral float-left" title="Repository Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -312,21 +357,26 @@ and the queries in <code class="docutils literal notranslate"><span class="pre">
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> and ❤️  using a custom <a href="https://github.com/LinxiFan/Sphinx-theme">theme</a> based on <a href="https://readthedocs.org">Read the Docs</a>.
-       <div class="cc0">
-       <span class="creativecommons">
-        <a href="https://creativecommons.org/publicdomain/zero/1.0/" >
-          <img src="_static/cc0-80x15.png"
-               border="0" alt="Creative Commons License"/>
-         </a>
-        To the extent possible under law, the creators of this documentation
-        have waived all copyrights and related or neighbouring rights
-        to this work through the
-        <a href="https://creativecommons.org/publicdomain/zero/1.0/">
-        Creative Commons Zero Universal (CC0 1.0) Public Domain Dedication.
-        </a>
-       </span>
-      </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+<div class="cc0">
+  <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="license">
+    <svg aria-hidden="true" focusable="false" role="img" style="vertical-align: text-bottom;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" width="16" height="16"><path fill="#000" d="M245.83 214.87l-33.22 17.28c-9.43-19.58-25.24-19.93-27.46-19.93-22.13 0-33.22 14.61-33.22 43.84 0 23.57 9.21 43.84 33.22 43.84 14.47 0 24.65-7.09 30.57-21.26l30.55 15.5c-6.17 11.51-25.69 38.98-65.1 38.98-22.6 0-73.96-10.32-73.96-77.05 0-58.69 43-77.06 72.63-77.06 30.72-.01 52.7 11.95 65.99 35.86zm143.05 0l-32.78 17.28c-9.5-19.77-25.72-19.93-27.9-19.93-22.14 0-33.22 14.61-33.22 43.84 0 23.55 9.23 43.84 33.22 43.84 14.45 0 24.65-7.09 30.54-21.26l31 15.5c-2.1 3.75-21.39 38.98-65.09 38.98-22.69 0-73.96-9.87-73.96-77.05 0-58.67 42.97-77.06 72.63-77.06 30.71-.01 52.58 11.95 65.56 35.86zM247.56 8.05C104.74 8.05 0 123.11 0 256.05c0 138.49 113.6 248 247.56 248 129.93 0 248.44-100.87 248.44-248 0-137.87-106.62-248-248.44-248zm.87 450.81c-112.54 0-203.7-93.04-203.7-202.81 0-105.42 85.43-203.27 203.72-203.27 112.53 0 202.82 89.46 202.82 203.26-.01 121.69-99.68 202.82-202.84 202.82z"></path></svg>
+    <svg aria-hidden="true" focusable="false" role="img" style="vertical-align: text-bottom;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" width="16" height="16"><path fill="#000" d="M247.6 8C389.4 8 496 118.1 496 256c0 147.1-118.5 248-248.4 248C113.6 504 0 394.5 0 256 0 123.1 104.7 8 247.6 8zm.8 44.7C130.2 52.7 44.7 150.6 44.7 256c0 109.8 91.2 202.8 203.7 202.8 103.2 0 202.8-81.1 202.8-202.8.1-113.8-90.2-203.3-202.8-203.3zm-.4 60.5c-81.9 0-102.5 77.3-102.5 142.8 0 65.5 20.6 142.8 102.5 142.8S350.5 321.5 350.5 256c0-65.5-20.6-142.8-102.5-142.8zm0 53.9c3.3 0 6.4.5 9.2 1.2 5.9 5.1 8.8 12.1 3.1 21.9l-54.5 100.2c-1.7-12.7-1.9-25.1-1.9-34.4 0-28.8 2-88.9 44.1-88.9zm40.8 46.2c2.9 15.4 3.3 31.4 3.3 42.7 0 28.9-2 88.9-44.1 88.9-13.5 0-32.6-7.7-20.1-26.4l60.9-105.2z"></path></svg>
+  </a>
+  To the extent possible under law, the creators of this documentation
+  have waived all copyrights and related or neighbouring rights
+  to this work through the
+  <a href="https://creativecommons.org/publicdomain/zero/1.0/">
+    Creative Commons Zero Universal (CC0 1.0) Public Domain Dedication.
+  </a>
+</div>
 
 
 </footer>
@@ -339,38 +389,15 @@ and the queries in <code class="docutils literal notranslate"><span class="pre">
   </div>
   
 
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.1.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/language_data.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

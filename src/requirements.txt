@@ -4,7 +4,7 @@
 # YES USE PIP3 BECAUSE OF PYTHON3 OR BE SUBJECT TO DEPENDENCY HELL
 
 sphinx>=2.0.0
-sphinx-theme
+sphinx-rtd-theme==0.5.0
 sphinxcontrib-blockdiag==2.0.0
 nwdiag==2.0.0
 
