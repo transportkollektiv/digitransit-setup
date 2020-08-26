@@ -125,6 +125,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#dynamic-parking-lots-routing-and-map-layer">Dynamic parking lots routing and map layer</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#opentripplanner">OpenTripPlanner</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#frontend">Frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config">Config</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#related-pull-requests-commits">Related pull requests &amp; commits</a></li>
 </ul>
 </li>
@@ -247,6 +248,50 @@ user may decide to re-run the routing query
 excluding full car-parks.</p>
 <p><img alt="Screenshot2" src="_images/dynamic-parking-lot-full.png" /></p>
 <p>This code lives in <code class="docutils literal notranslate"><span class="pre">CarLeg.js</span></code>.</p>
+</div>
+<div class="section" id="config">
+<h3>Config<a class="headerlink" href="#config" title="Permalink to this headline">¶</a></h3>
+<p>in OpenTripPlanner <code class="docutils literal notranslate"><span class="pre">router-config.json</span></code>  you need to add the <a class="reference internal" href="datasources.html#datasources-parkapi"><span class="std std-ref">ParkAPI</span></a> endpoint to updaters</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;updaters&quot;</span><span class="p">:</span> <span class="p">[</span>
+  <span class="o">...</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;park-api&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;car-park&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;frequencySec&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span>
+    <span class="s2">&quot;sourceType&quot;</span><span class="p">:</span> <span class="s2">&quot;park-api&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://api.parkendd.de/Ulm&quot;</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>In the frontend config (<code class="docutils literal notranslate"><span class="pre">app/configurations/config.xxx.js</span></code>):</p>
+<p>add maplayer URL</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>URL: {
+  ...
+  DYNAMICPARKINGLOTS_MAP: `${API_URL}/map/v1/parking-map/`
+}
+</pre></div>
+</div>
+</div></blockquote>
+<p>and activate dynamicParkingLots and configure zoom levels</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dynamicParkingLots</span><span class="p">:</span> <span class="p">{</span>
+  <span class="n">showDynamicParkingLots</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+  <span class="n">dynamicParkingLotsSmallIconZoom</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
+  <span class="n">dynamicParkingLotsMinZoom</span><span class="p">:</span> <span class="mi">14</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>and add sprites including the parking icons</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sprites</span><span class="p">:</span> <span class="s1">&#39;assets/svg-sprite.hb.svg&#39;</span>
+</pre></div>
+</div>
+</div></blockquote>
 </div>
 <div class="section" id="related-pull-requests-commits">
 <h3>Related pull requests &amp; commits<a class="headerlink" href="#related-pull-requests-commits" title="Permalink to this headline">¶</a></h3>
