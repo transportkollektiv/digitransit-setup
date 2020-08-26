@@ -11,6 +11,8 @@ Glossary
   GTFS
     General Transport Feed Specification, a common exchange format for public (static) transit schedules and related information such as stop locations etcetera. `Wikipedia (en) <https://en.wikipedia.org/wiki/General_Transit_Feed_Specification>`__; `Specification <https://developers.google.com/transit/gtfs/>`__
 
+    See also: :ref:`Datasources GTFS <datasources/gtfs>`
+
   GBFS
     General Bikeshare Feed Specification, a common exchange format for bikesharing (or vehicle sharing in general), including the location of sharing docks/hubs and individual free floating vehicles. Conceptually very different from GTFS. `Github specification repo <https://github.com/NABSA/gbfs>`__
 

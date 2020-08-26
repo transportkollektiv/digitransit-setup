@@ -10,7 +10,13 @@ This is a list of Digitransit data sources, formats and their capabilities.
 GTFS
 ----
 
-tbd
+`GTFS (General Transport Feed Specification) <https://en.wikipedia.org/wiki/General_Transit_Feed_Specification>`_ is a common exchange format for public (static) transit schedules and related information such as stop locations etcetera. It is the default format OpenTripPlanner is using for public transport routing.
+
+For live updates like vehicle positions, delays and temporary service disruptions `GTFS-RT <https://gtfs.org/reference/realtime/v2/>`_ (GTFS Realtime) can be used as an addition to GTFS. OpenTripPlanner is able to process GTFS-RT, if trip IDs are matching the GTFS-feeds IDs.
+
+If public transport agencies provide their data to other external services like Google Maps or Apple Maps, they are definitely able to provide GTFS-data.
+
+If OTP/digitransit only shows straight lines between trips, the shape.txt file is missing in the GTFS. Not all agencies are able to export them or can't export them for copyright reasons. The tool `pfaedle <https://github.com/ad-freiburg/pfaedle>`_ is able to add these shapes to an existing GTFS file.
 
 .. _`datasources/gbfs`:
 
@@ -31,7 +37,7 @@ OpenTripPlanner supports multimodal routing of station based sharing systems wit
 OpenStreetMap
 -------------
 
-`OpenStreetMap <openstreetmap.org/>`_ is a crowd sourced geo-database and also the biggest source for open map data. Data from OpenStreetMap is used for foot, bike and car routing in :term:`OpenTripPlanner`.
+`OpenStreetMap <https://openstreetmap.org/>`_ is a crowd sourced geo-database and also the biggest source for open map data. Data from OpenStreetMap is used for foot, bike and car routing in :term:`OpenTripPlanner`.
 
 OpenStreetMap data also can be used for search (geocoding) using :term:`pelias` or :term:`photon` with `photon-pelias-adapter <https://github.com/stadtulm/photon-pelias-adapter>`_.
 
