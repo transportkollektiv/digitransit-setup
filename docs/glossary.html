@@ -86,6 +86,7 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation guide</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="repo-overview.html">Repository Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stadtnavi-extensions.html">Stadtnavi extensions</a></li>
 </ul>
 
             
@@ -156,18 +157,29 @@
 </dd>
 <dt id="term-GTFS">GTFS</dt><dd><p>General Transport Feed Specification, a common exchange format for public (static) transit schedules and related information such as stop locations etcetera. <a class="reference external" href="https://en.wikipedia.org/wiki/General_Transit_Feed_Specification">Wikipedia (en)</a>; <a class="reference external" href="https://developers.google.com/transit/gtfs/">Specification</a></p>
 </dd>
-<dt id="term-GBFS">GBFS</dt><dd><p>General Bikeshare Feed Specification, a common exchange format for bikesharing (or vehicle sharing in general), including the location of sharing docks/hubs and individual vehicles. Conceptually very different from GTFS. <a class="reference external" href="https://github.com/NABSA/gbfs">Github specification repo</a></p>
+<dt id="term-GBFS">GBFS</dt><dd><p>General Bikeshare Feed Specification, a common exchange format for bikesharing (or vehicle sharing in general), including the location of sharing docks/hubs and individual free floating vehicles. Conceptually very different from GTFS. <a class="reference external" href="https://github.com/NABSA/gbfs">Github specification repo</a></p>
 </dd>
 <dt id="term-hsl-map-server">hsl-map-server</dt><dd><p>An additional map tile server (<a class="reference external" href="https://github.com/HSLdevcom/hsl-map-server">original repository here</a>) that ingests features such as stops, bikesharing stations etc. and displays them as items on an otherwise transparent map layer, above the basemap. This allows for clickable stops etc.</p>
+</dd>
+<dt id="term-OpenStreetMap">OpenStreetMap</dt><dd><p>A crowd sourced geo-database. Data from OpenStreetMap is used for foot, bike and car routing in <a class="reference internal" href="#term-OpenTripPlanner"><span class="xref std std-term">OpenTripPlanner</span></a>. Country and regional data extracts are provided by the <a class="reference external" href="http://download.geofabrik.de/">Geofabrik download servers</a>. For custom regions or smaller extracts the <a class="reference external" href="https://extract.bbbike.org/">BBBike extract service</a> can be used. (use PBF as extract format.)
+OpenStreetMap data also can be used for search. (<a class="reference internal" href="#term-pelias"><span class="xref std std-term">pelias</span></a>, <a class="reference internal" href="#term-photon"><span class="xref std std-term">photon</span></a>)
+<a class="reference external" href="openstreetmap.org/">Website</a></p>
 </dd>
 <dt id="term-OpenTripPlanner">OpenTripPlanner</dt><dd><p>The Free-/Open-Source multimodal trip planner used for digitransit. <a class="reference external" href="http://www.opentripplanner.org/">Website</a></p>
 </dd>
 <dt id="term-OTP-data-container">OTP data container</dt><dd><p>The Docker container in which the <a class="reference internal" href="#term-OpenTripPlanner"><span class="xref std std-term">OpenTripPlanner</span></a> routing graph lives. This container can be swapped out for an updated version whenever the need arises.</p>
 </dd>
-<dt id="term-pelias">pelias</dt><dd><p>King of Iolcus in Greek mythology. Also, a <a href="#id1"><span class="problematic" id="id2">`geocoder&lt;https://en.wikipedia.org/wiki/Geocoding&gt;`__</span></a>:
-insert address, get geocoordinates as a result. Or vice versa.
-Not maintained anymore, therefore replaced with photon in
+<dt id="term-ParkenDD-ParkAPI">ParkenDD / ParkAPI</dt><dd><p>OpenSource project to collect and scape parking lot occupancy data and bring them into an <a class="reference external" href="https://github.com/offenesdresden/ParkAPI/">unified json format</a>. Data can be integrated using <a class="reference external" href="stadtnavi-extensions.html#dynamic-parking-lots-routing-and-map-layer">dynamic parking lots</a>.
+<a class="reference external" href="https://parkendd.de">Website</a>, <a class="reference external" href="https://github.com/offenesdresden/ParkAPI/">Github</a>, <a class="reference external" href="https://parkendd.de/map.html">Map</a></p>
+</dd>
+<dt id="term-pelias">pelias</dt><dd><p>King of Iolcus in Greek mythology. Also, a <a class="reference external" href="https://en.wikipedia.org/wiki/Geocoding">geocoder</a>:
+insert address, get geocoordinates as a result. Or vice versa. Supports suggest as you type.
+Not maintained anymore, therefore replaced with <a class="reference external" href="https://github.com/komoot/photon">photon</a> using <a class="reference external" href="https://github.com/stadtulm/photon-pelias-adapter">photon-pelias-adapter</a> in
 our deployments. <a class="reference external" href="https://www.pelias.io/">Website</a></p>
+</dd>
+<dt id="term-photon">photon</dt><dd><p>OpenStreetMap data based <a class="reference external" href="https://en.wikipedia.org/wiki/Geocoding">geocoder</a>. Supports suggest as you type. Based on the <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Nominatim">Nominatim Geocoder</a>.
+We use photon in digitransit with <a class="reference external" href="https://github.com/stadtulm/photon-pelias-adapter">photon-pelias-adapter</a>.
+<a class="reference external" href="http://photon.komoot.de/">Website with Demo</a>, <a class="reference external" href="https://github.com/komoot/photon">Github</a></p>
 </dd>
 </dl>
 </div>
