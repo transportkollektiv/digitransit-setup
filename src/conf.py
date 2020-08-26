@@ -26,7 +26,7 @@ author = u'Maximilian Richt, Katharina Schweiger, Constantin Müller, Holger Bru
 # The short X.Y version
 version = u''
 # The full version, including alpha/beta/rc tags
-release = u'0.1.1'
+release = u'0.2.0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -100,6 +100,7 @@ html_css_files = [
     'css/custom.css',
 ]
 
+html_title = "digitransit transportkollektiv cookbook"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
