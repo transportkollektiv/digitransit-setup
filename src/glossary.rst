@@ -16,8 +16,8 @@ Glossary
     An additional map tile server (`original repository here <https://github.com/HSLdevcom/hsl-map-server>`__) that ingests features such as stops, bikesharing stations etc. and displays them as items on an otherwise transparent map layer, above the basemap. This allows for clickable stops etc.
 
   OpenStreetMap
-    A crowd sourced geo-database. Data from OpenStreetMap is used for foot, bike and car routing in OpenTripPlanner. Country and regional data extracts are provided by the `Geofabrik download servers <http://download.geofabrik.de/>`_. For custom regions or smaller extracts the `BBBike extract service <https://extract.bbbike.org/>`_ can be used. (use PBF as extract format.)
-    OpenStreetMap data also can be used for search. (pelias, photon)
+    A crowd sourced geo-database. Data from OpenStreetMap is used for foot, bike and car routing in :term:`OpenTripPlanner`. Country and regional data extracts are provided by the `Geofabrik download servers <http://download.geofabrik.de/>`_. For custom regions or smaller extracts the `BBBike extract service <https://extract.bbbike.org/>`_ can be used. (use PBF as extract format.)
+    OpenStreetMap data also can be used for search. (:term:`pelias`, :term:`photon`)
     `Website <openstreetmap.org/>`_ 
 
   OpenTripPlanner
@@ -25,6 +25,10 @@ Glossary
 
   OTP data container
     The Docker container in which the :term:`OpenTripPlanner` routing graph lives. This container can be swapped out for an updated version whenever the need arises.
+
+  ParkenDD / ParkAPI
+    OpenSource project to collect and scape parking lot occupancy data and bring them into an `unified json format <https://github.com/offenesdresden/ParkAPI/>`_. Data can be integrated using `dynamic parking lots <stadtnavi-extensions.html#dynamic-parking-lots-routing-and-map-layer>`_.
+    `Website <https://parkendd.de>`_, `Github <https://github.com/offenesdresden/ParkAPI/>`_, `Map <https://parkendd.de/map.html>`_
 
   pelias
     King of Iolcus in Greek mythology. Also, a `geocoder <https://en.wikipedia.org/wiki/Geocoding>`_: 
