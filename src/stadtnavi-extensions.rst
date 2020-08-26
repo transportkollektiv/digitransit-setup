@@ -5,6 +5,8 @@ Stadtnavi extensions
 
 Stadtnavi has added the following features:
 
+.. _`stadtnavi-extensions/dynamic-parking-lots`:
+
 Dynamic parking lots routing and map layer
 ------------------------------------------
 

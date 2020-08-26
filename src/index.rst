@@ -39,6 +39,7 @@ outdated information.
    glossary
    repo-overview
    stadtnavi-extensions
+   datasources
 
 
 

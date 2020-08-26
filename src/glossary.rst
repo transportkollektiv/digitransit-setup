@@ -1,3 +1,5 @@
+:github_url:  https://github.com/transportkollektiv/digitransit-setup/tree/main/src/glossary.rst
+
 Glossary
 ========
 
@@ -18,7 +20,9 @@ Glossary
   OpenStreetMap
     A crowd sourced geo-database. Data from OpenStreetMap is used for foot, bike and car routing in :term:`OpenTripPlanner`. Country and regional data extracts are provided by the `Geofabrik download servers <http://download.geofabrik.de/>`_. For custom regions or smaller extracts the `BBBike extract service <https://extract.bbbike.org/>`_ can be used. (use PBF as extract format.)
     OpenStreetMap data also can be used for search. (:term:`pelias`, :term:`photon`)
-    `Website <openstreetmap.org/>`_ 
+    `Website <https://openstreetmap.org/>`_ 
+
+    See also: :ref:`Datasources OpenStreetMap <datasources/openstreetmap>`
 
   OpenTripPlanner
     The Free-/Open-Source multimodal trip planner used for digitransit. `Website <http://www.opentripplanner.org/>`__
@@ -27,8 +31,11 @@ Glossary
     The Docker container in which the :term:`OpenTripPlanner` routing graph lives. This container can be swapped out for an updated version whenever the need arises.
 
   ParkenDD / ParkAPI
-    OpenSource project to collect and scape parking lot occupancy data and bring them into an `unified json format <https://github.com/offenesdresden/ParkAPI/>`_. Data can be integrated using `dynamic parking lots <stadtnavi-extensions.html#dynamic-parking-lots-routing-and-map-layer>`_.
+    
+    OpenSource project to collect and scape parking lot occupancy data and bring them into an `unified json format <https://github.com/offenesdresden/ParkAPI/>`_. Data can be integrated using :ref:`stadtnavi extension dynamic parking lots<stadtnavi-extensions/dynamic-parking-lots>`.
     `Website <https://parkendd.de>`_, `Github <https://github.com/offenesdresden/ParkAPI/>`_, `Map <https://parkendd.de/map.html>`_
+
+    See also: :ref:`Datasources ParkenDD ParkAPI <datasources/parkapi>`
 
   pelias
     King of Iolcus in Greek mythology. Also, a `geocoder <https://en.wikipedia.org/wiki/Geocoding>`_: 
