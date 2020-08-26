@@ -144,14 +144,13 @@ Method 1: vsh-style modifying of opentripplanner-data-container
 
     .. todo:: provide patch for SKIP\_SEED
 
-    Until PR #XX <> is merged, we have to apply this patch, to support
-    skipping the seed-step hsl is using to keep rebuilding the
+    Apply this patch, to support skipping the seed-step hsl is using to keep rebuilding the
     otp-data-container periodically. In our case, a fresh setup starting
     without an old container we could seed from, this sadly breaks every
     time.
 
     Apply by executing
-    ``curl https://github.com/HSLdevcom/OpenTripPlanner-data-container/commit/d657285fd2f73f11bedb9478be6880607b5b9733.patch | git apply``
+    ``curl https://github.com/verschwoerhaus/OpenTripPlanner-data-container/commit/d657285fd2f73f11bedb9478be6880607b5b9733.patch | git apply``
 
     And now, we can finally build our own ``opentripplanner-data-container``!
 
@@ -446,6 +445,5 @@ TODO
 
 -  try with a "real" kubernetes cluster, not only single node. eg. GKE
 -  bring upstream:
--  https://github.com/verschwoerhaus/tilelive-otp-stops/commit/858e8fc7db5fbd206019236816a029259cf40582
--  https://github.com/verschwoerhaus/OpenTripPlanner-data-container/commit/d657285fd2f73f11bedb9478be6880607b5b9733
 
+  -  https://github.com/verschwoerhaus/tilelive-otp-stops/commit/858e8fc7db5fbd206019236816a029259cf40582
