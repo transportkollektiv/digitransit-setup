@@ -223,7 +223,10 @@
 <p>This is a list of Digitransit data sources, formats and their capabilities.</p>
 <div class="section" id="gtfs">
 <span id="datasources-gtfs"></span><h2>GTFS<a class="headerlink" href="#gtfs" title="Permalink to this headline">¶</a></h2>
-<p>tbd</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/General_Transit_Feed_Specification">GTFS (General Transport Feed Specification)</a> is a common exchange format for public (static) transit schedules and related information such as stop locations etcetera. It is the default format OpenTripPlanner is using for public transport routing.</p>
+<p>For live updates like vehicle positions, delays and temporary service disruptions <a class="reference external" href="https://gtfs.org/reference/realtime/v2/">GTFS-RT</a> (GTFS Realtime) can be used as an addition to GTFS. OpenTripPlanner is able to process GTFS-RT, if trip IDs are matching the GTFS-feeds IDs.</p>
+<p>If public transport agencies provide their data to other external services like Google Maps or Apple Maps, they are definitely able to provide GTFS-data.</p>
+<p>If OTP/digitransit only shows straight lines between trips, the shape.txt file is missing in the GTFS. Not all agencies are able to export them or can’t export them for copyright reasons. The tool <a class="reference external" href="https://github.com/ad-freiburg/pfaedle">pfaedle</a> is able to add these shapes to an existing GTFS file.</p>
 </div>
 <div class="section" id="gbfs">
 <span id="datasources-gbfs"></span><h2>GBFS<a class="headerlink" href="#gbfs" title="Permalink to this headline">¶</a></h2>
@@ -234,7 +237,7 @@
 </div>
 <div class="section" id="openstreetmap">
 <span id="datasources-openstreetmap"></span><h2>OpenStreetMap<a class="headerlink" href="#openstreetmap" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="openstreetmap.org/">OpenStreetMap</a> is a crowd sourced geo-database and also the biggest source for open map data. Data from OpenStreetMap is used for foot, bike and car routing in <a class="reference internal" href="glossary.html#term-OpenTripPlanner"><span class="xref std std-term">OpenTripPlanner</span></a>.</p>
+<p><a class="reference external" href="https://openstreetmap.org/">OpenStreetMap</a> is a crowd sourced geo-database and also the biggest source for open map data. Data from OpenStreetMap is used for foot, bike and car routing in <a class="reference internal" href="glossary.html#term-OpenTripPlanner"><span class="xref std std-term">OpenTripPlanner</span></a>.</p>
 <p>OpenStreetMap data also can be used for search (geocoding) using <a class="reference internal" href="glossary.html#term-pelias"><span class="xref std std-term">pelias</span></a> or <a class="reference internal" href="glossary.html#term-photon"><span class="xref std std-term">photon</span></a> with <a class="reference external" href="https://github.com/stadtulm/photon-pelias-adapter">photon-pelias-adapter</a>.</p>
 <p>You most likely don’t want the data for the whole planet (which would be available on <a class="reference external" href="https://planet.openstreetmap.org/">planet.openstreetmap.org</a>). Therefore extracts of counties and regions exists. <a class="reference external" href="https://www.geofabrik.de/en/index.html">Geofabrik</a> Provides daily updated extracts for all countries and some smaller regions on their <a class="reference external" href="http://download.geofabrik.de/">download servers</a>.
 Samller Extracts of custom regions can be gererated using the <a class="reference external" href="https://extract.bbbike.org/">BBBike extract service</a>.</p>
