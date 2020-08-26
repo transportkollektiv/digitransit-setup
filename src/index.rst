@@ -35,7 +35,7 @@ outdated information.
    :maxdepth: 2
    :caption: Contents:
 
-   installation
+   installation/index
    repo-overview
    stadtnavi-extensions
    datasources
