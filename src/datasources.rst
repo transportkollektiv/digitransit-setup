@@ -16,7 +16,7 @@ For live updates like vehicle positions, delays and temporary service disruption
 
 If public transport agencies provide their data to other external services like Google Maps or Apple Maps, they are definitely able to provide GTFS-data.
 
-If OTP/digitransit only shows straight lines between trips, the shapes.txt file is missing in the GTFS. Not all agencies are able to export them or can't export them for copyright reasons. The tool `pfaedle <https://github.com/ad-freiburg/pfaedle>`_ is able to add these shapes to an existing GTFS file. It also looks like `ArcGIS is able <http://www.arcgis.com/home/item.html?id=ce51601e18ae4367814a8a53a1659b33>`_ to generate the shapes.txt file from GTFS.
+If OTP/digitransit only shows straight lines between trips, the ``shapes.txt`` file is missing in the GTFS. Not all agencies are able to export them or can't export them for copyright reasons. The tool `pfaedle <https://github.com/ad-freiburg/pfaedle>`_ is able to add these shapes to an existing GTFS file. It also looks like `ArcGIS is able <http://www.arcgis.com/home/item.html?id=ce51601e18ae4367814a8a53a1659b33>`_ to generate the ``shapes.txt`` file from GTFS.
 
 .. _`datasources/gbfs`:
 
@@ -39,9 +39,9 @@ OpenStreetMap
 
 `OpenStreetMap <https://openstreetmap.org/>`_ is a crowd sourced geo-database and also the biggest source for open map data. Data from OpenStreetMap is used for foot, bike and car routing in :term:`OpenTripPlanner`.
 
-OpenStreetMap data also can be used for search (geocoding) using :term:`pelias` or :term:`photon` with `photon-pelias-adapter <https://github.com/stadtulm/photon-pelias-adapter>`_.
+OpenStreetMap data also can be used for search (`geocoding <https://en.wikipedia.org/wiki/Geocoding>`_) using :term:`pelias` or :term:`photon` with `photon-pelias-adapter <https://github.com/stadtulm/photon-pelias-adapter>`_.
 
-You most likely don't want the data for the whole planet (which would be available on `planet.openstreetmap.org <https://planet.openstreetmap.org/>`_). Therefore extracts of counties and regions exists. `Geofabrik <https://www.geofabrik.de/en/index.html>`_ Provides daily updated extracts for all countries and some smaller regions on their `download servers <http://download.geofabrik.de/>`_.
+You most likely don't want the data for the whole planet (which would be available on `planet.openstreetmap.org <https://planet.openstreetmap.org/>`_). Therefore extracts of counties and regions exists. `Geofabrik <https://www.geofabrik.de/en/index.html>`_ provides daily updated extracts for all countries and some smaller regions on their `download servers <http://download.geofabrik.de/>`_.
 Samller Extracts of custom regions can be gererated using the `BBBike extract service <https://extract.bbbike.org/>`_.
 
 For the use in OpenTripPlanner you need to download the data in ``.pbf``-Format (Protocolbuffer).
@@ -59,6 +59,6 @@ Data from ParkenDD or in ParkAPI format can be included in digitransit using :re
 
 ParkAPI format is also descriped in JSON schema https://github.com/offenesdresden/ParkAPI/wiki/city.json
 
-A Map representation of the data can be found `here <https://parkendd.de/en/map.html#Dresden>`_. You can find the integrated cities in the dropdown on the top right or in the `github repo <https://github.com/offenesdresden/ParkAPI/tree/master/park_api/cities>`_. To integrate new cities you can look a the `Sample_City script <https://github.com/offenesdresden/ParkAPI/blob/master/park_api/cities/Sample_City.py>`_ and the `repos readme <https://github.com/offenesdresden/ParkAPI#adding-support-for-a-new-city>`_.
+A map representation of the data can be found `here <https://parkendd.de/en/map.html#Dresden>`_. You can find the integrated cities in the dropdown on the top right or in the `github repo <https://github.com/offenesdresden/ParkAPI/tree/master/park_api/cities>`_. To integrate new cities you can look a the `Sample_City script <https://github.com/offenesdresden/ParkAPI/blob/master/park_api/cities/Sample_City.py>`_ and the `repos readme <https://github.com/offenesdresden/ParkAPI#adding-support-for-a-new-city>`_.
 
 A public API for all integrated cities is available at  ``https://api.parkendd.de/``.
