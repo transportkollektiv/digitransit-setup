@@ -46,144 +46,146 @@ Method 1: vsh-style modifying of opentripplanner-data-container
     preserved for archival reasons. Please skip ahead to 
     `Method 2: muenster-style custom container`_
 
-Check out `HSLdevcom/OpenTripPlanner-data-container <https://github.com/HSLdevcom/OpenTripPlanner-data-container>`__
+.. container:: toggle
 
-``git clone https://github.com/HSLdevcom/OpenTripPlanner-data-container``
+    Check out `HSLdevcom/OpenTripPlanner-data-container <https://github.com/HSLdevcom/OpenTripPlanner-data-container>`__
 
-Copy the ``router-waltti`` folder to ``router-ulm`` (replace ``ulm``
-with your :term:`GTFS` identifier). Inside ``router-ulm``, edit
-``build-config.js``
+    ``git clone https://github.com/HSLdevcom/OpenTripPlanner-data-container``
 
-::
+    Copy the ``router-waltti`` folder to ``router-ulm`` (replace ``ulm``
+    with your :term:`GTFS` identifier). Inside ``router-ulm``, edit
+    ``build-config.js``
 
-    {
-      "areaVisibility": true,
-      "parentStopLinking": true,
-      "osmWayPropertySet": "default",
-      "elevationUnitMultiplier": 0.1
-    }
+    ::
 
-(Remove stuff like ``"fares": "HSL",``, this is not relevant outside of
-finland).
+        {
+          "areaVisibility": true,
+          "parentStopLinking": true,
+          "osmWayPropertySet": "default",
+          "elevationUnitMultiplier": 0.1
+        }
 
-Also edit ``router-config.js``. The ``routingDefaults`` are mostly okay.
-If you are not satisfied with the routing suggestions, try to modify
-these values. ``updaters`` are for realtime updates to feeds (think:
-GTFS-RT) or :term:`GBFS` (Bikesharing, Carsharing) status updates. If you don't
-have these, simply replace it with ``updaters: []``. Your
-``router-config.js`` could look like this:
+    (Remove stuff like ``"fares": "HSL",``, this is not relevant outside of
+    finland).
 
-::
+    Also edit ``router-config.js``. The ``routingDefaults`` are mostly okay.
+    If you are not satisfied with the routing suggestions, try to modify
+    these values. ``updaters`` are for realtime updates to feeds (think:
+    GTFS-RT) or :term:`GBFS` (Bikesharing, Carsharing) status updates. If you don't
+    have these, simply replace it with ``updaters: []``. Your
+    ``router-config.js`` could look like this:
 
-    {
-      "routingDefaults": {
-          "walkSpeed": 1.3,
-          "transferSlack": 120,
-          "maxTransfers": 4,
-          "waitReluctance": 0.95,
-          "waitAtBeginningFactor": 0.7,
-          "walkReluctance": 1.75,
-          "stairsReluctance": 1.65,
-          "walkBoardCost": 540,
-          "itineraryFiltering": 1.0,
-          "maxSlope": 0.125
-      },
-      "updaters": []
-    }
+    ::
 
-In the main directory, edit the ``config.js`` and add a new
-``ULM_CONFIG`` like the ``HSL_CONFIG``. Insert your :term:`GTFS` URL. For
-example like this:
+        {
+          "routingDefaults": {
+              "walkSpeed": 1.3,
+              "transferSlack": 120,
+              "maxTransfers": 4,
+              "waitReluctance": 0.95,
+              "waitAtBeginningFactor": 0.7,
+              "walkReluctance": 1.75,
+              "stairsReluctance": 1.65,
+              "walkBoardCost": 540,
+              "itineraryFiltering": 1.0,
+              "maxSlope": 0.125
+          },
+          "updaters": []
+        }
 
-::
+    In the main directory, edit the ``config.js`` and add a new
+    ``ULM_CONFIG`` like the ``HSL_CONFIG``. Insert your :term:`GTFS` URL. For
+    example like this:
 
-    const ULM_CONFIG = {
-      'id': 'ulm',
-      'src': [
-        src('DING', 'https://www.nvbw.de/fileadmin/nvbw/open-data/Fahrplandaten_mit_Liniennetz/ding.zip', false),
-      ],
-      'osm': 'ulm',
-      // 'dem': 'hsl' // we don't have a Digital Elevation Model
-    }
+    ::
 
-In the ``setCurrentConfig`` method, you need to add your thusly created
-config to ``ALL_CONFIGS``, like this:
+        const ULM_CONFIG = {
+          'id': 'ulm',
+          'src': [
+            src('DING', 'https://www.nvbw.de/fileadmin/nvbw/open-data/Fahrplandaten_mit_Liniennetz/ding.zip', false),
+          ],
+          'osm': 'ulm',
+          // 'dem': 'hsl' // we don't have a Digital Elevation Model
+        }
 
-::
+    In the ``setCurrentConfig`` method, you need to add your thusly created
+    config to ``ALL_CONFIGS``, like this:
 
-    const setCurrentConfig = (name) => {
-      ALL_CONFIGS = [WALTTI_CONFIG, HSL_CONFIG, FINLAND_CONFIG, ULM_CONFIG].reduce((acc, nxt) => {
+    ::
 
-Add your OSM extract to the osm config near the end of the file:
+        const setCurrentConfig = (name) => {
+          ALL_CONFIGS = [WALTTI_CONFIG, HSL_CONFIG, FINLAND_CONFIG, ULM_CONFIG].reduce((acc, nxt) => {
 
-::
+    Add your OSM extract to the osm config near the end of the file:
 
-    const osm = [
-      { id: 'finland', url: 'https://karttapalvelu.storage.hsldev.com/finland.osm/finland.osm.pbf' },
-      { id: 'hsl', url: 'https://karttapalvelu.storage.hsldev.com/hsl.osm/hsl.osm.pbf' },
-      { id: 'ulm', url: 'https://download.geofabrik.de/europe/germany/baden-wuerttemberg/tuebingen-regbez-latest.osm.pbf' }
-    ]
+    ::
 
-Modify ``Dockerfile`` to include your ``router-ulm`` directory: ``ADD router-hsl /opt/otp-data-builder/router-hsl ADD router-waltti /opt/otp-data-builder/router-waltti ADD router-ulm /opt/otp-data-builder/router-ulm``
+        const osm = [
+          { id: 'finland', url: 'https://karttapalvelu.storage.hsldev.com/finland.osm/finland.osm.pbf' },
+          { id: 'hsl', url: 'https://karttapalvelu.storage.hsldev.com/hsl.osm/hsl.osm.pbf' },
+          { id: 'ulm', url: 'https://download.geofabrik.de/europe/germany/baden-wuerttemberg/tuebingen-regbez-latest.osm.pbf' }
+        ]
 
-Modify ``gulpfile.js`` to include your router configuration in the build
-process. Near the end of the file,
-``gulp.task('router:buildGraph', ...`` has a list of pipes that we need
-to add to:
+    Modify ``Dockerfile`` to include your ``router-ulm`` directory: ``ADD router-hsl /opt/otp-data-builder/router-hsl ADD router-waltti /opt/otp-data-builder/router-waltti ADD router-ulm /opt/otp-data-builder/router-ulm``
 
-.. code:: diff
+    Modify ``gulpfile.js`` to include your router configuration in the build
+    process. Near the end of the file,
+    ``gulp.task('router:buildGraph', ...`` has a list of pipes that we need
+    to add to:
 
-    gulp.task('router:buildGraph', gulp.series('router:copy', function () {
-      gulp.src(['otp-data-container/*', 'otp-data-container/.*'])
-        .pipe(gulp.dest(`${config.dataDir}/build/waltti`))
-        .pipe(gulp.dest(`${config.dataDir}/build/finland`))
-        .pipe(gulp.dest(`${config.dataDir}/build/hsl`))
-        .pipe(gulp.dest(`${config.dataDir}/build/ulm`))
+    .. code:: diff
 
-.. todo:: provide patch for SKIP\_SEED
+        gulp.task('router:buildGraph', gulp.series('router:copy', function () {
+          gulp.src(['otp-data-container/*', 'otp-data-container/.*'])
+            .pipe(gulp.dest(`${config.dataDir}/build/waltti`))
+            .pipe(gulp.dest(`${config.dataDir}/build/finland`))
+            .pipe(gulp.dest(`${config.dataDir}/build/hsl`))
+            .pipe(gulp.dest(`${config.dataDir}/build/ulm`))
 
-Until PR #XX <> is merged, we have to apply this patch, to support
-skipping the seed-step hsl is using to keep rebuilding the
-otp-data-container periodically. In our case, a fresh setup starting
-without an old container we could seed from, this sadly breaks every
-time.
+    .. todo:: provide patch for SKIP\_SEED
 
-Apply by executing
-``curl https://github.com/HSLdevcom/OpenTripPlanner-data-container/commit/d657285fd2f73f11bedb9478be6880607b5b9733.patch | git apply``
+    Until PR #XX <> is merged, we have to apply this patch, to support
+    skipping the seed-step hsl is using to keep rebuilding the
+    otp-data-container periodically. In our case, a fresh setup starting
+    without an old container we could seed from, this sadly breaks every
+    time.
 
-And now, we can finally build our own ``opentripplanner-data-container``!
+    Apply by executing
+    ``curl https://github.com/HSLdevcom/OpenTripPlanner-data-container/commit/d657285fd2f73f11bedb9478be6880607b5b9733.patch | git apply``
 
-- Run ``npm install``
-- Run ``ROUTERS=ulm ORG=verschwoerhaus SKIP_SEED=true node index.js once``
-  (Set ``ROUTERS=`` to your config identifier, set ``ORG`` to your docker
-  hub username or organization)
-- Note the opentripplanner version the graph gets built with and save
-  this information for later use. You can see this in the testing step
-  of the build in a line like this:
+    And now, we can finally build our own ``opentripplanner-data-container``!
 
-::
+    - Run ``npm install``
+    - Run ``ROUTERS=ulm ORG=verschwoerhaus SKIP_SEED=true node index.js once``
+      (Set ``ROUTERS=`` to your config identifier, set ``ORG`` to your docker
+      hub username or organization)
+    - Note the opentripplanner version the graph gets built with and save
+      this information for later use. You can see this in the testing step
+      of the build in a line like this:
 
-    22:42:55.917 INFO (Graph.java:752) OTP version:   MavenVersion(1, 5, 0, SNAPSHOT, da7ca2a4d5a8cb381cd64efc6df5ba4252d45440)
+    ::
 
-This OTP version is also the version of otp that has to run to ingest
-the data container again - and is needed for the container image tag of
-otp below when building the kubernetes config.
+        22:42:55.917 INFO (Graph.java:752) OTP version:   MavenVersion(1, 5, 0, SNAPSHOT, da7ca2a4d5a8cb381cd64efc6df5ba4252d45440)
 
-After running the command (this could take a few minutes), you should
-see a new image appear in ``docker images``:
+    This OTP version is also the version of otp that has to run to ingest
+    the data container again - and is needed for the container image tag of
+    otp below when building the kubernetes config.
 
-::
+    After running the command (this could take a few minutes), you should
+    see a new image appear in ``docker images``:
 
-    REPOSITORY                                          TAG                                        IMAGE ID            CREATED             SIZE
-    hsldevcom/opentripplanner-data-container-ulm        test                                       9742c641ad50        2 minutes ago      209MB
+    ::
 
-You can now retag this image with your docker hub organization and
-correct tag and push it to docker hub:
+        REPOSITORY                                          TAG                                        IMAGE ID            CREATED             SIZE
+        hsldevcom/opentripplanner-data-container-ulm        test                                       9742c641ad50        2 minutes ago      209MB
 
-::
+    You can now retag this image with your docker hub organization and
+    correct tag and push it to docker hub:
 
-    docker tag hsldevcom/opentripplanner-data-container-ulm:test verschwoerhaus/opentripplanner-data-container-ulm:2020-01-21
-    docker push verschwoerhaus/opentripplanner-data-container-ulm:2020-01-21
+    ::
+
+        docker tag hsldevcom/opentripplanner-data-container-ulm:test verschwoerhaus/opentripplanner-data-container-ulm:2020-01-21
+        docker push verschwoerhaus/opentripplanner-data-container-ulm:2020-01-21
 
 Method 2: muenster-style custom container
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

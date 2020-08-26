@@ -43,6 +43,7 @@ extensions = [
     'sphinx.ext.githubpages',
     'sphinxcontrib.blockdiag',
     'sphinx_rtd_theme',
+    'sphinx_togglebutton',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
