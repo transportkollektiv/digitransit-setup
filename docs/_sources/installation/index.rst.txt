@@ -20,3 +20,4 @@ If you attempt building your own deployment for the first time, budget for a few
    requirements
    overview
    step-by-step
+   faq

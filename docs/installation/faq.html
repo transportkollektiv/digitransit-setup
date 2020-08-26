@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Overview &mdash; digitransit-tk 0.1.1 documentation</title>
+  <title>Frequently Asked Questions &mdash; digitransit-tk 0.1.1 documentation</title>
   
 
   
@@ -40,8 +40,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Step-by-step guide" href="step-by-step.html" />
-    <link rel="prev" title="Requirements" href="requirements.html" /> 
+    <link rel="next" title="Repository Overview" href="../repo-overview.html" />
+    <link rel="prev" title="Step-by-step guide" href="step-by-step.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -93,7 +93,7 @@
 <li class="toctree-l3"><a class="reference internal" href="requirements.html#optional">optional</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="step-by-step.html">Step-by-step guide</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="step-by-step.html#preparing-your-build-host">0. Preparing your build host</a></li>
 <li class="toctree-l3"><a class="reference internal" href="step-by-step.html#building-an-opentripplanner-graph">1. Building an OpenTripPlanner Graph</a><ul>
@@ -112,7 +112,7 @@
 <li class="toctree-l3"><a class="reference internal" href="step-by-step.html#todo">TODO</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Frequently Asked Questions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../repo-overview.html">Repository Overview</a><ul>
@@ -198,7 +198,7 @@
         
           <li><a href="index.html">Installation guide</a> &raquo;</li>
         
-      <li>Overview</li>
+      <li>Frequently Asked Questions</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -206,7 +206,7 @@
             
             
               <!-- User defined GitHub URL -->
-              <a href="https://github.com/transportkollektiv/digitransit-setup/tree/main/src/installation/overview.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/transportkollektiv/digitransit-setup/tree/main/src/installation/faq.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -220,25 +220,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
-<p>digitransit is a slightly complex system composed of multiple services
-in container that talk to each other. A nice architecture image can be
-found at the <a class="reference external" href="https://digitransit.fi/en/developers/architecture/">digitransit.fi
-documentation</a>.</p>
-<p>The main components of an digitransit deployment consists of:</p>
+  <div class="section" id="frequently-asked-questions">
+<h1>Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><p>Multimodal routing engine (<a class="reference internal" href="../glossary.html#term-OpenTripPlanner"><span class="xref std std-term">OpenTripPlanner</span></a>)</p></li>
-<li><p>Address search (originally <a class="reference internal" href="../glossary.html#term-pelias"><span class="xref std std-term">pelias</span></a>)</p></li>
-<li><p>Background map service (<a class="reference internal" href="../glossary.html#term-hsl-map-server"><span class="xref std std-term">hsl-map-server</span></a>: [tessera], [tilelive])</p></li>
-<li><p>Web browser-based user interface (<a class="reference internal" href="../glossary.html#term-digitransit-ui"><span class="xref std std-term">digitransit-ui</span></a>)</p></li>
+<li><p><strong>I see no frequently asked questions?!</strong> – Feel free to ask one :)</p></li>
+<li><p><strong>I did everything as you say, but when I test bus relations, the route
+is all zigzagging over the map instead of following the road</strong>
+–  Your <a class="reference internal" href="../glossary.html#term-GTFS"><span class="xref std std-term">GTFS</span></a> feed is missing <code class="docutils literal notranslate"><span class="pre">shapes.txt</span></code>. This happens
+occasionally, depending on where you get your feed from. See <a class="reference external" href="https://ulm.dev/2020/01/17/pfaedle/">this blog
+post</a> on how to integrate
+them into your feed yourself</p></li>
 </ul>
-<p>A nicer description of the components and their job exists also at
-<a class="reference external" href="https://digitransit.fi/en/services/">https://digitransit.fi/en/services/</a></p>
-<div><img height="600" src="../_images/blockdiag-14f146bafa76dd491c20644fd2d2a893ec715197.png" width="832" /></div><div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>As can be seen in the diagram, some dependencies are circular. This poses a few challenges when first setting up a working instance, which we will address later on.</p>
-</div>
 </div>
 
 
@@ -249,10 +241,10 @@ documentation</a>.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="step-by-step.html" class="btn btn-neutral float-right" title="Step-by-step guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../repo-overview.html" class="btn btn-neutral float-right" title="Repository Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="requirements.html" class="btn btn-neutral float-left" title="Requirements" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="step-by-step.html" class="btn btn-neutral float-left" title="Step-by-step guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
