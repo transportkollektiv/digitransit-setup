@@ -23,7 +23,7 @@ Most bike- and scootersharing operators are able to provide GBFS, also most whit
 
 The specification is available `on Github <https://github.com/NABSA/gbfs>`_
 
-OpenTripPlanner supports multimodal routing of station based sharing systems with GBFS by default. For free floating systems :ref:`Stadtnavi extension <stadtnavi-extensions/free-floating>`_ can be used.
+OpenTripPlanner supports multimodal routing of station based sharing systems with GBFS by default. For free floating systems :ref:`Stadtnavi extension <stadtnavi-extensions/free-floating>` can be used.
 
 
 .. _`datasources/openstreetmap`:
