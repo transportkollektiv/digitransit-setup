@@ -13,6 +13,7 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
 
   
@@ -31,6 +32,8 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/language_data.js"></script>
+        <script src="../_static/togglebutton.js"></script>
+        <script >var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -260,6 +263,7 @@ need this often. In our example, we use <code class="docutils literal notranslat
 preserved for archival reasons. Please skip ahead to
 <a class="reference internal" href="#method-2-muenster-style-custom-container">Method 2: muenster-style custom container</a></p>
 </div>
+<div class="toggle docutils container">
 <p>Check out <a class="reference external" href="https://github.com/HSLdevcom/OpenTripPlanner-data-container">HSLdevcom/OpenTripPlanner-data-container</a></p>
 <p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/HSLdevcom/OpenTripPlanner-data-container</span></code></p>
 <p>Copy the <code class="docutils literal notranslate"><span class="pre">router-waltti</span></code> folder to <code class="docutils literal notranslate"><span class="pre">router-ulm</span></code> (replace <code class="docutils literal notranslate"><span class="pre">ulm</span></code>
@@ -376,6 +380,7 @@ correct tag and push it to docker hub:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">tag</span> <span class="n">hsldevcom</span><span class="o">/</span><span class="n">opentripplanner</span><span class="o">-</span><span class="n">data</span><span class="o">-</span><span class="n">container</span><span class="o">-</span><span class="n">ulm</span><span class="p">:</span><span class="n">test</span> <span class="n">verschwoerhaus</span><span class="o">/</span><span class="n">opentripplanner</span><span class="o">-</span><span class="n">data</span><span class="o">-</span><span class="n">container</span><span class="o">-</span><span class="n">ulm</span><span class="p">:</span><span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">21</span>
 <span class="n">docker</span> <span class="n">push</span> <span class="n">verschwoerhaus</span><span class="o">/</span><span class="n">opentripplanner</span><span class="o">-</span><span class="n">data</span><span class="o">-</span><span class="n">container</span><span class="o">-</span><span class="n">ulm</span><span class="p">:</span><span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">21</span>
 </pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="method-2-muenster-style-custom-container">
