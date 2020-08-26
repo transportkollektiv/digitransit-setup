@@ -348,13 +348,12 @@ to add to:</p>
 <p class="admonition-title">Todo</p>
 <p>provide patch for SKIP_SEED</p>
 </div>
-<p>Until PR #XX &lt;&gt; is merged, we have to apply this patch, to support
-skipping the seed-step hsl is using to keep rebuilding the
+<p>Apply this patch, to support skipping the seed-step hsl is using to keep rebuilding the
 otp-data-container periodically. In our case, a fresh setup starting
 without an old container we could seed from, this sadly breaks every
 time.</p>
 <p>Apply by executing
-<code class="docutils literal notranslate"><span class="pre">curl</span> <span class="pre">https://github.com/HSLdevcom/OpenTripPlanner-data-container/commit/d657285fd2f73f11bedb9478be6880607b5b9733.patch</span> <span class="pre">|</span> <span class="pre">git</span> <span class="pre">apply</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">curl</span> <span class="pre">https://github.com/verschwoerhaus/OpenTripPlanner-data-container/commit/d657285fd2f73f11bedb9478be6880607b5b9733.patch</span> <span class="pre">|</span> <span class="pre">git</span> <span class="pre">apply</span></code></p>
 <p>And now, we can finally build our own <code class="docutils literal notranslate"><span class="pre">opentripplanner-data-container</span></code>!</p>
 <ul class="simple">
 <li><p>Run <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">install</span></code></p></li>
@@ -601,9 +600,12 @@ to check against. Do a little dance :)</p>
 <ul class="simple">
 <li><p>try with a “real” kubernetes cluster, not only single node. eg. GKE</p></li>
 <li><p>bring upstream:</p></li>
-<li><p><a class="reference external" href="https://github.com/verschwoerhaus/tilelive-otp-stops/commit/858e8fc7db5fbd206019236816a029259cf40582">https://github.com/verschwoerhaus/tilelive-otp-stops/commit/858e8fc7db5fbd206019236816a029259cf40582</a></p></li>
-<li><p><a class="reference external" href="https://github.com/verschwoerhaus/OpenTripPlanner-data-container/commit/d657285fd2f73f11bedb9478be6880607b5b9733">https://github.com/verschwoerhaus/OpenTripPlanner-data-container/commit/d657285fd2f73f11bedb9478be6880607b5b9733</a></p></li>
 </ul>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://github.com/verschwoerhaus/tilelive-otp-stops/commit/858e8fc7db5fbd206019236816a029259cf40582">https://github.com/verschwoerhaus/tilelive-otp-stops/commit/858e8fc7db5fbd206019236816a029259cf40582</a></p></li>
+</ul>
+</div></blockquote>
 </div>
 </div>
 
