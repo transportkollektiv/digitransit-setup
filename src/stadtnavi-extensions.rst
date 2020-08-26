@@ -50,6 +50,56 @@ excluding full car-parks.
 
 This code lives in ``CarLeg.js``.
 
+Config
+^^^^^^
+
+in OpenTripPlanner ``router-config.json``  you need to add the :ref:`ParkAPI <datasources/parkapi>` endpoint to updaters
+
+  .. code-block::
+
+    "updaters": [
+      ... 
+      {
+        "id": "park-api",
+        "type": "car-park",
+        "frequencySec": 120,
+        "sourceType": "park-api",
+        "url": "https://api.parkendd.de/Ulm"
+      }
+    ]
+
+
+In the frontend config (``app/configurations/config.xxx.js``):
+
+add maplayer URL
+
+  .. code-block::
+
+    URL: {
+      ...
+      DYNAMICPARKINGLOTS_MAP: `${API_URL}/map/v1/parking-map/`
+    }
+
+and activate dynamicParkingLots and configure zoom levels
+
+  .. code-block::
+
+    dynamicParkingLots: {
+      showDynamicParkingLots: true,
+      dynamicParkingLotsSmallIconZoom: 14,
+      dynamicParkingLotsMinZoom: 14
+    }
+
+and add sprites including the parking icons 
+
+  .. code-block::
+
+    sprites: 'assets/svg-sprite.hb.svg'
+
+
+
+
+
 Related pull requests & commits
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
