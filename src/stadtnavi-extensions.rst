@@ -111,6 +111,9 @@ Related pull requests & commits
 
 - WIP branch to integrate dynamic parking lots in digitransit-ui without any stadtnavi dependencies: https://github.com/verschwoerhaus/digitransit-ui/tree/ulm-dynamicparkinglots
 
+
+.. _`stadtnavi-extensions/free-floating`:
+
 Free-floating bicycle and scooter sharing
 -----------------------------------------
 

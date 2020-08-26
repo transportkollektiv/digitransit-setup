@@ -17,7 +17,14 @@ tbd
 GBFS
 ----
 
-tbd
+GBFS is a data format/API for publishing status information of bikesharing systems, but can also used for kinds of sharing vehicles, like E-scooters and cars. It publishes state and geolocation of available vehicles and stations/docks (but not currently rented vehicles).
+
+Most bike- and scootersharing operators are able to provide GBFS, also most whitelabel sharing software is able to provide GBFS. If sharing operators provide `MDS <https://github.com/openmobilityfoundation/mobility-data-specification>`_ data the authorities, a public GBFS-feed is part of the specification.
+
+The specification is available `on Github <https://github.com/NABSA/gbfs>`_
+
+OpenTripPlanner supports multimodal routing of station based sharing systems with GBFS by default. For free floating systems :ref:`Stadtnavi extension <stadtnavi-extensions/free-floating>`_ can be used.
+
 
 .. _`datasources/openstreetmap`:
 
