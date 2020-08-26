@@ -87,6 +87,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="repo-overview.html">Repository Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stadtnavi-extensions.html">Stadtnavi extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasources.html">Data Sources</a></li>
 </ul>
 
             
@@ -125,6 +126,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -137,7 +140,10 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/glossary.rst.txt" rel="nofollow"> View page source</a>
+            
+              <!-- User defined GitHub URL -->
+              <a href="https://github.com/transportkollektiv/digitransit-setup/tree/main/src/glossary.rst" class="fa fa-github"> Edit on GitHub</a>
+            
           
         
       </li>
@@ -152,7 +158,7 @@
             
   <div class="section" id="glossary">
 <h1>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h1>
-<dl class="glossary simple">
+<dl class="glossary">
 <dt id="term-digitransit-ui">digitransit-ui</dt><dd><p>This is the user-facing part of digitransit that provides the user experience. You will probably want to build your localized version yourself. The official version is maintained by HSL and lives at <a class="reference external" href="https://github.com/HSLdevcom/digitransit-ui">HSLdevcom/digitransit-ui</a></p>
 </dd>
 <dt id="term-GTFS">GTFS</dt><dd><p>General Transport Feed Specification, a common exchange format for public (static) transit schedules and related information such as stop locations etcetera. <a class="reference external" href="https://en.wikipedia.org/wiki/General_Transit_Feed_Specification">Wikipedia (en)</a>; <a class="reference external" href="https://developers.google.com/transit/gtfs/">Specification</a></p>
@@ -163,14 +169,16 @@
 </dd>
 <dt id="term-OpenStreetMap">OpenStreetMap</dt><dd><p>A crowd sourced geo-database. Data from OpenStreetMap is used for foot, bike and car routing in <a class="reference internal" href="#term-OpenTripPlanner"><span class="xref std std-term">OpenTripPlanner</span></a>. Country and regional data extracts are provided by the <a class="reference external" href="http://download.geofabrik.de/">Geofabrik download servers</a>. For custom regions or smaller extracts the <a class="reference external" href="https://extract.bbbike.org/">BBBike extract service</a> can be used. (use PBF as extract format.)
 OpenStreetMap data also can be used for search. (<a class="reference internal" href="#term-pelias"><span class="xref std std-term">pelias</span></a>, <a class="reference internal" href="#term-photon"><span class="xref std std-term">photon</span></a>)
-<a class="reference external" href="openstreetmap.org/">Website</a></p>
+<a class="reference external" href="https://openstreetmap.org/">Website</a></p>
+<p>See also: <a class="reference internal" href="datasources.html#datasources-openstreetmap"><span class="std std-ref">Datasources OpenStreetMap</span></a></p>
 </dd>
 <dt id="term-OpenTripPlanner">OpenTripPlanner</dt><dd><p>The Free-/Open-Source multimodal trip planner used for digitransit. <a class="reference external" href="http://www.opentripplanner.org/">Website</a></p>
 </dd>
 <dt id="term-OTP-data-container">OTP data container</dt><dd><p>The Docker container in which the <a class="reference internal" href="#term-OpenTripPlanner"><span class="xref std std-term">OpenTripPlanner</span></a> routing graph lives. This container can be swapped out for an updated version whenever the need arises.</p>
 </dd>
-<dt id="term-ParkenDD-ParkAPI">ParkenDD / ParkAPI</dt><dd><p>OpenSource project to collect and scape parking lot occupancy data and bring them into an <a class="reference external" href="https://github.com/offenesdresden/ParkAPI/">unified json format</a>. Data can be integrated using <a class="reference external" href="stadtnavi-extensions.html#dynamic-parking-lots-routing-and-map-layer">dynamic parking lots</a>.
+<dt id="term-ParkenDD-ParkAPI">ParkenDD / ParkAPI</dt><dd><p>OpenSource project to collect and scape parking lot occupancy data and bring them into an <a class="reference external" href="https://github.com/offenesdresden/ParkAPI/">unified json format</a>. Data can be integrated using <a class="reference internal" href="stadtnavi-extensions.html#stadtnavi-extensions-dynamic-parking-lots"><span class="std std-ref">stadtnavi extension dynamic parking lots</span></a>.
 <a class="reference external" href="https://parkendd.de">Website</a>, <a class="reference external" href="https://github.com/offenesdresden/ParkAPI/">Github</a>, <a class="reference external" href="https://parkendd.de/map.html">Map</a></p>
+<p>See also: <a class="reference internal" href="datasources.html#datasources-parkapi"><span class="std std-ref">Datasources ParkenDD ParkAPI</span></a></p>
 </dd>
 <dt id="term-pelias">pelias</dt><dd><p>King of Iolcus in Greek mythology. Also, a <a class="reference external" href="https://en.wikipedia.org/wiki/Geocoding">geocoder</a>:
 insert address, get geocoordinates as a result. Or vice versa. Supports suggest as you type.
