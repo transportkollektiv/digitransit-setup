@@ -102,12 +102,12 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="installation/step-by-step.html#building-hsl-map-server">2. Building hsl-map-server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="installation/step-by-step.html#building-digitransit-proxy">3. Building digitransit-proxy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="installation/step-by-step.html#using-photon-pelias-adapter">4. Using photon-pelias-adapter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="installation/step-by-step.html#building-digitransit-ui">5. Building digitransit-ui</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/step-by-step.html#using-photon-pelias-adapter">3. Using photon-pelias-adapter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/step-by-step.html#building-digitransit-ui">4. Building digitransit-ui</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/step-by-step.html#building-digitransit-proxy">5. Building digitransit-proxy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/step-by-step.html#crafting-kubernetes-yaml">6. Crafting kubernetes yaml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/step-by-step.html#deploying">7. Deploying</a></li>
-<li class="toctree-l3"><a class="reference internal" href="installation/step-by-step.html#id6">8. ???</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/step-by-step.html#id4">8. ???</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/step-by-step.html#profit">9. Profit!</a></li>
 <li class="toctree-l3"><a class="reference internal" href="installation/step-by-step.html#todo">TODO</a></li>
 </ul>
@@ -240,9 +240,9 @@
 <p><a class="reference external" href="https://openstreetmap.org/">OpenStreetMap</a> is a crowd sourced geo-database and also the biggest source for open map data. Data from OpenStreetMap is used for foot, bike and car routing in <a class="reference internal" href="glossary.html#term-OpenTripPlanner"><span class="xref std std-term">OpenTripPlanner</span></a>.</p>
 <p>OpenStreetMap data also can be used for search (<a class="reference external" href="https://en.wikipedia.org/wiki/Geocoding">geocoding</a>) using <a class="reference internal" href="glossary.html#term-pelias"><span class="xref std std-term">pelias</span></a> or <a class="reference internal" href="glossary.html#term-photon"><span class="xref std std-term">photon</span></a> with <a class="reference external" href="https://github.com/stadtulm/photon-pelias-adapter">photon-pelias-adapter</a>.</p>
 <p>You most likely don’t want the data for the whole planet (which would be available on <a class="reference external" href="https://planet.openstreetmap.org/">planet.openstreetmap.org</a>). Therefore extracts of counties and regions exists. <a class="reference external" href="https://www.geofabrik.de/en/index.html">Geofabrik</a> provides daily updated extracts for all countries and some smaller regions on their <a class="reference external" href="http://download.geofabrik.de/">download servers</a>.
-Samller Extracts of custom regions can be gererated using the <a class="reference external" href="https://extract.bbbike.org/">BBBike extract service</a>.</p>
+Samller Extracts of custom regions can be generated using the <a class="reference external" href="https://extract.bbbike.org/">BBBike extract service</a>.</p>
 <p>For the use in OpenTripPlanner you need to download the data in <code class="docutils literal notranslate"><span class="pre">.pbf</span></code>-Format (Protocolbuffer).</p>
-<p>OpenStreetMap can also be used as background map. For that you need a <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Tile_servers">Tiles Server</a>. If you don’t want to setup your own Tile-Server, there are many comercial providers for OpenStreetMap tile servers. Keep in mind that, most free tile severs are funded by donations and should not be used for extensive third party projects.</p>
+<p>OpenStreetMap can also be used as background map. For that you need a <a class="reference external" href="https://wiki.openstreetmap.org/wiki/Tile_servers">Tile Server</a>. If you don’t want to setup your own Tile Server, there are many commercial providers for OpenStreetMap tile servers. Keep in mind that, most free tile severs are funded by donations and should not be used for extensive third party projects.</p>
 </div>
 <div class="section" id="parkendd-parkapi">
 <span id="datasources-parkapi"></span><h2>ParkenDD ParkAPI<a class="headerlink" href="#parkendd-parkapi" title="Permalink to this headline">¶</a></h2>

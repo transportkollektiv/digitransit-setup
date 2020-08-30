@@ -102,12 +102,12 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="step-by-step.html#building-hsl-map-server">2. Building hsl-map-server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="step-by-step.html#building-digitransit-proxy">3. Building digitransit-proxy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="step-by-step.html#using-photon-pelias-adapter">4. Using photon-pelias-adapter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="step-by-step.html#building-digitransit-ui">5. Building digitransit-ui</a></li>
+<li class="toctree-l3"><a class="reference internal" href="step-by-step.html#using-photon-pelias-adapter">3. Using photon-pelias-adapter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="step-by-step.html#building-digitransit-ui">4. Building digitransit-ui</a></li>
+<li class="toctree-l3"><a class="reference internal" href="step-by-step.html#building-digitransit-proxy">5. Building digitransit-proxy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="step-by-step.html#crafting-kubernetes-yaml">6. Crafting kubernetes yaml</a></li>
 <li class="toctree-l3"><a class="reference internal" href="step-by-step.html#deploying">7. Deploying</a></li>
-<li class="toctree-l3"><a class="reference internal" href="step-by-step.html#id6">8. ???</a></li>
+<li class="toctree-l3"><a class="reference internal" href="step-by-step.html#id4">8. ???</a></li>
 <li class="toctree-l3"><a class="reference internal" href="step-by-step.html#profit">9. Profit!</a></li>
 <li class="toctree-l3"><a class="reference internal" href="step-by-step.html#todo">TODO</a></li>
 </ul>
@@ -222,6 +222,7 @@
             
   <div class="section" id="requirements">
 <h1>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h1>
+<p>To build and run your own digitransit instance, you need:</p>
 <ul class="simple">
 <li><p>One host machine with a-little-bit-more-than-average RAM (i.e. 16+ GB) for
 building the <a class="reference internal" href="../glossary.html#term-OTP-data-container"><span class="xref std std-term">OTP data container</span></a> and <a class="reference internal" href="../glossary.html#term-digitransit-ui"><span class="xref std std-term">digitransit-ui</span></a></p></li>
@@ -236,6 +237,8 @@ kubectl, but we highly discourage it.)</p></li>
 <li><p>A GitHub Account (for forking stuff)</p></li>
 <li><p>A Docker Hub Account (for publishing your containers)</p></li>
 <li><p>One Domain and access to DNS for creating a subdomain</p></li>
+<li><p>An externally running <a class="reference external" href="https://github.com/komoot/photon">photon</a>.
+For development and tests, you could try the <a class="reference external" href="https://photon.komoot.de">public photon instance</a>.</p></li>
 </ul>
 <div class="section" id="optional">
 <h2>optional<a class="headerlink" href="#optional" title="Permalink to this headline">¶</a></h2>

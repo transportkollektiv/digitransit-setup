@@ -42,11 +42,11 @@ OpenStreetMap
 OpenStreetMap data also can be used for search (`geocoding <https://en.wikipedia.org/wiki/Geocoding>`_) using :term:`pelias` or :term:`photon` with `photon-pelias-adapter <https://github.com/stadtulm/photon-pelias-adapter>`_.
 
 You most likely don't want the data for the whole planet (which would be available on `planet.openstreetmap.org <https://planet.openstreetmap.org/>`_). Therefore extracts of counties and regions exists. `Geofabrik <https://www.geofabrik.de/en/index.html>`_ provides daily updated extracts for all countries and some smaller regions on their `download servers <http://download.geofabrik.de/>`_.
-Samller Extracts of custom regions can be gererated using the `BBBike extract service <https://extract.bbbike.org/>`_.
+Samller Extracts of custom regions can be generated using the `BBBike extract service <https://extract.bbbike.org/>`_.
 
 For the use in OpenTripPlanner you need to download the data in ``.pbf``-Format (Protocolbuffer).
 
-OpenStreetMap can also be used as background map. For that you need a `Tiles Server <https://wiki.openstreetmap.org/wiki/Tile_servers>`_. If you don't want to setup your own Tile-Server, there are many comercial providers for OpenStreetMap tile servers. Keep in mind that, most free tile severs are funded by donations and should not be used for extensive third party projects.
+OpenStreetMap can also be used as background map. For that you need a `Tile Server <https://wiki.openstreetmap.org/wiki/Tile_servers>`_. If you don't want to setup your own Tile Server, there are many commercial providers for OpenStreetMap tile servers. Keep in mind that, most free tile severs are funded by donations and should not be used for extensive third party projects.
 
 
 .. _`datasources/parkapi`:
