@@ -3,6 +3,12 @@
 Step-by-step guide
 ==================
 
+.. note::
+    These seem like a lot of steps. It may be possible to skip some of them or replace
+    them with other components (eg. digitransit-proxy) - but for a working instance
+    that is easier to maintain, the following steps have proven to be successful. 
+
+
 0. Preparing your build host
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -238,9 +244,9 @@ For building and publishing, standard docker commands are used:
    We are using :term:`hsl-map-server` only for the stop (and bike)
    overlays. The basemap *can* be rendered by this project, but so far
    we have instead been using other tile servers. 
-   In the beginning, we had used `Wikimedia's tile server <https://foundation.wikimedia.org/wiki/Maps_Terms_of_Use>`__,
+   In the beginning, we had used `Wikimedia's tile server <https://foundation.wikimedia.org/wiki/Maps_Terms_of_Use>`_,
    but a subsequent rush of third-party users during spring of 2020
-   brought that service to it's knees.
+   brought that service to it's knees, and `now its gone <https://lists.wikimedia.org/pipermail/maps-l/2020-August/001729.html>`__.
    You may configure your own (either homemade or factory-bought) tile
    server in digitransit-ui instead.
 
@@ -270,26 +276,7 @@ To build, run ``docker build -t verschwoerhaus/hsl-map-server:2020-01-21 .``
 
 Push the resulting image also into docker hub:``docker push verschwoerhaus/hsl-map-server:2020-01-21``
 
-3. Building digitransit-proxy
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. todo::
-    digitransit-proxy can be completely replaced by
-    kubernetes-ingress-nginx. see cfm:
-    https://github.com/codeformuenster/kubernetes-deployment/blob/46ea8118ff55fb2d3158d61a96e6d92ac3b951ee/sources/digitransit/ingress.yaml
-
-nginx will not start if it cannot resolve the hostnames in its (proxy)
-configuration. This is why we have to fork the digitransit proxy and
-remove all the references to stuff we don't need.
-
-See the diff at
-https://github.com/HSLdevcom/digitransit-proxy/compare/master...transportkollektiv:master
-for all the location config you should remove.
-
-Note that some endpoints need your configuration name in the url, eg
-``/routing/v1/routers/hsl`` → ``/routing/v1/routers/ulm``.
-
-4. Using photon-pelias-adapter
+3. Using photon-pelias-adapter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 digitransit originally uses :term:`pelias` as a geocoder: Insert address,
@@ -297,7 +284,7 @@ get geocoordinates as a result.
 Sadly, pelias is not maintained
 anymore - and custom adjustments seem to be very hard. We've therefore
 decided to use `photon with an
-adapter <https://github.com/stadtulm/photon-pelias-adapter>`__ instead.
+adapter <https://github.com/stadtulm/photon-pelias-adapter>`_ instead.
 (Photon has also problems, especially currently not supporting :term:`GTFS` stop
 imports, but this should be solveable in the long run)
 
@@ -306,9 +293,9 @@ The adapter is completely configurable with one ENV variable
 
 Later, we're simply using the docker container
 `stadtulm/photon-pelias-adapter from docker
-hub <https://hub.docker.com/r/stadtulm/photon-pelias-adapter>`__.
+hub <https://hub.docker.com/r/stadtulm/photon-pelias-adapter>`_.
 
-5. Building digitransit-ui
+4. Building digitransit-ui
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To build your own digitransit user interface, you need to add a theme
@@ -342,11 +329,11 @@ Enter your used :term:`GTFS` feed ids in
     feedIds: ['DING'],
 
 Configure the tile server of your choice. For testing, you might be content
-using the wikimedia tile server:
+using the german osm tile server:
 
 ::
 
-    const MAP_URL = 'https://maps.wikimedia.org/osm-intl/';
+    const MAP_URL = 'https://{s}.tile.openstreetmap.de/';
 
 and inside the config part:
 
@@ -373,6 +360,32 @@ https://github.com/verschwoerhaus/digitransit-ui/blob/ulm/app/configurations/con
 Finally, also create an docker image out of the ui: ``docker build -t verschwoerhaus/digitransit-ui:2020-01-21 .``
 Push the resulting image to docker hub: ``docker push verschwoerhaus/digitransit-ui:2020-01-21``
 
+5. Building digitransit-proxy
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. warning:: 
+    digitransit-proxy is deprecated as of 2020-08 and is only
+    preserved for archival reasons. We're using the k8s ingress
+    now, thats introduced in the next step
+
+.. container:: toggle
+
+    .. todo::
+        digitransit-proxy can be completely replaced by
+        kubernetes-ingress-nginx. see cfm:
+        https://github.com/codeformuenster/kubernetes-deployment/blob/46ea8118ff55fb2d3158d61a96e6d92ac3b951ee/sources/digitransit/ingress.yaml
+
+    nginx will not start if it cannot resolve the hostnames in its (proxy)
+    configuration. This is why we have to fork the digitransit proxy and
+    remove all the references to stuff we don't need.
+
+    See the diff at
+    https://github.com/HSLdevcom/digitransit-proxy/compare/master...transportkollektiv:master
+    for all the location config you should remove.
+
+    Note that some endpoints need your configuration name in the url, eg
+    ``/routing/v1/routers/hsl`` → ``/routing/v1/routers/ulm``.
+
 6. Crafting kubernetes yaml
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -382,43 +395,52 @@ You need:
 -  kubectl on your device,
    with `kubeconfig <https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/>`__
    for this cluster
--  Build services for each of the containers and deployments with
-   the right container image tags. (Especially important for opentripplanner)
+-  already configured ingress in your kubernetes setup, for example with the `nginx ingress controller <https://kubernetes.github.io/ingress-nginx/>`__
+-  url of your pelias service
 
-Connect the different parts to each other: 
+We're going to connect the different parts to each other: 
 
-- digitransit-ui → digitransit-proxy 
-- hsl-map-server → digitransit-proxy 
-- opentripplanner → digitransit-proxy 
-- opentripplanner-data-container → digitransit-proxy 
 - opentripplanner-data-container → opentripplanner (otp gets its graph from the data container)
 - opentripplanner → hsl-map-server (mapserver gets its stop data from otp)
+- photon → photon-pelias-adapter (its simply the URL of your photon)
 
-.. blockdiag::
+Make some parts accessible from the outside:
 
-   diagram {
+- digitransit-ui → ingress
+- hsl-map-server → ingress
+- opentripplanner → ingress 
+- opentripplanner-data-container → ingress (for debugging)
+- photon-pelias-adapter → ingress
 
-     digitransit-ui, hsl-map-server, opentripplanner -> digitransit-proxy;
-     opentripplanner-data-container -> digitransit-proxy;
-     opentripplanner-data-container -> opentripplanner [folded];
-     opentripplanner -> hsl-map-server [folded];
-   }
+And then, digitransit-ui running in your browser can access these:
 
-.. todo:: is this order even right?!
+- hsl-map-server → digitransit-ui (public, by ingress url)
+- opentripplanner → digitransit-ui (public, by ingress url)
+- photon-pelias-adapter → digitransit-ui (public, by ingress url)
 
-Don't forget the environment variables for digitransit-ui (``CONFIG``)
-and opentripplanner (``ROUTER_NAME``).
-
-Have a look at this working template:
-https://github.com/verschwoerhaus/digitransit-kubernetes/blob/master/all.yml
+For all of this, we are building deployments and services for each of the containers.
+Note that you have to use the right container image tags.
 
 .. hint::
    Reminder: the OpenTripPlanner version has to match the version that was used to build the graph.
    Ensure you are using the same docker image tag here.
 
-.. todo::  
-   rewrite section, what services have to exist, how should they be
-   named, how to get step by step to kubernetes config
+Have a look at this working template:
+https://github.com/verschwoerhaus/digitransit-kubernetes/blob/master/all.yml
+
+Edit the deployment container specs, modify the ``image`` and ``env`` keys.
+For the environment variables, have a look at these of digitransit-ui (``CONFIG``), 
+opentripplanner (``ROUTER_NAME``), and photon-pelias-adapter (``PHOTON_URL``).
+The digitransit-ui container also needs the public urls to OTP (``OTP_URL``) and 
+photon-pelias-adapter (``GEOCODING_BASE_URL``).
+
+For these urls and to write the services up to the ingress, have a look at 
+https://github.com/verschwoerhaus/digitransit-kubernetes/blob/master/ingress.yml
+
+For handling HTTPS, add tls-keys like in this config:
+https://github.com/stadtulm/digitransit-k8s/blob/master/ingress.yaml
+
+
 .. todo::
    maybe provide existing template and only teach how to
    override/insert config with kustomize
