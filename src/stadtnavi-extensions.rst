@@ -162,7 +162,7 @@ activated.
 
 ``hsl-map-server`` however needs to be `configured to
 include <https://github.com/HSLdevcom/tilelive-otp-citybikes/blob/master/index.js#L47>`__
-the ```tilelive-citybike`` <https://github.com/HSLdevcom/tilelive-otp-citybikes/>`__.
+the ```tilelive-citybike <https://github.com/HSLdevcom/tilelive-otp-citybikes/>`__``.
 This layer queries OTP for the bike positions. Please note that there
 is a bug (?) in this layer preventing frequent updates
 of positions: on top of the normal tile-based cache logic this layer
