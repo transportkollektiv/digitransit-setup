@@ -116,11 +116,11 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Repository Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#ulm-verschworhaus">Ulm, Verschwörhaus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#ulm-ulm-dev">Ulm, ulm.dev</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#herrenberg-stadtnavi">Herrenberg, stadtnavi</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#hsl">HSL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#oulu">Oulu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ulm-verschworhaus">Ulm, Verschwörhaus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ulm-ulm-dev">Ulm, ulm.dev</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="stadtnavi-extensions.html">Stadtnavi extensions</a><ul>
@@ -223,42 +223,6 @@
 <p>If you want to look into different digitransit instances, which features they support, a look into the repositories is always a good idea.
 Sometimes you can reverse engineer the used parts by looking at the deployment files. For an easier overview, we’ve listed the parts below.
 If something changes or you also want to list a digitransit instance here, feel free to edit these docs.</p>
-<div class="section" id="ulm-verschworhaus">
-<h2>Ulm, Verschwörhaus<a class="headerlink" href="#ulm-verschworhaus" title="Permalink to this headline">¶</a></h2>
-<p>The staging, test and development instance. Public at <a class="reference external" href="https://digitransit.im.verschwoerhaus.de">https://digitransit.im.verschwoerhaus.de</a></p>
-<ul class="simple">
-<li><p>UI: <a class="reference external" href="https://github.com/verschwoerhaus/digitransit-ui/tree/ulm">https://github.com/verschwoerhaus/digitransit-ui/tree/ulm</a> – branch: ulm, config: <code class="docutils literal notranslate"><span class="pre">config.vsh.js</span></code></p></li>
-<li><p>OpenTripPlanner Data: <a class="reference external" href="https://github.com/verschwoerhaus/digitransit-otp-data">https://github.com/verschwoerhaus/digitransit-otp-data</a></p></li>
-<li><p>OpenTripPlanner: using mfdz/opentripplanner</p></li>
-<li><p>Map Server: <a class="reference external" href="https://github.com/verschwoerhaus/hsl-map-server">https://github.com/verschwoerhaus/hsl-map-server</a></p>
-<ul>
-<li><p>stops <a class="reference external" href="https://github.com/verschwoerhaus/tilelive-otp-stops">https://github.com/verschwoerhaus/tilelive-otp-stops</a></p></li>
-<li><p>citybikes <a class="reference external" href="https://github.com/verschwoerhaus/tilelive-otp-citybikes">https://github.com/verschwoerhaus/tilelive-otp-citybikes</a></p></li>
-</ul>
-</li>
-<li><p>Graphiql: <a class="reference external" href="https://github.com/verschwoerhaus/graphiql-deployment/tree/vsh">https://github.com/verschwoerhaus/graphiql-deployment/tree/vsh</a> – branch: vsh</p></li>
-<li><p>Pelias: using photon instead, <a class="reference external" href="https://github.com/stadtulm/photon-pelias-adapter">https://github.com/stadtulm/photon-pelias-adapter</a></p></li>
-<li><p>Deployment: k8s, <a class="reference external" href="https://github.com/verschwoerhaus/digitransit-kubernetes">https://github.com/verschwoerhaus/digitransit-kubernetes</a></p></li>
-</ul>
-</div>
-<div class="section" id="ulm-ulm-dev">
-<h2>Ulm, ulm.dev<a class="headerlink" href="#ulm-ulm-dev" title="Permalink to this headline">¶</a></h2>
-<p>The more productive instance. Public at <a class="reference external" href="https://digitransit.ulm.dev">https://digitransit.ulm.dev</a></p>
-<ul class="simple">
-<li><p>UI: <a class="reference external" href="https://github.com/verschwoerhaus/digitransit-ui/tree/ulm">https://github.com/verschwoerhaus/digitransit-ui/tree/ulm</a> – branch: ulm, config: <code class="docutils literal notranslate"><span class="pre">config.ulm.js</span></code></p></li>
-<li><p>OpenTripPlanner Data: <a class="reference external" href="https://github.com/stadtulm/digitransit-otp-data">https://github.com/stadtulm/digitransit-otp-data</a></p></li>
-<li><p>OpenTripPlanner: using mfdz/opentripplanner</p></li>
-<li><p>Map Server: <a class="reference external" href="https://github.com/verschwoerhaus/hsl-map-server">https://github.com/verschwoerhaus/hsl-map-server</a></p>
-<ul>
-<li><p>stops <a class="reference external" href="https://github.com/verschwoerhaus/tilelive-otp-stops">https://github.com/verschwoerhaus/tilelive-otp-stops</a></p></li>
-<li><p>citybikes <a class="reference external" href="https://github.com/verschwoerhaus/tilelive-otp-citybikes">https://github.com/verschwoerhaus/tilelive-otp-citybikes</a></p></li>
-</ul>
-</li>
-<li><p>Graphiql: <a class="reference external" href="https://github.com/verschwoerhaus/graphiql-deployment/tree/vsh">https://github.com/verschwoerhaus/graphiql-deployment/tree/vsh</a> – branch: vsh</p></li>
-<li><p>Pelias: using photon instead, <a class="reference external" href="https://github.com/stadtulm/photon-pelias-adapter">https://github.com/stadtulm/photon-pelias-adapter</a></p></li>
-<li><p>Deployment: k8s, <a class="reference external" href="https://github.com/stadtulm/digitransit-k8s">https://github.com/stadtulm/digitransit-k8s</a></p></li>
-</ul>
-</div>
 <div class="section" id="herrenberg-stadtnavi">
 <h2>Herrenberg, stadtnavi<a class="headerlink" href="#herrenberg-stadtnavi" title="Permalink to this headline">¶</a></h2>
 <p>Improved digitransit with lots of layers and features for Herrenberg: <a class="reference external" href="https://herrenberg.stadtnavi.de">https://herrenberg.stadtnavi.de</a></p>
@@ -299,6 +263,42 @@ If something changes or you also want to list a digitransit instance here, feel 
 <li><p>UI: <a class="reference external" href="https://github.com/digiaonline/oulunliikenne-digitransit-ui">https://github.com/digiaonline/oulunliikenne-digitransit-ui</a></p></li>
 </ul>
 <p>For the other services, the UI uses the ones provided by HSL.</p>
+</div>
+<div class="section" id="ulm-verschworhaus">
+<h2>Ulm, Verschwörhaus<a class="headerlink" href="#ulm-verschworhaus" title="Permalink to this headline">¶</a></h2>
+<p>The staging, test and development instance. Public at <a class="reference external" href="https://digitransit.im.verschwoerhaus.de">https://digitransit.im.verschwoerhaus.de</a></p>
+<ul class="simple">
+<li><p>UI: <a class="reference external" href="https://github.com/verschwoerhaus/digitransit-ui/tree/ulm">https://github.com/verschwoerhaus/digitransit-ui/tree/ulm</a> – branch: ulm, config: <code class="docutils literal notranslate"><span class="pre">config.vsh.js</span></code></p></li>
+<li><p>OpenTripPlanner Data: <a class="reference external" href="https://github.com/verschwoerhaus/digitransit-otp-data">https://github.com/verschwoerhaus/digitransit-otp-data</a></p></li>
+<li><p>OpenTripPlanner: using mfdz/opentripplanner</p></li>
+<li><p>Map Server: <a class="reference external" href="https://github.com/verschwoerhaus/hsl-map-server">https://github.com/verschwoerhaus/hsl-map-server</a></p>
+<ul>
+<li><p>stops <a class="reference external" href="https://github.com/verschwoerhaus/tilelive-otp-stops">https://github.com/verschwoerhaus/tilelive-otp-stops</a></p></li>
+<li><p>citybikes <a class="reference external" href="https://github.com/verschwoerhaus/tilelive-otp-citybikes">https://github.com/verschwoerhaus/tilelive-otp-citybikes</a></p></li>
+</ul>
+</li>
+<li><p>Graphiql: <a class="reference external" href="https://github.com/verschwoerhaus/graphiql-deployment/tree/vsh">https://github.com/verschwoerhaus/graphiql-deployment/tree/vsh</a> – branch: vsh</p></li>
+<li><p>Pelias: using photon instead, <a class="reference external" href="https://github.com/stadtulm/photon-pelias-adapter">https://github.com/stadtulm/photon-pelias-adapter</a></p></li>
+<li><p>Deployment: k8s, <a class="reference external" href="https://github.com/verschwoerhaus/digitransit-kubernetes">https://github.com/verschwoerhaus/digitransit-kubernetes</a></p></li>
+</ul>
+</div>
+<div class="section" id="ulm-ulm-dev">
+<h2>Ulm, ulm.dev<a class="headerlink" href="#ulm-ulm-dev" title="Permalink to this headline">¶</a></h2>
+<p>The more productive instance. Public at <a class="reference external" href="https://digitransit.ulm.dev">https://digitransit.ulm.dev</a></p>
+<ul class="simple">
+<li><p>UI: <a class="reference external" href="https://github.com/verschwoerhaus/digitransit-ui/tree/ulm">https://github.com/verschwoerhaus/digitransit-ui/tree/ulm</a> – branch: ulm, config: <code class="docutils literal notranslate"><span class="pre">config.ulm.js</span></code></p></li>
+<li><p>OpenTripPlanner Data: <a class="reference external" href="https://github.com/stadtulm/digitransit-otp-data">https://github.com/stadtulm/digitransit-otp-data</a></p></li>
+<li><p>OpenTripPlanner: using mfdz/opentripplanner</p></li>
+<li><p>Map Server: <a class="reference external" href="https://github.com/verschwoerhaus/hsl-map-server">https://github.com/verschwoerhaus/hsl-map-server</a></p>
+<ul>
+<li><p>stops <a class="reference external" href="https://github.com/verschwoerhaus/tilelive-otp-stops">https://github.com/verschwoerhaus/tilelive-otp-stops</a></p></li>
+<li><p>citybikes <a class="reference external" href="https://github.com/verschwoerhaus/tilelive-otp-citybikes">https://github.com/verschwoerhaus/tilelive-otp-citybikes</a></p></li>
+</ul>
+</li>
+<li><p>Graphiql: <a class="reference external" href="https://github.com/verschwoerhaus/graphiql-deployment/tree/vsh">https://github.com/verschwoerhaus/graphiql-deployment/tree/vsh</a> – branch: vsh</p></li>
+<li><p>Pelias: using photon instead, <a class="reference external" href="https://github.com/stadtulm/photon-pelias-adapter">https://github.com/stadtulm/photon-pelias-adapter</a></p></li>
+<li><p>Deployment: k8s, <a class="reference external" href="https://github.com/stadtulm/digitransit-k8s">https://github.com/stadtulm/digitransit-k8s</a></p></li>
+</ul>
 </div>
 </div>
 
