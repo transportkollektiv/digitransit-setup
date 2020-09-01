@@ -7,52 +7,6 @@ If you want to look into different digitransit instances, which features they su
 Sometimes you can reverse engineer the used parts by looking at the deployment files. For an easier overview, we've listed the parts below.
 If something changes or you also want to list a digitransit instance here, feel free to edit these docs. 
 
-Ulm, Verschwörhaus
-------------------
-The staging, test and development instance. Public at https://digitransit.im.verschwoerhaus.de
-
-* UI: https://github.com/verschwoerhaus/digitransit-ui/tree/ulm -- branch: ulm, config: ``config.vsh.js``
-
-* OpenTripPlanner Data: https://github.com/verschwoerhaus/digitransit-otp-data
-
-* OpenTripPlanner: using mfdz/opentripplanner
-
-* Map Server: https://github.com/verschwoerhaus/hsl-map-server
-  
-  * stops https://github.com/verschwoerhaus/tilelive-otp-stops
-  
-  * citybikes https://github.com/verschwoerhaus/tilelive-otp-citybikes
-
-* Graphiql: https://github.com/verschwoerhaus/graphiql-deployment/tree/vsh -- branch: vsh
-
-* Pelias: using photon instead, https://github.com/stadtulm/photon-pelias-adapter
-
-* Deployment: k8s, https://github.com/verschwoerhaus/digitransit-kubernetes
-
-
-Ulm, ulm.dev
-------------
-The more productive instance. Public at https://digitransit.ulm.dev
-
-* UI: https://github.com/verschwoerhaus/digitransit-ui/tree/ulm -- branch: ulm, config: ``config.ulm.js``
-
-* OpenTripPlanner Data: https://github.com/stadtulm/digitransit-otp-data
-
-* OpenTripPlanner: using mfdz/opentripplanner
-
-* Map Server: https://github.com/verschwoerhaus/hsl-map-server
-  
-  * stops https://github.com/verschwoerhaus/tilelive-otp-stops
-
-  * citybikes https://github.com/verschwoerhaus/tilelive-otp-citybikes
-
-* Graphiql: https://github.com/verschwoerhaus/graphiql-deployment/tree/vsh -- branch: vsh
-
-* Pelias: using photon instead, https://github.com/stadtulm/photon-pelias-adapter
-
-* Deployment: k8s, https://github.com/stadtulm/digitransit-k8s
-
-
 Herrenberg, stadtnavi
 ---------------------
 Improved digitransit with lots of layers and features for Herrenberg: https://herrenberg.stadtnavi.de
@@ -105,3 +59,47 @@ Interesting UI changes, lots of additional information like traffic cams and sno
 
 For the other services, the UI uses the ones provided by HSL.
 
+Ulm, Verschwörhaus
+------------------
+The staging, test and development instance. Public at https://digitransit.im.verschwoerhaus.de
+
+* UI: https://github.com/verschwoerhaus/digitransit-ui/tree/ulm -- branch: ulm, config: ``config.vsh.js``
+
+* OpenTripPlanner Data: https://github.com/verschwoerhaus/digitransit-otp-data
+
+* OpenTripPlanner: using mfdz/opentripplanner
+
+* Map Server: https://github.com/verschwoerhaus/hsl-map-server
+  
+  * stops https://github.com/verschwoerhaus/tilelive-otp-stops
+  
+  * citybikes https://github.com/verschwoerhaus/tilelive-otp-citybikes
+
+* Graphiql: https://github.com/verschwoerhaus/graphiql-deployment/tree/vsh -- branch: vsh
+
+* Pelias: using photon instead, https://github.com/stadtulm/photon-pelias-adapter
+
+* Deployment: k8s, https://github.com/verschwoerhaus/digitransit-kubernetes
+
+
+Ulm, ulm.dev
+------------
+The more productive instance. Public at https://digitransit.ulm.dev
+
+* UI: https://github.com/verschwoerhaus/digitransit-ui/tree/ulm -- branch: ulm, config: ``config.ulm.js``
+
+* OpenTripPlanner Data: https://github.com/stadtulm/digitransit-otp-data
+
+* OpenTripPlanner: using mfdz/opentripplanner
+
+* Map Server: https://github.com/verschwoerhaus/hsl-map-server
+  
+  * stops https://github.com/verschwoerhaus/tilelive-otp-stops
+
+  * citybikes https://github.com/verschwoerhaus/tilelive-otp-citybikes
+
+* Graphiql: https://github.com/verschwoerhaus/graphiql-deployment/tree/vsh -- branch: vsh
+
+* Pelias: using photon instead, https://github.com/stadtulm/photon-pelias-adapter
+
+* Deployment: k8s, https://github.com/stadtulm/digitransit-k8s
