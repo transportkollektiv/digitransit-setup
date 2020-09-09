@@ -145,6 +145,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#gbfs">GBFS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#openstreetmap">OpenStreetMap</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#parkendd-parkapi">ParkenDD ParkAPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#geojson">GeoJSON</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
@@ -251,6 +252,32 @@ Data from ParkenDD or in ParkAPI format can be included in digitransit using <a 
 <p>ParkAPI format is also descriped in JSON schema <a class="reference external" href="https://github.com/offenesdresden/ParkAPI/wiki/city.json">https://github.com/offenesdresden/ParkAPI/wiki/city.json</a></p>
 <p>A map representation of the data can be found <a class="reference external" href="https://parkendd.de/en/map.html#Dresden">here</a>. You can find the integrated cities in the dropdown on the top right or in the <a class="reference external" href="https://github.com/offenesdresden/ParkAPI/tree/master/park_api/cities">github repo</a>. To integrate new cities you can look a the <a class="reference external" href="https://github.com/offenesdresden/ParkAPI/blob/master/park_api/cities/Sample_City.py">Sample_City script</a> and the <a class="reference external" href="https://github.com/offenesdresden/ParkAPI#adding-support-for-a-new-city">repos readme</a>.</p>
 <p>A public API for all integrated cities is available at  <code class="docutils literal notranslate"><span class="pre">https://api.parkendd.de/</span></code>.</p>
+</div>
+<div class="section" id="geojson">
+<h2>GeoJSON<a class="headerlink" href="#geojson" title="Permalink to this headline">¶</a></h2>
+<p>GeoJSON is a popular Geodata format. GeoJSON supports the geometry types Point, LineString and Polygon. in GeoJSON each geometry can have custom properties including complex JSON structures. In digitransit GeoJSON-layers are a easy way to add custom geodata to the map. Examples are charging stations for electic vehicles or ticket zones. GeoJSON layers also support popups with custom content for each geometry.
+Custom styling can be added directly into the GeoJSON file.</p>
+<p>Be aware, that the complete GeoJSON file will be donwloaded by client. So GeoJSON should be only used for smaller layers and should not exceed a few hundred geometries. Also be aware, that external GeoJSON files needs to be deleiverd with CORS HTTP header. If you are using dynamic generated GeoJSON from external services, you should consider a server side caching proxy for that file.</p>
+<p>To add a GeoJSON Layer to digitransit you only need to add the config to your <code class="docutils literal notranslate"><span class="pre">app/configurations/config.XXX.js</span></code> file in digitransit-ui.</p>
+<p>A simple example would be</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span><span class="p">,</span>
+<span class="n">geoJson</span><span class="p">:</span> <span class="p">{</span>
+  <span class="n">layers</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="n">name</span><span class="p">:</span> <span class="p">{</span>
+        <span class="n">de</span><span class="p">:</span> <span class="s1">&#39;Ladesäulen&#39;</span><span class="p">,</span>
+        <span class="n">en</span><span class="p">:</span> <span class="s1">&#39;Charging Stations&#39;</span><span class="p">,</span>
+      <span class="p">},</span>
+      <span class="o">//</span> <span class="n">web</span> <span class="n">address</span> <span class="n">of</span> <span class="n">the</span> <span class="n">data</span> <span class="n">source</span>
+      <span class="n">url</span><span class="p">:</span> <span class="s1">&#39;http://&lt;URL-TO-GEOJSON&gt;/stations.geojson&#39;</span><span class="p">,</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Complete documentation including styling can be found in <a class="reference external" href="https://github.com/HSLdevcom/digitransit-ui/blob/master/docs/GeoJson.md">docs/GeoJSON</a>. For dynamic styling of the GeoJSON, you could manipulate the styling properties based on the data properties with a small external script before delivering the file to digitransit-ui.</p>
 </div>
 </div>
 
