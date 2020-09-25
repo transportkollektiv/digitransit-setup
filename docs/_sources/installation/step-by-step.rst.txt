@@ -14,10 +14,10 @@ Step-by-step guide
 
 You need on your build host:
 
-- docker-ce runtime
+- docker-ce runtime (`installation <https://docs.docker.com/engine/install/ubuntu/>`__, `short installation script <https://get.docker.com>`__)
 - git
-- nodejs, LTS version
-- yarn
+- nodejs, LTS version (`nodesource repository <https://github.com/nodesource/distributions#deb>`__)
+- yarn (`installation <https://yarnpkg.com/getting-started/install>`__)
 
 .. note:: This should be enhanced with copy-pasteable commands
 
