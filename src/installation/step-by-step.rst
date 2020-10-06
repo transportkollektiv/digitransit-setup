@@ -18,6 +18,7 @@ You need on your build host:
 - git
 - nodejs, LTS version (`nodesource repository <https://github.com/nodesource/distributions#deb>`__)
 - yarn (`installation <https://yarnpkg.com/getting-started/install>`__)
+- build-essential (for the node dependencies)
 
 .. note:: This should be enhanced with copy-pasteable commands
 
@@ -253,7 +254,7 @@ For building and publishing, standard docker commands are used:
 Check out `HSLdevcom/hsl-map-server <https://github.com/HSLdevcom/hsl-map-server>`__: ``git clone https://github.com/HSLdevcom/hsl-map-server``
 
 Edit ``config.js``, modify ``module.exports`` to keep only the
-``stop-map`` (and the citybike, if needed) map layer:
+``stop-map`` (rename ``hsl-stop-map`` into ``stop-map`` for this) and the ``citybike-map`` (only if needed) map layer:
 
 ::
 
@@ -298,6 +299,8 @@ hub <https://hub.docker.com/r/stadtulm/photon-pelias-adapter>`_.
 4. Building digitransit-ui
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Check out `HSLdevcom/digitransit-ui <https://github.com/HSLdevcom/digitransit-ui>`__: ``git clone https://github.com/HSLdevcom/digitransit-ui``
+
 To build your own digitransit user interface, you need to add a theme
 and provide configuration (which includes your custom urls).
 
@@ -308,10 +311,32 @@ optionally supply a color and logo, read
 `documentation <https://github.com/HSLdevcom/digitransit-ui/blob/master/docs/Themes.md>`__
 for more details)
 
-In ``app/configurations/``, create your own ``config.ulm.js``. For the
-configuration content, look into all the other files, preferential
-``config.hsl.js``, ``waltti.js``, ``config.matka.js`` and
-``config.default.js``.
+In ``app/configurations/``, a config file is created with your theme name, e.g. ``config.ulm.js``.
+
+Replace this file with the contents of 
+https://raw.githubusercontent.com/verschwoerhaus/digitransit-ui/ulm/app/configurations/config.vsh.js
+
+For the configuration options, feel free to have a look into all the other files, preferential
+``config.hsl.js``, ``waltti.js``, ``config.matka.js`` and ``config.default.js``.
+
+The most basic configuration options you may want to change follow:
+
+::
+    
+    const APP_TITLE = 'digitransit ';
+    const APP_DESCRIPTION = 'digitransit - ber';
+
+
+Define the bounding box of the area in which search queries are preferred.
+Use a tool like https://boundingbox.klokantech.com to draw a bounding box
+and fill the following constants:
+
+::
+
+    const minLat = 60;
+    const maxLat = 70;
+    const minLon = 20;
+    const maxLon = 31;
 
 You have to provide your own urls and paths with your config name, eg.
 in
@@ -435,7 +460,9 @@ The digitransit-ui container also needs the public urls to OTP (``OTP_URL``) and
 photon-pelias-adapter (``GEOCODING_BASE_URL``).
 
 For these urls and to write the services up to the ingress, have a look at 
-https://github.com/verschwoerhaus/digitransit-kubernetes/blob/master/ingress.yml
+https://github.com/verschwoerhaus/digitransit-kubernetes/blob/master/ingress.yaml
+
+For the parts you have to edit, look at the hostnames (``host:``) and at the paths (``path:``).
 
 For handling HTTPS, add tls-keys like in this config:
 https://github.com/stadtulm/digitransit-k8s/blob/master/ingress.yaml
@@ -448,12 +475,14 @@ https://github.com/stadtulm/digitransit-k8s/blob/master/ingress.yaml
 7. Deploying
 ~~~~~~~~~~~~
 
-Execute ``kubectl apply -f digitransit.yml``
+Execute ``kubectl apply -f digitransit.yml`` and ``kubectl apply -f ingress.yml``
 
 8. ???
 ~~~~~~
 
-Watch ``kubectl get pods``
+Watch ``kubectl get pods``.
+
+Look at ``kubectl get ingress``
 
 9. Profit!
 ~~~~~~~~~~
