@@ -59,6 +59,22 @@ Interesting UI changes, lots of additional information like traffic cams and sno
 
 For the other services, the UI uses the ones provided by HSL.
 
+Turin
+-----
+Available at [muoversiatorino.it](https://www.muoversiatorino.it/-/), developed by [5t](http://www.5t.torino.it/en/muoversi-a-torino/)
+
+* UI: https://github.com/5Tsrl/digitransit-ui
+
+* OpenTripPlanner: https://github.com/5Tsrl/OpenTripPlanner
+
+* OpenTripPlanner Data: ???
+
+* Map Server: https://github.com/5Tsrl/hsl-map-server
+	
+	* citybikes: https://github.com/5Tsrl/tilelive-otp-citybikes
+
+* Deployment: ???
+
 Ulm, Verschwörhaus
 ------------------
 The staging, test and development instance. Public at https://digitransit.im.verschwoerhaus.de

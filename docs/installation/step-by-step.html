@@ -119,6 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../repo-overview.html#herrenberg-stadtnavi">Herrenberg, stadtnavi</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../repo-overview.html#hsl">HSL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../repo-overview.html#oulu">Oulu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../repo-overview.html#turin">Turin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../repo-overview.html#ulm-verschworhaus">Ulm, Verschwörhaus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../repo-overview.html#ulm-ulm-dev">Ulm, ulm.dev</a></li>
 </ul>
@@ -237,6 +238,7 @@ that is easier to maintain, the following steps have proven to be successful.</p
 <li><p>git</p></li>
 <li><p>nodejs, LTS version (<a class="reference external" href="https://github.com/nodesource/distributions#deb">nodesource repository</a>)</p></li>
 <li><p>yarn (<a class="reference external" href="https://yarnpkg.com/getting-started/install">installation</a>)</p></li>
+<li><p>build-essential (for the node dependencies)</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -442,7 +444,7 @@ server in digitransit-ui instead.</p>
 </div>
 <p>Check out <a class="reference external" href="https://github.com/HSLdevcom/hsl-map-server">HSLdevcom/hsl-map-server</a>: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/HSLdevcom/hsl-map-server</span></code></p>
 <p>Edit <code class="docutils literal notranslate"><span class="pre">config.js</span></code>, modify <code class="docutils literal notranslate"><span class="pre">module.exports</span></code> to keep only the
-<code class="docutils literal notranslate"><span class="pre">stop-map</span></code> (and the citybike, if needed) map layer:</p>
+<code class="docutils literal notranslate"><span class="pre">stop-map</span></code> (rename <code class="docutils literal notranslate"><span class="pre">hsl-stop-map</span></code> into <code class="docutils literal notranslate"><span class="pre">stop-map</span></code> for this) and the <code class="docutils literal notranslate"><span class="pre">citybike-map</span></code> (only if needed) map layer:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>module.exports = {
   &quot;/map/v1/stop-map&quot;: {
     &quot;source&quot;: `otpstops://${process.env.OTP_URL}`,
@@ -480,6 +482,7 @@ hub</a>.</p>
 </div>
 <div class="section" id="building-digitransit-ui">
 <h2>4. Building digitransit-ui<a class="headerlink" href="#building-digitransit-ui" title="Permalink to this headline">¶</a></h2>
+<p>Check out <a class="reference external" href="https://github.com/HSLdevcom/digitransit-ui">HSLdevcom/digitransit-ui</a>: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/HSLdevcom/digitransit-ui</span></code></p>
 <p>To build your own digitransit user interface, you need to add a theme
 and provide configuration (which includes your custom urls).</p>
 <p>First run <code class="docutils literal notranslate"><span class="pre">yarn</span> <span class="pre">install</span></code></p>
@@ -487,10 +490,25 @@ and provide configuration (which includes your custom urls).</p>
 optionally supply a color and logo, read
 <a class="reference external" href="https://github.com/HSLdevcom/digitransit-ui/blob/master/docs/Themes.md">documentation</a>
 for more details)</p>
-<p>In <code class="docutils literal notranslate"><span class="pre">app/configurations/</span></code>, create your own <code class="docutils literal notranslate"><span class="pre">config.ulm.js</span></code>. For the
-configuration content, look into all the other files, preferential
-<code class="docutils literal notranslate"><span class="pre">config.hsl.js</span></code>, <code class="docutils literal notranslate"><span class="pre">waltti.js</span></code>, <code class="docutils literal notranslate"><span class="pre">config.matka.js</span></code> and
-<code class="docutils literal notranslate"><span class="pre">config.default.js</span></code>.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">app/configurations/</span></code>, a config file is created with your theme name, e.g. <code class="docutils literal notranslate"><span class="pre">config.ulm.js</span></code>.</p>
+<p>Replace this file with the contents of
+<a class="reference external" href="https://raw.githubusercontent.com/verschwoerhaus/digitransit-ui/ulm/app/configurations/config.vsh.js">https://raw.githubusercontent.com/verschwoerhaus/digitransit-ui/ulm/app/configurations/config.vsh.js</a></p>
+<p>For the configuration options, feel free to have a look into all the other files, preferential
+<code class="docutils literal notranslate"><span class="pre">config.hsl.js</span></code>, <code class="docutils literal notranslate"><span class="pre">waltti.js</span></code>, <code class="docutils literal notranslate"><span class="pre">config.matka.js</span></code> and <code class="docutils literal notranslate"><span class="pre">config.default.js</span></code>.</p>
+<p>The most basic configuration options you may want to change follow:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">APP_TITLE</span> <span class="o">=</span> <span class="s1">&#39;digitransit &#39;</span><span class="p">;</span>
+<span class="n">const</span> <span class="n">APP_DESCRIPTION</span> <span class="o">=</span> <span class="s1">&#39;digitransit - ber&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Define the bounding box of the area in which search queries are preferred.
+Use a tool like <a class="reference external" href="https://boundingbox.klokantech.com">https://boundingbox.klokantech.com</a> to draw a bounding box
+and fill the following constants:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">minLat</span> <span class="o">=</span> <span class="mi">60</span><span class="p">;</span>
+<span class="n">const</span> <span class="n">maxLat</span> <span class="o">=</span> <span class="mi">70</span><span class="p">;</span>
+<span class="n">const</span> <span class="n">minLon</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+<span class="n">const</span> <span class="n">maxLon</span> <span class="o">=</span> <span class="mi">31</span><span class="p">;</span>
+</pre></div>
+</div>
 <p>You have to provide your own urls and paths with your config name, eg.
 in</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>OTP: process.env.OTP_URL || `${API_URL}/routing/v1/routers/ulm/`,
@@ -598,7 +616,8 @@ opentripplanner (<code class="docutils literal notranslate"><span class="pre">RO
 The digitransit-ui container also needs the public urls to OTP (<code class="docutils literal notranslate"><span class="pre">OTP_URL</span></code>) and
 photon-pelias-adapter (<code class="docutils literal notranslate"><span class="pre">GEOCODING_BASE_URL</span></code>).</p>
 <p>For these urls and to write the services up to the ingress, have a look at
-<a class="reference external" href="https://github.com/verschwoerhaus/digitransit-kubernetes/blob/master/ingress.yml">https://github.com/verschwoerhaus/digitransit-kubernetes/blob/master/ingress.yml</a></p>
+<a class="reference external" href="https://github.com/verschwoerhaus/digitransit-kubernetes/blob/master/ingress.yaml">https://github.com/verschwoerhaus/digitransit-kubernetes/blob/master/ingress.yaml</a></p>
+<p>For the parts you have to edit, look at the hostnames (<code class="docutils literal notranslate"><span class="pre">host:</span></code>) and at the paths (<code class="docutils literal notranslate"><span class="pre">path:</span></code>).</p>
 <p>For handling HTTPS, add tls-keys like in this config:
 <a class="reference external" href="https://github.com/stadtulm/digitransit-k8s/blob/master/ingress.yaml">https://github.com/stadtulm/digitransit-k8s/blob/master/ingress.yaml</a></p>
 <div class="admonition-todo admonition" id="id3">
@@ -609,11 +628,12 @@ override/insert config with kustomize</p>
 </div>
 <div class="section" id="deploying">
 <h2>7. Deploying<a class="headerlink" href="#deploying" title="Permalink to this headline">¶</a></h2>
-<p>Execute <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">apply</span> <span class="pre">-f</span> <span class="pre">digitransit.yml</span></code></p>
+<p>Execute <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">apply</span> <span class="pre">-f</span> <span class="pre">digitransit.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">apply</span> <span class="pre">-f</span> <span class="pre">ingress.yml</span></code></p>
 </div>
 <div class="section" id="id4">
 <h2>8. ???<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<p>Watch <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">pods</span></code></p>
+<p>Watch <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">pods</span></code>.</p>
+<p>Look at <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">ingress</span></code></p>
 </div>
 <div class="section" id="profit">
 <h2>9. Profit!<a class="headerlink" href="#profit" title="Permalink to this headline">¶</a></h2>
