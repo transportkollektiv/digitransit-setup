@@ -279,6 +279,7 @@ Custom styling can be added directly into the GeoJSON file.</p>
 </div>
 </div></blockquote>
 <p>Complete documentation including styling can be found in <a class="reference external" href="https://github.com/HSLdevcom/digitransit-ui/blob/master/docs/GeoJson.md">docs/GeoJSON</a>. For dynamic styling of the GeoJSON, you could manipulate the styling properties based on the data properties with a small external script before delivering the file to digitransit-ui.</p>
+<p>Caution: Styling and popup-content behaves different if GeoJSON contains geometry types other than points. If the file only contians points, property <code class="docutils literal notranslate"><span class="pre">address</span></code> will be used for popup content ignoring HTML. If it contains other geometry types then points, popup content from property <code class="docutils literal notranslate"><span class="pre">popupContent</span></code> will be rendered as HTML and the geometries are rendered on all zoomlayers.</p>
 </div>
 </div>
 

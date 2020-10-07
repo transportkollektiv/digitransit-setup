@@ -94,3 +94,5 @@ A simple example would be
 
 
 Complete documentation including styling can be found in `docs/GeoJSON <https://github.com/HSLdevcom/digitransit-ui/blob/master/docs/GeoJson.md>`_. For dynamic styling of the GeoJSON, you could manipulate the styling properties based on the data properties with a small external script before delivering the file to digitransit-ui. 
+
+Caution: Styling and popup-content behaves different if GeoJSON contains geometry types other than points. If the file only contians points, property ``address`` will be used for popup content ignoring HTML. If it contains other geometry types then points, popup content from property ``popupContent`` will be rendered as HTML and the geometries are rendered on all zoomlayers.
