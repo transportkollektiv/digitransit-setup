@@ -37,10 +37,8 @@ You need:
 - One (or more) :term:`GTFS` Feed with a publicly accessible URL
   (if you only have a :term:`GTFS` zip file, upload it somewhere
   public)
-- One OpenStreetMap extract for your region in .pbf format,
+- One (or more) OpenStreetMap extract(s) for your region in .pbf format,
   accessible at a public URL - try https://download.geofabrik.de 
-- if you need to merge two regions, try
-  `osmium merge <https://gis.stackexchange.com/questions/242704/merging-osm-pbf-files>`__
 
 For the configuration, find and memorize a short identifier. You
 need this often. In our example, we use ``ulm``.
@@ -123,6 +121,9 @@ Method 1: vsh-style modifying of opentripplanner-data-container
         const setCurrentConfig = (name) => {
           ALL_CONFIGS = [WALTTI_CONFIG, HSL_CONFIG, FINLAND_CONFIG, ULM_CONFIG].reduce((acc, nxt) => {
 
+
+    If you use multiple OSM extracts, merge them with tools like `osmium merge <https://gis.stackexchange.com/questions/242704/merging-osm-pbf-files>`__ first.
+
     Add your OSM extract to the osm config near the end of the file:
 
     ::
@@ -202,7 +203,7 @@ process by introducing a custom dockerfile for the datacontainer.
 For this, we're going to fork the `digitransit-otp-data repository <https://github.com/verschwoerhaus/digitransit-otp-data>`__.
 
 The ``Dockerfile`` is the main file you have to edit.
-Below ``# add build data`` you see a list of ``ADD`` statements. Replace these URLs with those of your GTFS and OSM dump (in the pbf format).
+Below ``# add build data`` you see a list of ``ADD`` statements. Replace these URLs with those of your GTFS and OSM dump(s) (in the pbf format).
 For the packaging, define your own ``ROUTER_NAME`` in the line ``ENV ROUTER_NAME=...``.
 
 You can modify more graph bulding settings in the ``build-config.json``. The OpenTripPlanner Documentation contains a section about
