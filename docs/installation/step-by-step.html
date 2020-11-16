@@ -259,10 +259,8 @@ actual queries.</p>
 <li><p>One (or more) <a class="reference internal" href="../glossary.html#term-GTFS"><span class="xref std std-term">GTFS</span></a> Feed with a publicly accessible URL
 (if you only have a <a class="reference internal" href="../glossary.html#term-GTFS"><span class="xref std std-term">GTFS</span></a> zip file, upload it somewhere
 public)</p></li>
-<li><p>One OpenStreetMap extract for your region in .pbf format,
+<li><p>One (or more) OpenStreetMap extract(s) for your region in .pbf format,
 accessible at a public URL - try <a class="reference external" href="https://download.geofabrik.de">https://download.geofabrik.de</a></p></li>
-<li><p>if you need to merge two regions, try
-<a class="reference external" href="https://gis.stackexchange.com/questions/242704/merging-osm-pbf-files">osmium merge</a></p></li>
 </ul>
 <p>For the configuration, find and memorize a short identifier. You
 need this often. In our example, we use <code class="docutils literal notranslate"><span class="pre">ulm</span></code>.</p>
@@ -332,6 +330,7 @@ config to <code class="docutils literal notranslate"><span class="pre">ALL_CONFI
   <span class="n">ALL_CONFIGS</span> <span class="o">=</span> <span class="p">[</span><span class="n">WALTTI_CONFIG</span><span class="p">,</span> <span class="n">HSL_CONFIG</span><span class="p">,</span> <span class="n">FINLAND_CONFIG</span><span class="p">,</span> <span class="n">ULM_CONFIG</span><span class="p">]</span><span class="o">.</span><span class="n">reduce</span><span class="p">((</span><span class="n">acc</span><span class="p">,</span> <span class="n">nxt</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
 </pre></div>
 </div>
+<p>If you use multiple OSM extracts, merge them with tools like <a class="reference external" href="https://gis.stackexchange.com/questions/242704/merging-osm-pbf-files">osmium merge</a> first.</p>
 <p>Add your OSM extract to the osm config near the end of the file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">osm</span> <span class="o">=</span> <span class="p">[</span>
   <span class="p">{</span> <span class="nb">id</span><span class="p">:</span> <span class="s1">&#39;finland&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="s1">&#39;https://karttapalvelu.storage.hsldev.com/finland.osm/finland.osm.pbf&#39;</span> <span class="p">},</span>
@@ -399,7 +398,7 @@ correct tag and push it to docker hub:</p>
 process by introducing a custom dockerfile for the datacontainer.</p>
 <p>For this, we’re going to fork the <a class="reference external" href="https://github.com/verschwoerhaus/digitransit-otp-data">digitransit-otp-data repository</a>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> is the main file you have to edit.
-Below <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">add</span> <span class="pre">build</span> <span class="pre">data</span></code> you see a list of <code class="docutils literal notranslate"><span class="pre">ADD</span></code> statements. Replace these URLs with those of your GTFS and OSM dump (in the pbf format).
+Below <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">add</span> <span class="pre">build</span> <span class="pre">data</span></code> you see a list of <code class="docutils literal notranslate"><span class="pre">ADD</span></code> statements. Replace these URLs with those of your GTFS and OSM dump(s) (in the pbf format).
 For the packaging, define your own <code class="docutils literal notranslate"><span class="pre">ROUTER_NAME</span></code> in the line <code class="docutils literal notranslate"><span class="pre">ENV</span> <span class="pre">ROUTER_NAME=...</span></code>.</p>
 <p>You can modify more graph bulding settings in the <code class="docutils literal notranslate"><span class="pre">build-config.json</span></code>. The OpenTripPlanner Documentation contains a section about
 <a class="reference external" href="https://docs.opentripplanner.org/en/latest/Configuration/#graph-build-configuration">Graph build configuration</a>, listing a lot of settings and their default values.
